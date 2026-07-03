@@ -1,6 +1,7 @@
 // Field shape matches the "Content Model: Research Entry" table in
 // SITE-MAP.md exactly, so a future CMS/MDX source can replace the array
-// below without changing anything that consumes getResearchEntries().
+// below without changing anything that consumes getResearchEntries() /
+// getResearchEntryBySlug().
 
 export type ResearchTheme =
   | "Behavioral Science"
@@ -19,6 +20,11 @@ export type ResearchFormat =
 
 export type ResearchStatus = "ongoing" | "concluded";
 
+export const STATUS_LABEL: Record<ResearchStatus, string> = {
+  ongoing: "Ongoing",
+  concluded: "Concluded",
+};
+
 export interface ResearchEntry {
   title: string;
   slug: string;
@@ -31,15 +37,31 @@ export interface ResearchEntry {
   coverImage?: string;
   publishedAt: string;
   updatedAt?: string;
-  body?: string;
+  /** Paragraphs of the full write-up. Placeholder entries use Lorem Ipsum — see below. */
+  body?: string[];
 }
+
+/**
+ * Deliberately Lorem Ipsum, not realistic-sounding prose: on a rendered
+ * page, invented-but-plausible editorial writing risks being mistaken for a
+ * real draft, where Lorem Ipsum is unambiguous to any reader while still
+ * validating real paragraph rhythm and the reading measure. Shared across
+ * every placeholder entry on purpose — identical filler text reinforces
+ * that none of it is proposed final writing.
+ */
+const PLACEHOLDER_BODY: string[] = [
+  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+  "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.",
+  "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet.",
+];
 
 /**
  * TEMPORARY placeholder data. "The Places We Become" is the only entry with
  * frozen copy (its title and theme tags come from HOMEPAGE.md's Featured
  * Investigation section) — every other entry, and every dek/research
- * question here, is placeholder text for layout purposes only, not proposed
- * final content.
+ * question/body here, is placeholder text for layout purposes only, not
+ * proposed final content.
  */
 const researchEntries: ResearchEntry[] = [
   {
@@ -52,6 +74,7 @@ const researchEntries: ResearchEntry[] = [
     status: "ongoing",
     featured: true,
     publishedAt: "2026-05-01",
+    body: PLACEHOLDER_BODY,
   },
   {
     title: "Systems of Care",
@@ -64,6 +87,7 @@ const researchEntries: ResearchEntry[] = [
     status: "ongoing",
     featured: false,
     publishedAt: "2026-03-22",
+    body: PLACEHOLDER_BODY,
   },
   {
     title: "Designing for Attention",
@@ -76,6 +100,7 @@ const researchEntries: ResearchEntry[] = [
     status: "concluded",
     featured: false,
     publishedAt: "2026-02-14",
+    body: PLACEHOLDER_BODY,
   },
   {
     title: "Invisible Infrastructure",
@@ -88,6 +113,7 @@ const researchEntries: ResearchEntry[] = [
     status: "ongoing",
     featured: false,
     publishedAt: "2026-01-05",
+    body: PLACEHOLDER_BODY,
   },
   {
     title: "The Architecture of Trust",
@@ -99,6 +125,7 @@ const researchEntries: ResearchEntry[] = [
     status: "concluded",
     featured: false,
     publishedAt: "2025-11-08",
+    body: PLACEHOLDER_BODY,
   },
 ];
 
@@ -107,4 +134,8 @@ export function getResearchEntries(): ResearchEntry[] {
   return [...researchEntries].sort(
     (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
+}
+
+export function getResearchEntryBySlug(slug: string): ResearchEntry | undefined {
+  return researchEntries.find((entry) => entry.slug === slug);
 }

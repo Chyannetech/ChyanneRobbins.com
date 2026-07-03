@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { NAV_LINKS } from "@/lib/navigation";
+import Section from "@/components/layout/Section";
+import Heading from "@/components/typography/Heading";
+import BodyText from "@/components/typography/BodyText";
+import Eyebrow from "@/components/typography/Eyebrow";
+import Prose from "@/components/typography/Prose";
+import DocumentaryImage from "@/components/media/DocumentaryImage";
+import Caption from "@/components/media/Caption";
 
 const DISCIPLINES = [
   "Behavioral Science",
@@ -13,109 +19,84 @@ export default function Home() {
   return (
     <main className="flex flex-col">
       {/* 1. Hero */}
-      <section className="mx-auto w-full max-w-[1200px] px-6 py-24 sm:py-32">
-        <p className="font-sans text-meta uppercase tracking-wide text-muted">
-          Chyanne Robbins
-        </p>
-        <p className="mt-4 max-w-[40ch] font-sans text-body-lg text-muted">
+      <Section spacing="large">
+        <Eyebrow>Chyanne Robbins</Eyebrow>
+        <BodyText size="body-lg" font="sans" tone="muted" className="mt-4 max-w-[40ch]">
           Researching, designing, and documenting better human experiences.
-        </p>
-        <h1 className="mt-8 max-w-[20ch] font-serif text-display leading-tight text-foreground">
+        </BodyText>
+        <Heading as="h1" size="display" className="mt-8 max-w-[20ch]">
           What shapes human experience?
-        </h1>
+        </Heading>
         <Link
           href="/research"
           className="mt-10 inline-block font-sans text-body text-accent underline underline-offset-4"
         >
           Explore the Research
         </Link>
-      </section>
+      </Section>
 
       {/* 2. In the Field */}
-      <section className="mx-auto w-full max-w-[1200px] px-6 py-16 sm:py-24">
-        <div
-          aria-hidden="true"
-          className="aspect-[16/9] w-full border border-border bg-muted/20"
-        />
-        <div className="mt-4 max-w-[68ch]">
-          <p className="font-sans text-meta text-muted">
-            Research is how I make sense of the world.
-          </p>
-          <p className="mt-1 font-sans text-meta text-muted">
-            Austin, Texas • June 2024
-          </p>
-        </div>
-      </section>
+      <Section>
+        <DocumentaryImage />
+        <Caption meta="Austin, Texas • June 2024">
+          Research is how I make sense of the world.
+        </Caption>
+      </Section>
 
       {/* 3. Field Notes */}
-      <section className="mx-auto w-full max-w-[1200px] px-6 py-16 sm:py-24">
-        <h2 className="font-serif text-title text-foreground">Field Notes</h2>
+      <Section>
+        <Heading as="h2" size="title">
+          Field Notes
+        </Heading>
         <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
           {DISCIPLINES.map((discipline) => (
-            <li key={discipline} className="font-sans text-body text-muted">
-              {discipline}
+            <li key={discipline}>
+              <BodyText tone="muted">{discipline}</BodyText>
             </li>
           ))}
         </ul>
-      </section>
+      </Section>
 
       {/* 4. Featured Investigation */}
-      <section className="mx-auto w-full max-w-[1200px] px-6 py-16 sm:py-24">
+      <Section>
         <Link href="/research" className="group block">
-          <h2 className="font-serif text-subhead text-foreground transition-colors group-hover:text-accent">
+          <Heading as="h2" size="subhead" className="transition-colors group-hover:text-accent">
             The Places We Become
-          </h2>
-          <p className="mt-3 font-sans text-meta text-muted">
+          </Heading>
+          <BodyText size="meta" tone="muted" className="mt-3">
             Behavioral Science · Design · Systems Thinking
-          </p>
+          </BodyText>
         </Link>
-      </section>
+      </Section>
 
       {/* 5. Why This Matters */}
-      <section className="mx-auto w-full max-w-[1200px] px-6 py-16 sm:py-24">
-        <h2 className="font-serif text-title text-foreground">
+      <Section>
+        <Heading as="h2" size="title">
           Why This Matters
-        </h2>
-        <p className="mt-6 max-w-[68ch] font-sans text-body-lg text-foreground">
+        </Heading>
+        <Prose className="mt-6">
           The environments we design—digital and physical—quietly shape how
           people think, decide, connect, and live. By studying human
           experience through behavioral science, design, systems thinking,
           technology, and public health, this publication explores principles
           that can help create products, services, organizations, and spaces
           that better support the people they serve.
-        </p>
+        </Prose>
         <Link
           href="/studio"
           className="mt-6 inline-block font-sans text-body text-accent underline underline-offset-4"
         >
           Studio
         </Link>
-      </section>
+      </Section>
 
-      {/* 6. Footer */}
-      <footer className="border-t border-border">
-        <div className="mx-auto w-full max-w-[1200px] px-6 py-16 text-center sm:py-24">
-          <p className="mx-auto max-w-[32ch] font-serif text-subhead italic text-foreground">
-            &ldquo;Everything we create teaches people how to experience the
-            world.&rdquo;
-          </p>
-          <ul className="mt-12 flex flex-wrap items-center justify-center gap-6">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="font-sans text-meta text-muted transition-colors hover:text-accent"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <p className="mt-8 font-sans text-meta text-muted">
-            © 2026 Chyanne Robbins
-          </p>
-        </div>
-      </footer>
+      {/* 6. Closing quote — Home-specific editorial content, not part of the shared Footer. */}
+      <Section spacing="large" className="text-center">
+        <blockquote className="mx-auto max-w-[32ch] font-serif text-subhead italic text-foreground">
+          &ldquo;Everything we create teaches people how to experience the
+          world.&rdquo;
+        </blockquote>
+      </Section>
     </main>
   );
 }

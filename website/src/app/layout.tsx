@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
-import Header from "@/components/Header";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -35,6 +36,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

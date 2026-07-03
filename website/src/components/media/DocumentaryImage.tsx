@@ -26,7 +26,7 @@ export default function DocumentaryImage({
     return (
       <div
         aria-hidden="true"
-        className={cn("w-full border border-border bg-muted/20", className)}
+        className={cn("border border-border bg-muted/20", className)}
         style={{ aspectRatio }}
       />
     );
@@ -34,10 +34,7 @@ export default function DocumentaryImage({
 
   return (
     <div
-      className={cn(
-        "relative w-full overflow-hidden border border-border",
-        className,
-      )}
+      className={cn("relative overflow-hidden border border-border", className)}
       style={{ aspectRatio }}
     >
       <Image src={src} alt={alt} fill className="object-cover" />

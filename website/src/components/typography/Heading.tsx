@@ -4,11 +4,14 @@ import { cn } from "@/lib/cn";
 type HeadingLevel = "h1" | "h2" | "h3" | "h4";
 type HeadingSize = "display" | "headline" | "subhead" | "title";
 
+// Line-height/letter-spacing are defined once, on the --text-* tokens in
+// globals.css, so they aren't duplicated here as separate leading-*/tracking-*
+// utilities that could win or lose the cascade unpredictably.
 const sizeClasses: Record<HeadingSize, string> = {
-  display: "text-display leading-tight",
-  headline: "text-headline leading-tight",
-  subhead: "text-subhead leading-snug",
-  title: "text-title leading-snug",
+  display: "text-display",
+  headline: "text-headline",
+  subhead: "text-subhead",
+  title: "text-title",
 };
 
 interface HeadingProps {

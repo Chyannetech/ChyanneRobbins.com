@@ -16,7 +16,7 @@ export default function Prose({ className, children }: ProseProps) {
   return (
     <div
       className={cn(
-        "max-w-[68ch] font-serif text-body-lg leading-relaxed text-foreground",
+        "max-w-[68ch] font-serif text-body-lg text-foreground",
         className,
       )}
     >

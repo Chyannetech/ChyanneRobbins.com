@@ -5,10 +5,11 @@ type BodyTextSize = "body-lg" | "body" | "meta";
 type BodyTextTone = "default" | "muted" | "accent";
 type BodyTextFont = "serif" | "sans";
 
+// Line-height is defined once, on the --text-* tokens in globals.css.
 const sizeClasses: Record<BodyTextSize, string> = {
-  "body-lg": "text-body-lg leading-relaxed",
-  body: "text-body leading-relaxed",
-  meta: "text-meta leading-normal",
+  "body-lg": "text-body-lg",
+  body: "text-body",
+  meta: "text-meta",
 };
 
 const toneClasses: Record<BodyTextTone, string> = {

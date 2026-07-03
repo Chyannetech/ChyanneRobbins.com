@@ -18,13 +18,34 @@
   --font-serif: var(--font-newsreader);
   --font-sans: var(--font-plex-sans);
 
-  --text-display: 3.815rem;
-  --text-headline: 3.052rem;
-  --text-subhead: 2.441rem;
-  --text-title: 1.953rem;
+  /* Fluid display sizes: comfortable on mobile, full documented size at
+     desktop widths. line-height/letter-spacing tightened at large sizes,
+     which is standard practice for serif display type and was not
+     specified numerically in DESIGN-SYSTEM.md (only the type scale's font
+     sizes were). */
+  --text-display: clamp(1.875rem, 1.25rem + 4vw, 3.815rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.015em;
+
+  --text-headline: clamp(2.25rem, 1.75rem + 2.2vw, 3.052rem);
+  --text-headline--line-height: 1.1;
+  --text-headline--letter-spacing: -0.01em;
+
+  --text-subhead: clamp(1.75rem, 1.4rem + 1.6vw, 2.441rem);
+  --text-subhead--line-height: 1.15;
+  --text-subhead--letter-spacing: -0.01em;
+
+  --text-title: clamp(1.375rem, 1.2rem + 0.8vw, 1.953rem);
+  --text-title--line-height: 1.3;
+
   --text-body-lg: 1.25rem;
+  --text-body-lg--line-height: 1.65;
+
   --text-body: 1rem;
+  --text-body--line-height: 1.6;
+
   --text-meta: 0.8rem;
+  --text-meta--line-height: 1.5;
 }
 
 @media (prefers-color-scheme: dark) {

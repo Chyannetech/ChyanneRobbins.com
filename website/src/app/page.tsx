@@ -21,15 +21,15 @@ export default function Home() {
       {/* 1. Hero */}
       <Section spacing="large">
         <Eyebrow>Chyanne Robbins</Eyebrow>
-        <BodyText size="body-lg" font="sans" tone="muted" className="mt-4 max-w-[40ch]">
+        <BodyText size="body-lg" font="sans" tone="muted" className="mt-3 max-w-[40ch]">
           Researching, designing, and documenting better human experiences.
         </BodyText>
-        <Heading as="h1" size="display" className="mt-8 max-w-[20ch]">
+        <Heading as="h1" size="display" className="mt-14 max-w-full sm:max-w-[20ch]">
           What shapes human experience?
         </Heading>
         <Link
           href="/research"
-          className="mt-10 inline-block font-sans text-body text-accent underline underline-offset-4"
+          className="mt-8 inline-block font-sans text-body text-accent underline underline-offset-4"
         >
           Explore the Research
         </Link>
@@ -37,7 +37,7 @@ export default function Home() {
 
       {/* 2. In the Field */}
       <Section>
-        <DocumentaryImage />
+        <DocumentaryImage aspectRatio="3/2" />
         <Caption meta="Austin, Texas • June 2024">
           Research is how I make sense of the world.
         </Caption>
@@ -48,10 +48,12 @@ export default function Home() {
         <Heading as="h2" size="title">
           Field Notes
         </Heading>
-        <ul className="mt-6 flex flex-wrap gap-x-8 gap-y-3">
+        <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
           {DISCIPLINES.map((discipline) => (
             <li key={discipline}>
-              <BodyText tone="muted">{discipline}</BodyText>
+              <BodyText size="meta" tone="muted">
+                {discipline}
+              </BodyText>
             </li>
           ))}
         </ul>
@@ -63,7 +65,7 @@ export default function Home() {
           <Heading as="h2" size="subhead" className="transition-colors group-hover:text-accent">
             The Places We Become
           </Heading>
-          <BodyText size="meta" tone="muted" className="mt-3">
+          <BodyText size="meta" tone="muted" className="mt-4">
             Behavioral Science · Design · Systems Thinking
           </BodyText>
         </Link>

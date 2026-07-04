@@ -39,9 +39,27 @@ export default function Home() {
         </Link>
       </Section>
 
-      {/* 2. In the Field — powered by the featured published Journal entry; omitted entirely if none exists */}
+      {/* 2. Field Notes — introduces the disciplines lens; sits directly above the featured Journal entry so it reads as that section's heading */}
+      <Section>
+        <Heading as="h2" size="title">
+          Field Notes
+        </Heading>
+        <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
+          {DISCIPLINES.map((discipline) => (
+            <li key={discipline}>
+              <BodyText size="meta" tone="muted">
+                {discipline}
+              </BodyText>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
+      {/* 3. In the Field — powered by the featured published Journal entry; omitted entirely if none exists.
+           Negative top margin (matching Section's own default py value) pulls this ~50% closer to
+           Field Notes above, so the two read as one introduced section rather than separate ones. */}
       {featuredJournalEntry && (
-        <Section>
+        <Section className="-mt-16 sm:-mt-24">
           <Link href={`/journal/${featuredJournalEntry.slug}`} className="block">
             <DocumentaryImage
               src={featuredJournalEntry.heroImage}
@@ -59,22 +77,6 @@ export default function Home() {
           </Link>
         </Section>
       )}
-
-      {/* 3. Field Notes */}
-      <Section>
-        <Heading as="h2" size="title">
-          Field Notes
-        </Heading>
-        <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
-          {DISCIPLINES.map((discipline) => (
-            <li key={discipline}>
-              <BodyText size="meta" tone="muted">
-                {discipline}
-              </BodyText>
-            </li>
-          ))}
-        </ul>
-      </Section>
 
       {/* 4. Featured Investigation */}
       <Section>

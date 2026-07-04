@@ -20,10 +20,9 @@ export const metadata: Metadata = {
  * not on the page itself.
  *
  * "About the Author" is a distinct end-of-piece section (Divider-separated),
- * matching book/essay bio conventions. Its portrait uses DocumentaryImage's
- * built-in neutral placeholder (no src yet) at a deliberately small,
- * portrait-oriented size — supporting the bio, not a profile-photo focal
- * point. Swap in a real image via the `src` prop when one exists.
+ * matching book/essay bio conventions. Its portrait uses DocumentaryImage at
+ * a deliberately small, portrait-oriented size — supporting the bio, not a
+ * profile-photo focal point.
  */
 export default function AboutPage() {
   return (
@@ -73,8 +72,10 @@ export default function AboutPage() {
         </Heading>
 
         <DocumentaryImage
+          src="/images/author.jpg"
           alt="Chyanne Robbins"
           aspectRatio="4/5"
+          objectPosition="center"
           className="mt-8 w-40 sm:w-48"
         />
 

@@ -42,18 +42,21 @@ export default function Home() {
       {/* 2. In the Field — powered by the featured published Journal entry; omitted entirely if none exists */}
       {featuredJournalEntry && (
         <Section>
-          <DocumentaryImage
-            src={featuredJournalEntry.heroImage}
-            alt={featuredJournalEntry.caption ?? featuredJournalEntry.title}
-            aspectRatio="3/2"
-          />
-          <Caption
-            meta={[featuredJournalEntry.location, formatDate(featuredJournalEntry.date)]
-              .filter(Boolean)
-              .join(" • ")}
-          >
-            {featuredJournalEntry.caption}
-          </Caption>
+          <Link href={`/journal/${featuredJournalEntry.slug}`} className="block">
+            <DocumentaryImage
+              src={featuredJournalEntry.heroImage}
+              alt={featuredJournalEntry.caption ?? featuredJournalEntry.title}
+              aspectRatio="3/2"
+              objectPosition={featuredJournalEntry.heroImagePosition}
+            />
+            <Caption
+              meta={[featuredJournalEntry.location, formatDate(featuredJournalEntry.date)]
+                .filter(Boolean)
+                .join(" • ")}
+            >
+              {featuredJournalEntry.caption}
+            </Caption>
+          </Link>
         </Section>
       )}
 

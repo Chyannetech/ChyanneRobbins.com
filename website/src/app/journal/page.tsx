@@ -31,8 +31,14 @@ export default function JournalIndexPage() {
             <li key={entry.slug}>
               {index > 0 && <Divider />}
               <Link href={`/journal/${entry.slug}`} className="group block py-8">
-                {entry.images.length > 0 && (
-                  <DocumentaryImage aspectRatio="3/2" className="mb-6" />
+                {entry.heroImage && (
+                  <DocumentaryImage
+                    src={entry.heroImage}
+                    alt={entry.title}
+                    aspectRatio="3/2"
+                    objectPosition={entry.heroImagePosition}
+                    className="mb-6"
+                  />
                 )}
                 <Heading
                   as="h2"

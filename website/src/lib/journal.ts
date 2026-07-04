@@ -13,6 +13,8 @@ interface JournalFrontmatter {
   images: string[];
   /** Single hero photo path, wired to Home's featured display. Distinct from the legacy `images` array above, which is not yet wired to any real photo — see PUBLISHING.md. */
   heroImage?: string;
+  /** CSS object-position for heroImage's crop, e.g. "center 20%". Omit to keep the default centered crop. */
+  heroImagePosition?: string;
   /** Short caption shown alongside heroImage on Home. */
   caption?: string;
   /** Authored teaser. Falls back to an auto-derived excerpt (getExcerpt) when omitted, so older entries keep working unmodified. */

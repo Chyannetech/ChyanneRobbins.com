@@ -64,10 +64,12 @@ export default async function JournalEntryPage({ params }: PageProps) {
           ← Journal
         </Link>
 
-        {entry.images.length > 0 && (
+        {entry.heroImage && (
           <DocumentaryImage
+            src={entry.heroImage}
             alt={entry.title}
             aspectRatio="3/2"
+            objectPosition={entry.heroImagePosition}
             className="mt-10"
           />
         )}

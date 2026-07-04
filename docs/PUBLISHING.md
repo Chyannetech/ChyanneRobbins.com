@@ -43,12 +43,16 @@ published: true
 featured: true
 location: "Austin, Texas"
 heroImage: "/images/field-notes-austin.jpg"
+heroImagePosition: "center 8%"
 caption: "Research is how I make sense of the world."
 ```
 
 - **Only one entry should be `featured: true` at a time.** If more than one is, `getFeaturedJournalEntry()` doesn't error — it picks whichever is newest by `date` (same sort order as `getJournalEntries()`) — but treat having two featured entries as a mistake to fix, not a supported state.
 - **If no entry is featured, Home fails gracefully.** The "In the Field" section simply doesn't render — no broken layout, no empty placeholder box, nothing. This is deliberate: a homepage with one fewer section is fine; a homepage with a visibly broken one isn't.
 - `heroImage` is a **new, singular field**, distinct from the older `images` array. `heroImage` is the one field actually wired to display a real photo (via `DocumentaryImage`'s `src` prop) — see the Images section below for the important difference between this and `images`.
+- `heroImagePosition` is optional and only matters once `heroImage` is set. It's passed straight through as CSS `object-position` (via `DocumentaryImage`'s `objectPosition` prop) on the `object-cover`-cropped image. Omit it and the crop stays centered — today's default, unchanged for every entry that doesn't set it. Most hero photos won't need it; it exists for cases like a portrait-orientation photo forced into the section's landscape (3:2) box, where a centered crop cuts off something that matters (a sign, a face) and you need to shift the visible window up or down.
+  - **The math is not intuitive — verify visually, don't just calculate.** Because the display box is a fixed aspect ratio and the source photo usually isn't, `object-fit: cover` always crops a *fixed amount* of the source (determined purely by the ratio mismatch); `object-position`'s percentage only decides *where* that fixed-size window sits, not how much is cropped. It's tempting to eyeball the source photo, estimate percentages, and compute where things should land — that estimate will likely be wrong, because it's very easy to misjudge exact proportions by eye. What actually worked for `field-notes-austin.md`: render the page, look at the actual crop, and adjust in small steps (`center top`, then `center 8%`, etc.) until both the sign and the face were comfortably in frame — three quick iterations, not one calculation.
+  - Syntax is standard CSS `object-position`: two keywords (`center top`, `center bottom`) or `<horizontal> <vertical>` percentages (`center 8%` — meaning the horizontal axis stays centered, since there's usually nothing to gain from shifting it when the crop only trims top/bottom).
 - `caption` has no fallback — if it's missing on the featured entry, the caption line renders empty. Always set it on whichever entry you feature.
 - `title` and `excerpt` are **not** used by Home at all, even on the featured entry — Home only ever reads `heroImage`, `caption`, `location`, and `date`. `title`/`excerpt` are for the Journal pages themselves (see below).
 
@@ -136,6 +140,7 @@ title: "Entry Title"
 date: "2026-04-10"
 location: "Austin, Texas"
 heroImage: "/images/entry-title.jpg"
+heroImagePosition: "center 8%"
 caption: "A one-line caption, shown only if this entry is featured on Home."
 excerpt: "An authored one- to two-sentence teaser for /journal's listing."
 images:
@@ -144,9 +149,9 @@ relatedResearch: the-places-we-become
 ---
 ```
 
-Only `title` and `date` are required. Everything else — `location`, `images`, `heroImage`, `caption`, `excerpt`, `relatedResearch`, `published`, `featured` — may technically be omitted, but write `published: false` and `featured: false` explicitly anyway (see Draft & Published status and Featuring a Journal entry on Home, both above). `relatedResearch`, if set, must match an existing filename (without `.md`) under `content/research/` — it's how a Journal entry cross-links to a Research investigation (rendered as a "Related Research" link on the entry page).
+Only `title` and `date` are required. Everything else — `location`, `images`, `heroImage`, `heroImagePosition`, `caption`, `excerpt`, `relatedResearch`, `published`, `featured` — may technically be omitted, but write `published: false` and `featured: false` explicitly anyway (see Draft & Published status and Featuring a Journal entry on Home, both above). `relatedResearch`, if set, must match an existing filename (without `.md`) under `content/research/` — it's how a Journal entry cross-links to a Research investigation (rendered as a "Related Research" link on the entry page).
 
-- `heroImage` and `caption` only matter if this entry is `featured: true` — see above.
+- `heroImage`, `heroImagePosition`, and `caption` only matter if this entry is `featured: true` — see above.
 - `excerpt`, if set, overrides the auto-derived teaser on `/journal`'s listing (and in this page's own meta description) — see the "opening paragraph" note above. Older entries without `excerpt` keep working exactly as before; this field is purely additive.
 
 ---

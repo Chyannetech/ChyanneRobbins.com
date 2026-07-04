@@ -6,6 +6,8 @@ interface DocumentaryImageProps {
   alt?: string;
   /** CSS aspect-ratio value, e.g. "16/9". */
   aspectRatio?: string;
+  /** CSS object-position for the crop, e.g. "center 20%". Omit to keep the default centered crop. */
+  objectPosition?: string;
   className?: string;
 }
 
@@ -20,6 +22,7 @@ export default function DocumentaryImage({
   src,
   alt = "",
   aspectRatio = "16/9",
+  objectPosition,
   className,
 }: DocumentaryImageProps) {
   if (!src) {
@@ -37,7 +40,13 @@ export default function DocumentaryImage({
       className={cn("relative overflow-hidden border border-border", className)}
       style={{ aspectRatio }}
     >
-      <Image src={src} alt={alt} fill className="object-cover" />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className="object-cover"
+        style={{ objectPosition }}
+      />
     </div>
   );
 }

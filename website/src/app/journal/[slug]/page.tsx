@@ -84,10 +84,11 @@ export default async function JournalEntryPage({ params }: PageProps) {
 
         <Divider className="mt-12" />
 
-        <Prose className="mt-12 space-y-6">
-          {entry.body.map((paragraph, index) => (
-            <p key={index}>{paragraph}</p>
-          ))}
+        <Prose className="mt-12">
+          <div
+            className="space-y-6"
+            dangerouslySetInnerHTML={{ __html: entry.bodyHtml }}
+          />
         </Prose>
 
         {relatedResearch && (

@@ -1,4 +1,5 @@
 ---
+published: false
 title: "Three Days in Lisbon"
 date: "2026-02-20"
 location: "Lisbon, Portugal"

@@ -1,4 +1,5 @@
 ---
+published: false
 title: "On Slowness"
 date: "2025-12-03"
 images: []

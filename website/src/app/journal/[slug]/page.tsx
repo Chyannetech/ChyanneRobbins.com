@@ -35,7 +35,7 @@ export async function generateMetadata({
 
   return {
     title: `${entry.title} — Chyanne Robbins`,
-    description: getExcerpt(entry.body),
+    description: entry.excerpt ?? getExcerpt(entry.body),
   };
 }
 

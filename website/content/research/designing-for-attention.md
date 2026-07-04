@@ -1,4 +1,5 @@
 ---
+published: false
 title: "Designing for Attention"
 researchQuestion: "What does it mean to design for someone's attention rather than against it?"
 dek: "An investigation into how digital products compete for — and sometimes erode — human attention."

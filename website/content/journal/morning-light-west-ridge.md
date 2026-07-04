@@ -1,4 +1,5 @@
 ---
+published: false
 title: "Morning Light, West Ridge"
 date: "2026-01-15"
 location: "Marfa, Texas"

@@ -23,6 +23,8 @@ export const STATUS_LABEL: Record<ResearchStatus, string> = {
 };
 
 interface ResearchFrontmatter {
+  /** Defaults to false (fail-closed) if omitted — see PUBLISHING.md's Draft & Published section. */
+  published: boolean;
   title: string;
   researchQuestion: string;
   dek: string;
@@ -100,7 +102,10 @@ function validateResearchFrontmatter(
       `content/research/${filename}: invalid status "${data.status}"`,
     );
   }
-  return data as unknown as ResearchFrontmatter;
+  return {
+    ...data,
+    published: data.published === true,
+  } as unknown as ResearchFrontmatter;
 }
 
 function getAllResearchEntries(): ResearchEntry[] {
@@ -115,13 +120,20 @@ function getAllResearchEntries(): ResearchEntry[] {
   }));
 }
 
-/** Newest first — the standard, easily-revisable default for an archive index. */
+/**
+ * Newest first, published only — the standard, easily-revisable default for
+ * a public archive index. Drafts still parse and validate normally (see
+ * getAllResearchEntries) so they keep working within the content system;
+ * this is the one place that excludes them from anything public-facing.
+ */
 export function getResearchEntries(): ResearchEntry[] {
-  return getAllResearchEntries().sort(
-    (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-  );
+  return getAllResearchEntries()
+    .filter((entry) => entry.published)
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
 export function getResearchEntryBySlug(slug: string): ResearchEntry | undefined {
-  return getAllResearchEntries().find((entry) => entry.slug === slug);
+  return getAllResearchEntries()
+    .filter((entry) => entry.published)
+    .find((entry) => entry.slug === slug);
 }

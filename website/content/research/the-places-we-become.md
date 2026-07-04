@@ -1,4 +1,5 @@
 ---
+published: true
 title: "The Places We Become"
 researchQuestion: "How do physical environments shape who we become?"
 dek: "A study of how the spaces we inhabit quietly shape identity, behavior, and belonging."

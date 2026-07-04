@@ -42,7 +42,7 @@ export default function JournalIndexPage() {
                   {entry.title}
                 </Heading>
                 <BodyText tone="muted" className="mt-3 max-w-[60ch]">
-                  {getExcerpt(entry.body)}
+                  {entry.excerpt ?? getExcerpt(entry.body)}
                 </BodyText>
                 <BodyText size="meta" tone="muted" className="mt-4">
                   {[entry.location, formatDate(entry.date)]

@@ -6,6 +6,8 @@ import Eyebrow from "@/components/typography/Eyebrow";
 import Prose from "@/components/typography/Prose";
 import DocumentaryImage from "@/components/media/DocumentaryImage";
 import Caption from "@/components/media/Caption";
+import { getFeaturedJournalEntry } from "@/lib/journal";
+import { formatDate } from "@/lib/date";
 
 const DISCIPLINES = [
   "Behavioral Science",
@@ -16,6 +18,8 @@ const DISCIPLINES = [
 ];
 
 export default function Home() {
+  const featuredJournalEntry = getFeaturedJournalEntry();
+
   return (
     <main className="flex flex-col">
       {/* 1. Hero */}
@@ -35,13 +39,23 @@ export default function Home() {
         </Link>
       </Section>
 
-      {/* 2. In the Field */}
-      <Section>
-        <DocumentaryImage aspectRatio="3/2" />
-        <Caption meta="Austin, Texas • June 2024">
-          Research is how I make sense of the world.
-        </Caption>
-      </Section>
+      {/* 2. In the Field — powered by the featured published Journal entry; omitted entirely if none exists */}
+      {featuredJournalEntry && (
+        <Section>
+          <DocumentaryImage
+            src={featuredJournalEntry.heroImage}
+            alt={featuredJournalEntry.caption ?? featuredJournalEntry.title}
+            aspectRatio="3/2"
+          />
+          <Caption
+            meta={[featuredJournalEntry.location, formatDate(featuredJournalEntry.date)]
+              .filter(Boolean)
+              .join(" • ")}
+          >
+            {featuredJournalEntry.caption}
+          </Caption>
+        </Section>
+      )}
 
       {/* 3. Field Notes */}
       <Section>

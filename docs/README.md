@@ -60,4 +60,6 @@ Every investigation published here may eventually become:
 
 - a collaboration
 
+When an investigation grows into a product, experience, technology, or collaboration, that work continues through Chyless World Studio — a separate, external site where research becomes real-world practice. ChyanneRobbins.com remains the publication; Chyless World is where its research is applied.
+
 The website itself is documentation of an evolving design practice.

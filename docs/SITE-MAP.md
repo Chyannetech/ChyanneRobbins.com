@@ -35,7 +35,7 @@ Together, Research and Journal represent the two registers of the publication: f
 | `/journal` | Journal index | Essays, observations, travel notes, reflections, and photography — ongoing thinking outside formal investigations. |
 | `/journal/[slug]` | Journal entry | A single journal post: essay, photo-led field note, or reflection. |
 | `/about` | About | The publication's philosophy and mission in full, who is behind it, and why it exists. Serves the curious-reader audience. |
-| `/studio` | Studio | An invitation, not a services page. Explains how organizations can apply the thinking documented throughout the publication through the Creative Studio. Deliberately avoids agency/consulting language ("services we offer," "clients," "packages"). |
+| `/studio` | Studio | A short editorial bridge, not a services page or a destination in itself. ChyanneRobbins.com is the publication; Chyless World Studio (an external site, not yet live — placeholder domain `chylessworld.com`) is where an investigation sometimes continues as a product, experience, technology, or collaboration. The page explains that relationship briefly, then links out with a single understated call-to-action. |
 | `/contact` | Contact | A direct, utilitarian point of contact. Distinct from Studio, which is editorial in tone — Contact is simply how to get in touch. |
 | `/research?theme=...` (or `/themes/[theme]`, TBD) | Theme filter | Secondary, optional. A filtered view of Research entries by theme (Behavioral Science, Design, Systems Thinking, Technology, Public Health). Not linked from primary nav. |
 

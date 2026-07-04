@@ -26,7 +26,7 @@ export default function Home() {
       <Section spacing="large">
         <Eyebrow>Chyanne Robbins</Eyebrow>
         <BodyText size="body-lg" font="sans" tone="muted" className="mt-3 max-w-[40ch]">
-          Researching, designing, and documenting better human experiences.
+          Exploring how people think, decide, and live.
         </BodyText>
         <Heading as="h1" size="display" className="mt-14 max-w-full sm:max-w-[20ch]">
           What shapes human experience?

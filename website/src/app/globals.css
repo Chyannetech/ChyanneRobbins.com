@@ -63,3 +63,69 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
 }
+
+/*
+ * Research investigation body — the archival/notebook editorial system
+ * (docs/CONTENT-STANDARDS.md: Investigation Editorial System). This styles
+ * plain Markdown elements rendered via dangerouslySetInnerHTML, so it can't
+ * be expressed as component props. Defines every spacing rule itself
+ * (rather than pairing with Tailwind's space-y-6 utility) so heading/
+ * paragraph/list margins don't fight a second utility for the same
+ * property — the exact cascade-order risk noted on Heading/BodyText.
+ * Scoped to .investigation-body only; Journal's body rendering is
+ * untouched.
+ */
+.investigation-body p {
+  margin-top: 1.5rem;
+}
+
+.investigation-body > *:first-child {
+  margin-top: 0;
+}
+
+.investigation-body h2,
+.investigation-body h3,
+.investigation-body h4 {
+  margin-top: 3rem;
+  margin-bottom: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: var(--text-meta);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+  color: var(--muted);
+}
+
+/* A research-question-style prompt: `> ...` in Markdown. Breathing room
+   only — deliberately not a pull quote (no border, no indent, no italic,
+   same size as body). */
+.investigation-body blockquote {
+  margin: 2.5rem 0;
+  padding: 0;
+  border: none;
+  font-style: normal;
+}
+
+.investigation-body blockquote p {
+  margin: 0;
+}
+
+/* Open Questions and any other list: plain vertical rhythm, no bullets. */
+.investigation-body ul,
+.investigation-body ol {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1.5rem;
+}
+
+.investigation-body li {
+  margin-top: 1rem;
+}
+
+.investigation-body li:first-child {
+  margin-top: 0;
+}
+
+.investigation-body li p {
+  margin-top: 0;
+}

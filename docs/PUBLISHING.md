@@ -83,11 +83,27 @@ website/
 
 1. Add `website/content/research/<slug>.md`.
 2. Fill in the frontmatter (full schema below) — `title`, `researchQuestion`, `dek`, `themes`, `formats`, `status`, `featured`, and `publishedAt` are all required. Start with `published: false` — it's not required, but write it explicitly (see Draft & Published status, above).
-3. Write the body in plain Markdown below the closing `---`. Paragraphs, emphasis, and links all render normally; nothing else is currently styled specially inside the body (see the note under Images/Body below if you're tempted to add headings or lists).
+3. Write the body in Markdown below the closing `---` — see "Writing an investigation body," immediately below, for the section-marker/blockquote/list conventions Research uses.
 4. While `published: false`, the entry won't show up anywhere — not on `/research`, and its own `/research/<slug>` page 404s too, even locally. That's expected for a draft. To actually see the rendered page while you're still writing, temporarily set `published: true` in your local checkout, look, then set it back to `false` before committing.
 5. When it's genuinely ready, set `published: true` for good, preview once more, commit, and push (see Git workflow, below).
 
 > **Caveat:** setting `featured: true` does **not** currently make an entry appear on the Home page. Home's "Featured Investigation" section is hardcoded in `src/app/page.tsx` and has to be edited by hand. `featured` marks an entry as *intended* for that slot; making it actually show up is still a manual step.
+
+---
+
+## Writing an investigation body (Research only)
+
+Research bodies use a small set of plain-Markdown conventions that render as the site's archival/notebook editorial system — see CONTENT-STANDARDS.md's "Investigation Editorial System" for the reasoning behind it. None of this applies to Journal; Journal bodies are always just plain paragraphs.
+
+- **Section markers.** Write a normal heading — `## Observation`, `## Field Notes`, `## Question`, `## Interpretation`, `## Open Questions`, or whatever genuinely fits the piece. It renders small, uppercase, tracked, and muted — a quiet label, not a bold section heading. There's no fixed required list of markers; use whatever segments the investigation into real stages of thinking. `##`, `###`, and `####` all render identically (flat, not a size hierarchy) — the marker is a label, not a heading level.
+- **A research-question-style prompt.** Write it as a blockquote: `> What role do our environments play in shaping how we think, feel, and behave?`. It gets extra vertical breathing room and nothing else — same size and weight as body text, no border, no italics, no quotation styling. It's meant to read as a pause for reflection, not a pull quote.
+- **Open Questions (or any list).** A normal Markdown bullet list (`- ...`). Renders with no bullet glyphs and no numbers — just quiet vertical spacing between items, like unresolved notes left in a notebook, not a UI checklist.
+
+All three are defined once, as plain CSS rules scoped to `.investigation-body` in `website/src/app/globals.css` — applied only to the wrapper div in `research/[slug]/page.tsx`. They're deliberately plain CSS rather than Tailwind's `space-y-6` utility, so heading/blockquote/list margins don't end up fighting a second utility for the same `margin-top` property (the same cascade-order problem noted on `Heading`/`BodyText` — see the comment directly above that CSS block).
+
+### Investigation numbering
+
+Every published Research entry gets an "Investigation 00N" label above its title, computed automatically by `getResearchEntryNumber()` in `lib/research.ts` — there's no frontmatter field for it, and there shouldn't be. The number is the entry's 1-indexed position among published entries sorted **oldest first** by `publishedAt` — the order things were actually published in, which is the opposite of `/research`'s own newest-first display order. Backdating a `publishedAt` value, or adding an older entry later, can shift another entry's number — that's expected, not a bug.
 
 ---
 
@@ -203,7 +219,7 @@ The repository is `github.com/Chyannetech/ChyanneRobbins.com`, a single `main` b
 This is the whole point of Phase 3 — don't undo it by accident.
 
 - **Never hardcode entry text** (titles, body copy, dates, tags) inside a `.tsx` file. If you're typing an investigation's title directly into a component, something's wrong — it belongs in a `.md` file.
-- **Never put layout or component logic inside a content file.** A Markdown file should read like plain writing with a data header on top — paragraphs, emphasis, links. Nothing else is currently rendered specially in the body, so don't reach for anything fancier than that without also updating the rendering pipeline (`lib/content.ts`) to support it deliberately.
+- **Never put layout or component logic inside a content file.** A Markdown file should read like plain writing with a data header on top. Research bodies additionally carry editorial meaning through headings/blockquotes/lists (see "Writing an investigation body," above) — but that's CSS styling standard Markdown output, not new syntax to learn. Don't reach for anything fancier than standard Markdown without also updating the rendering pipeline (`lib/content.ts`) to support it deliberately.
 - `lib/research.ts` and `lib/journal.ts` each define a TypeScript interface *and* a validation function for their frontmatter. These two are supposed to always agree — if you add a field to one, add it to the other in the same change.
 - The `published` filter lives in exactly one place per content type: inside `getResearchEntries()`/`getResearchEntryBySlug()` and `getJournalEntries()`/`getJournalEntryBySlug()`. Every page — indexes, detail pages, cross-links — calls these same functions, so the filter applies everywhere automatically. Don't add a second, separate "is this published?" check anywhere else; if a new consumer needs published-only entries, it should call these functions, not reimplement the filter.
 - The Home page's remaining hardcoded copy — the Hero and the "Featured Investigation" block — is the one deliberate exception left. "In the Field" no longer is (see Featuring a Journal entry on Home, above): it's the model for what the rest of Home should eventually become, not something to treat as permanent. If you wire the remaining sections up to `getResearchEntries()` directly, delete this paragraph.

@@ -137,3 +137,18 @@ export function getResearchEntryBySlug(slug: string): ResearchEntry | undefined 
     .filter((entry) => entry.published)
     .find((entry) => entry.slug === slug);
 }
+
+/**
+ * 1-indexed position among published entries, oldest first — "Investigation
+ * 001" is the first one ever published, not whatever is newest (that's
+ * getResearchEntries()'s order, used for the index page display, which is
+ * deliberately the opposite direction). Returns undefined for an unpublished
+ * or unknown slug, matching getResearchEntryBySlug().
+ */
+export function getResearchEntryNumber(slug: string): number | undefined {
+  const chronological = [...getResearchEntries()].sort(
+    (a, b) => new Date(a.publishedAt).getTime() - new Date(b.publishedAt).getTime(),
+  );
+  const index = chronological.findIndex((entry) => entry.slug === slug);
+  return index === -1 ? undefined : index + 1;
+}

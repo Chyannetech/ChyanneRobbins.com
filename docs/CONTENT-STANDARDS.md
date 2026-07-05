@@ -18,6 +18,22 @@ The publication has two registers, and they are not a hierarchy — Journal is n
 
 ---
 
+## Investigation Editorial System (Research only)
+
+Every Research investigation should read like a page from a design research notebook or a museum publication's exhibition catalogue — closer to Kinfolk, Cereal, or an MIT Media Lab writeup than a blog post. This is a hierarchy shift, not a redesign: the same typography, content width, spacing scale, and navigation as everywhere else on the site. Nothing here applies to Journal, which stays plain paragraphs — this is specifically about how a formal investigation is structured on the page.
+
+**The test for every decision in this system: if it calls attention to itself, it's too much.** No cards, borders, shadows, icons, colored boxes, timelines, or dashboard UI, ever. The hierarchy is built entirely from typography, spacing, alignment, and rhythm — restraint is the whole aesthetic, not a constraint on it.
+
+**Investigation numbering.** Every published entry carries a quiet "Investigation 00N" label above its title — archival, not promotional. It's assigned automatically by publish order (see PUBLISHING.md), not chosen by the author; don't try to reserve or skip numbers.
+
+**Section markers, not headings.** Structure the body with small, uppercase, muted labels — `Observation`, `Field Notes`, `Question`, `Interpretation`, `Open Questions`, or whatever genuinely fits the piece's own shape of thinking. These are written as ordinary Markdown headings (see PUBLISHING.md for the mechanics) but should never be styled or thought of as bold section titles — they're closer to labels on a museum object than headlines. There's no required set; invent the markers a given investigation actually needs, and don't force every investigation into the same five-part shape just because one used them.
+
+**A research question is a prompt, not a pull quote.** When the central question resurfaces within the body (as opposed to the frontmatter `researchQuestion`, which already gets its own treatment at the top of the page), give it room to breathe — extra space above and below — and nothing else. Same size as the surrounding prose, no italics, no oversized type, no quotation marks implied by styling. It should read like a pause for reflection, not a marketing callout.
+
+**Open Questions close the piece, unresolved.** Near the end, a section titled `Open Questions` lists what the investigation didn't answer — as a plain list, no bullets, no numbering, no icons. This is the clearest expression of "explored rather than concluded": the piece should end by admitting what it doesn't yet know, not by wrapping everything up neatly. Not every investigation needs one, but most should — a piece with no open questions reads as a claim that the thinking is finished, which is rarely true this early in a body of work.
+
+---
+
 ## Voice and tone
 
 - **First person, always.** The publication has a named author — this isn't an anonymous institutional voice. Write "I explored," not "this publication explores." (Settled explicitly when the Home page byline named Chyanne Robbins directly — see HOMEPAGE.md's Tone of Copy.)

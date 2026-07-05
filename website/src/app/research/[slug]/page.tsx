@@ -8,7 +8,12 @@ import BodyText from "@/components/typography/BodyText";
 import Eyebrow from "@/components/typography/Eyebrow";
 import Prose from "@/components/typography/Prose";
 import DocumentaryImage from "@/components/media/DocumentaryImage";
-import { getResearchEntries, getResearchEntryBySlug, STATUS_LABEL } from "@/lib/research";
+import {
+  getResearchEntries,
+  getResearchEntryBySlug,
+  getResearchEntryNumber,
+  STATUS_LABEL,
+} from "@/lib/research";
 import { formatDate } from "@/lib/date";
 
 interface PageProps {
@@ -43,6 +48,8 @@ export default async function ResearchEntryPage({ params }: PageProps) {
     notFound();
   }
 
+  const number = getResearchEntryNumber(slug);
+
   return (
     <main className="flex flex-col">
       <Section spacing="large">
@@ -53,12 +60,16 @@ export default async function ResearchEntryPage({ params }: PageProps) {
           ← Research
         </Link>
 
-        <Eyebrow className="mt-10">{entry.formats.join(" · ")}</Eyebrow>
+        {number !== undefined && (
+          <Eyebrow className="mt-10">
+            {`Investigation ${String(number).padStart(3, "0")}`}
+          </Eyebrow>
+        )}
 
         <Heading
           as="h1"
           size="display"
-          className="mt-4 max-w-full sm:max-w-[26ch]"
+          className={number !== undefined ? "mt-4 max-w-full sm:max-w-[26ch]" : "mt-10 max-w-full sm:max-w-[26ch]"}
         >
           {entry.title}
         </Heading>
@@ -67,15 +78,40 @@ export default async function ResearchEntryPage({ params }: PageProps) {
           {entry.researchQuestion}
         </p>
 
-        <BodyText size="meta" tone="muted" className="mt-8">
-          {entry.themes.join(" · ")}
-        </BodyText>
-        <BodyText size="meta" tone="muted" className="mt-1">
-          {STATUS_LABEL[entry.status]} · Published {formatDate(entry.publishedAt)}
-          {entry.updatedAt && entry.updatedAt !== entry.publishedAt
-            ? ` · Updated ${formatDate(entry.updatedAt)}`
-            : ""}
-        </BodyText>
+        <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
+          <div>
+            <Eyebrow>Themes</Eyebrow>
+            <BodyText size="meta" tone="muted" className="mt-1">
+              {entry.themes.join(" · ")}
+            </BodyText>
+          </div>
+          <div>
+            <Eyebrow>Format</Eyebrow>
+            <BodyText size="meta" tone="muted" className="mt-1">
+              {entry.formats.join(" · ")}
+            </BodyText>
+          </div>
+          <div>
+            <Eyebrow>Status</Eyebrow>
+            <BodyText size="meta" tone="muted" className="mt-1">
+              {STATUS_LABEL[entry.status]}
+            </BodyText>
+          </div>
+          <div>
+            <Eyebrow>Published</Eyebrow>
+            <BodyText size="meta" tone="muted" className="mt-1">
+              {formatDate(entry.publishedAt)}
+            </BodyText>
+          </div>
+          {entry.updatedAt && entry.updatedAt !== entry.publishedAt && (
+            <div>
+              <Eyebrow>Updated</Eyebrow>
+              <BodyText size="meta" tone="muted" className="mt-1">
+                {formatDate(entry.updatedAt)}
+              </BodyText>
+            </div>
+          )}
+        </div>
 
         <Divider className="mt-12" />
 
@@ -88,7 +124,7 @@ export default async function ResearchEntryPage({ params }: PageProps) {
 
         <Prose className="mt-12">
           <div
-            className="space-y-6"
+            className="investigation-body"
             dangerouslySetInnerHTML={{ __html: entry.bodyHtml }}
           />
         </Prose>

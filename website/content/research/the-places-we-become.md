@@ -11,6 +11,7 @@ formats:
   - Research Investigation
 status: ongoing
 featured: true
+coverImage: "/images/research/investigation-001-oak.jpg"
 publishedAt: "2026-05-01"
 ---
 ## Observation

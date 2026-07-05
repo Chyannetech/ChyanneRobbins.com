@@ -13,7 +13,8 @@ export type ResearchFormat =
   | "prototype"
   | "product"
   | "service"
-  | "collaboration";
+  | "collaboration"
+  | "Research Investigation";
 
 export type ResearchStatus = "ongoing" | "concluded";
 
@@ -59,6 +60,7 @@ const FORMATS: ResearchFormat[] = [
   "product",
   "service",
   "collaboration",
+  "Research Investigation",
 ];
 const STATUSES: ResearchStatus[] = ["ongoing", "concluded"];
 const REQUIRED_FIELDS = [

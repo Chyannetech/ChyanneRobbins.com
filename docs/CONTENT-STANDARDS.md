@@ -76,7 +76,7 @@ Every Research investigation should read like a page from a design research note
 
 ## Metadata expectations
 
-- Research's `themes` and `formats` vocabularies are closed sets (five themes, six formats — see PUBLISHING.md for the exact lists). Adding a new one is an information-architecture decision, not a copy decision on the fly — it changes how the whole archive can be browsed and filtered later. Update the code and this document together; don't let a new tag exist in one file and nowhere else.
+- Research's `themes` and `formats` vocabularies are closed sets — see PUBLISHING.md for the exact, current lists (counts deliberately not repeated here, since a duplicated count is exactly the kind of detail that quietly drifts out of sync between documents). Adding a new one is an information-architecture decision, not a copy decision on the fly — it changes how the whole archive can be browsed and filtered later. Update the code and every doc that lists it together; don't let a new tag exist in one file and nowhere else.
 - Journal is deliberately untagged. Resist adding a themes field to it "for consistency with Research" — the looseness is the point (this was an open question in SITE-MAP.md, resolved in this direction on purpose).
 - `dek` (Research only) should be a genuine one-sentence summary a reader could act on — "do I want to read this?" — not a teaser that withholds the actual point to create curiosity. Editorial confidence means telling the reader plainly what the piece is about.
 - `researchQuestion` should be an actual question, phrased as one, distinct from the title. It's the hook, not a restatement of the title in different words.

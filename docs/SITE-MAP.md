@@ -45,15 +45,16 @@ Together, Research and Journal represent the two registers of the publication: f
 
 | Field | Type | Notes |
 |---|---|---|
+| `published` | boolean | Gates public visibility — unpublished entries are excluded from every public list and route, but keep parsing and working within the content system as drafts. Defaults to `false` (fail-closed) if omitted. See PUBLISHING.md. |
 | `title` | string | The investigation's name. |
 | `slug` | string | URL segment under `/research/`. |
 | `researchQuestion` | string | The central question driving the investigation. Distinct from `title` — this is the editorial hook. |
 | `dek` | string | One- to two-sentence summary, used on index/home/featured cards. |
 | `themes` | string[] | Any of: Behavioral Science, Design, Systems Thinking, Technology, Public Health. Secondary metadata, not primary nav. |
-| `formats` | string[] | Any of: concept study, article, prototype, product, service, collaboration — per the README's "Future Direction." An investigation can accumulate more than one over time as it evolves. |
+| `formats` | string[] | A closed set — see PUBLISHING.md for the exact, current list. An investigation can accumulate more than one over time as it evolves. |
 | `status` | enum | `ongoing` \| `concluded`. |
 | `featured` | boolean | Whether eligible for the Home featured slot. Editorially set, not automatic. |
-| `coverImage` | asset ref | Sourced from `assets/images/`, optimized copy placed in `website/public/` when the page is built. |
+| `coverImage` | asset ref | Placed directly in `website/public/images/`. In practice, images haven't gone through a separate `assets/images/` staging step before this — see PUBLISHING.md. |
 | `publishedAt` / `updatedAt` | date | |
 | `body` | long-form content | The investigation itself. |
 
@@ -61,12 +62,18 @@ Together, Research and Journal represent the two registers of the publication: f
 
 | Field | Type | Notes |
 |---|---|---|
+| `published` | boolean | Same gating convention as Research. Defaults to `false` if omitted. See PUBLISHING.md. |
+| `featured` | boolean | Marks the single entry Home's "In the Field" section pulls from. Defaults to `false`. Only one entry should be featured at a time. |
 | `title` | string | |
 | `slug` | string | URL segment under `/journal/`. |
 | `date` | date | |
 | `location` | string (optional) | For field-note style entries, e.g. "Austin, Texas." |
 | `body` | content | Essay, observation, or reflection — length and structure vary more than Research entries. |
-| `images` | asset ref[] | Journal entries are often image-led. |
+| `images` | asset ref[] | Legacy field. Currently only gates whether a placeholder image block appears on `/journal` and the entry's own page — not wired to display an actual photo. See `heroImage` below. |
+| `heroImage` | asset ref (optional) | The field actually wired to display a real photo, via `DocumentaryImage`. Powers Home's featured display and the entry's own pages. |
+| `heroImagePosition` | string (optional) | CSS `object-position` for `heroImage`'s crop, e.g. `"center 8%"`. Omit for the default centered crop. |
+| `caption` | string (optional) | Shown alongside `heroImage` on Home when this entry is featured. |
+| `excerpt` | string (optional) | Authored teaser for the index listing and meta description. Falls back to an excerpt auto-derived from the body's first paragraph when omitted. |
 | `relatedResearch` | ref (optional) | Optional link to a Research entry this journal post relates to. |
 
 The Home page's "In the Field" section (see [HOMEPAGE.md](HOMEPAGE.md)) draws on this model — a single image-led Journal entry with a caption and location/date.
@@ -75,7 +82,12 @@ The Home page's "In the Field" section (see [HOMEPAGE.md](HOMEPAGE.md)) draws on
 
 ## Open Questions
 
+Still open:
+
 - Does `/research` need pagination/sections at launch, or is a flat list sufficient given the site will start with very few entries?
-- Is the theme filter a real route (`/themes/[theme]`) or a client-side filter on `/research`? Affects SEO/metadata treatment.
-- Does `/journal` share the same theme taxonomy as `/research`, or is it untagged/looser? Leaning toward looser, given Journal's informal purpose — not yet decided.
-- Is `/contact` a simple mailto link or a form requiring its own submission handling? Implementation detail, not yet decided.
+- Is the theme filter a real route (`/themes/[theme]`) or a client-side filter on `/research`? Affects SEO/metadata treatment. Not yet built either way.
+
+Resolved since V1 freeze:
+
+- `/journal` is untagged — no `themes` field. Deliberate; see CONTENT-STANDARDS.md's Metadata expectations.
+- `/contact` shipped as a `mailto:` link, not a form.

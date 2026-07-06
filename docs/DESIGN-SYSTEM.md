@@ -24,13 +24,11 @@ This publication should feel less like a website and more like a carefully desig
 
 **Direction:** editorial serif + sans pairing. Serif for headlines and long-form reading, sans for UI, navigation, captions, and metadata — the same split used by print-derived editorial sites (magazines, journals, museum publications).
 
-**Recommended — settled working default:**
+**Confirmed pairing:**
 - Headlines / body / long-form: **Newsreader** (literary, has true italics and optical sizing — reads like a journal, not a blog)
 - UI / nav / captions / metadata: **IBM Plex Sans** (systematic, slightly technical character that suits "systems thinking" and "public health" subject matter)
 
-Both are available as `next/font/google` (same mechanism already wired up in `layout.tsx` for Geist). Treat this pairing as the working default until tested against real content.
-
-**Fallback — Option A:** Source Serif 4 + Inter. Safer, more neutral, higher familiarity. Reach for this if Newsreader / IBM Plex Sans read too literary once real headlines and body copy are in place.
+Both load via `next/font/google` in `layout.tsx`. Tested against substantial real content — Investigation 001's full essay, About, Studio, Contact — and confirmed as final, not a placeholder.
 
 ### Type Scale
 
@@ -58,7 +56,7 @@ Near-monochrome, paper-and-ink base with a single restrained accent reserved for
 | `foreground` | `#1A1A18` | `#EDEDED` | Primary text. |
 | `muted` | `#6B6B65` | `#A0A09A` | Secondary text, metadata, captions. |
 | `border` | `#E3E2DD` | `#262624` | Hairline rules, dividers — used sparingly, editorial rule-lines not boxes. |
-| `accent` | `#3B5166` | `#7FA0B8` | A restrained slate blue — institutional, editorial, research-oriented rather than literary. Temporary placeholder; the exact value will be sampled from the approved homepage mockup when visual refinement begins. Used only for links and focus states, never decoratively. |
+| `accent` | `#3B5166` | `#7FA0B8` | A restrained slate blue — institutional, editorial, research-oriented rather than literary. Confirmed as final after extensive use across links, focus states, and interactive elements sitewide. Used only for links and focus states, never decoratively. |
 
 `website/src/app/globals.css` already scaffolds `--background` / `--foreground` with a `prefers-color-scheme: dark` block — this table extends that pattern rather than replacing it.
 
@@ -68,7 +66,7 @@ Near-monochrome, paper-and-ink base with a single restrained accent reserved for
 
 - **Reading measure:** long-form investigation body text is capped at `~68ch` (roughly 680px) — optimized for reading, not full-bleed.
 - **Wide layout:** index pages, imagery, and the Home featured block may run wider, up to a `1200px` outer container.
-- **Grid:** 12-column, generous gutters. Used for alignment of images and metadata against text, not for card-grid layouts.
+- **Grid:** No literal CSS grid system — alignment comes from shared max-width containers (`PageShell`) and Flexbox (metadata rows, navigation), which has been sufficient for every layout built so far. A formal column grid isn't implemented and shouldn't be assumed; add one deliberately if a future layout genuinely needs it, rather than assuming it already exists.
 - **Spacing scale:** 4px base, matching Tailwind's default spacing scale (`0.25rem` increments) so design tokens and implementation stay in lockstep: `4, 8, 12, 16, 24, 32, 48, 64, 96, 128px`.
 - **Vertical rhythm:** section spacing on Home and investigation pages should feel like turning a page — generous (64–128px) — rather than dense product-page stacking.
 
@@ -77,7 +75,7 @@ Near-monochrome, paper-and-ink base with a single restrained accent reserved for
 ## Imagery & Photography
 
 - Full-bleed or generously margined — never cropped into small thumbnails or card grids.
-- Treated consistently across the site (a single consistent grade/treatment — exact treatment TBD once real photography exists; documentary-style, not stock-photo bright/saturated).
+- Treated consistently across the site — a single documentary-style grade, confirmed across real photography now in place (the author portrait, Journal field photos, the Research cover image): natural color, no stock-photo brightness/saturation, `object-cover` with no decorative crop styling beyond an occasional deliberate `object-position` adjustment.
 - Captions in the sans family (`meta` token), small, understated — archival label style, not bold overlay text.
 - The homepage's "In the Field" section is the clearest expression of this principle: a single documentary photograph, captioned plainly, with location and date, and no decoration.
 
@@ -94,18 +92,20 @@ Near-monochrome, paper-and-ink base with a single restrained accent reserved for
 
 ## Motion
 
-Minimal and purposeful only — subtle fades on scroll/entry at most. No parallax, no flashy transitions. Respect `prefers-reduced-motion` unconditionally.
+Minimal and purposeful only. What exists today: color transitions on hover/focus (links, navigation), the Research investigation accordion's expand/collapse, and the reading-progress hairline's width update. No scroll-triggered entrance animations are implemented anywhere on the site — don't assume they exist. No parallax, no flashy transitions. Respect `prefers-reduced-motion` unconditionally.
+
+(This section is intentionally thin — the full reasoning behind it lives in [EXPERIENCE-PRINCIPLES.md](EXPERIENCE-PRINCIPLES.md), which this section should be checked against before it changes.)
 
 ---
 
 ## Accessibility
 
-- Minimum WCAG AA contrast for all text/background pairs above (verify once final hex values are locked in, including the slate blue accent).
+- Minimum WCAG AA contrast for all text/background pairs above — verified. All pairs clear AA (4.5:1); all clear AAA (7:1) except light-mode `muted` (5.1:1, AA only), which is used exclusively for secondary/meta text — the register where AA, not AAA, is the applicable bar.
 - Visible focus states using the `accent` token — never `outline: none` without a replacement.
 - All motion gated behind `prefers-reduced-motion: no-preference`.
 
 ---
 
-## Implementation Notes (for later, not now)
+## Implementation Notes
 
-When component work begins, these tokens map onto Tailwind v4's CSS-first config via the `@theme` block already present in `website/src/app/globals.css` (extending `--color-background` / `--color-foreground`, adding `--color-muted`, `--color-border`, `--color-accent` (slate blue), and font variables for Newsreader / IBM Plex Sans). No code changes are being made as part of this document.
+These tokens are implemented in `website/src/app/globals.css`'s `@theme` block: `--color-background` / `--color-foreground` / `--color-muted` / `--color-border` / `--color-accent`, plus font variables for Newsreader / IBM Plex Sans and the fluid type-scale custom properties. This section now describes the implementation, not a future plan.

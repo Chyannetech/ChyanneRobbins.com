@@ -155,7 +155,7 @@ publishedAt: "2026-05-01"
 Optional fields: `coverImage` (path under `public/`, see Images below), `updatedAt` (ISO date, shown alongside `publishedAt` when different). `published` is technically optional too (defaults to `false`), but always write it explicitly — see Draft & Published status, above.
 
 **Allowed themes:** Behavioral Science, Design, Systems Thinking, Technology, Public Health.
-**Allowed formats:** concept study, article, prototype, product, service, collaboration, Research Investigation.
+**Allowed formats:** concept study, article, prototype, product, service, collaboration — an ordered progression of concrete forms an investigation's thinking can take, not a genre label. See CONTENT-STANDARDS.md's Metadata expectations for the editorial principle behind this field before picking a value.
 **Allowed status:** ongoing, concluded.
 
 These lists are enforced at build time in `lib/research.ts` — an unrecognized value fails the build with an error naming the file and field. If you need a genuinely new theme or format, that's an information-architecture decision: update `THEMES`/`FORMATS` in `lib/research.ts` (and CONTENT-STANDARDS.md) deliberately, don't just type a new value into a frontmatter file and hope.

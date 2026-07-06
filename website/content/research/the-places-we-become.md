@@ -8,7 +8,7 @@ themes:
   - Design
   - Systems Thinking
 formats:
-  - Research Investigation
+  - concept study
 status: ongoing
 featured: true
 coverImage: "/images/research/investigation-001-oak.jpg"

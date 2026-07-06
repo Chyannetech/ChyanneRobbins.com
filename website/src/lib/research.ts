@@ -7,14 +7,23 @@ export type ResearchTheme =
   | "Technology"
   | "Public Health";
 
+/**
+ * An ordered progression of concrete forms an investigation's thinking has
+ * taken — not a genre label, and not independent of `status` (see
+ * CONTENT-STANDARDS.md's Metadata expectations). `formats` accumulates
+ * values over time rather than replacing them, as a piece produces new
+ * forms — it never contains a value describing the Research section
+ * itself (that was "Research Investigation," removed as circular: every
+ * entry here is one by definition, so it never describes what a specific
+ * entry has become).
+ */
 export type ResearchFormat =
   | "concept study"
   | "article"
   | "prototype"
   | "product"
   | "service"
-  | "collaboration"
-  | "Research Investigation";
+  | "collaboration";
 
 export type ResearchStatus = "ongoing" | "concluded";
 
@@ -60,7 +69,6 @@ const FORMATS: ResearchFormat[] = [
   "product",
   "service",
   "collaboration",
-  "Research Investigation",
 ];
 const STATUSES: ResearchStatus[] = ["ongoing", "concluded"];
 const REQUIRED_FIELDS = [

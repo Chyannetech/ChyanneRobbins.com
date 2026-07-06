@@ -1,6 +1,13 @@
 @import "tailwindcss";
 
 :root {
+  /* Paired with the `viewport.colorScheme` export in layout.tsx (which
+     renders the <meta name="color-scheme"> tag Safari reads before CSS is
+     even parsed). Declaring it here too covers UA-styled form controls and
+     scrollbars once CSS loads. Without this, iOS Safari has no explicit
+     signal for schemes it doesn't control and can default to dark. */
+  color-scheme: light dark;
+
   --background: #fafaf8;
   --foreground: #1a1a18;
   --muted: #6b6b65;

@@ -1,12 +1,22 @@
 # ChyanneRobbins.com
 
+## Overview
+
+ChyanneRobbins.com is a modern publication platform built with Next.js.
+
+It exists to publish ongoing investigations rather than function as a traditional portfolio.
+
+The emphasis throughout is on thoughtful editorial reading — behavioral science, design, technology, systems thinking, and public health, explored together.
+
+---
+
 ## Purpose
 
 ChyanneRobbins.com is an independent research publication documenting investigations into human experience.
 
 Rather than functioning as a traditional portfolio, the site serves as an evolving body of work exploring how behavioral science, design, technology, systems thinking, and public health influence the way people think, feel, decide, connect, and live.
 
-Every concept study begins with curiosity.
+Every investigation begins with curiosity.
 
 The goal is not simply to explain ideas, but to explore them through thoughtful research, visual communication, and design.
 
@@ -26,7 +36,7 @@ Second, organizations interested in applying behavioral science, research, and d
 
 The website should feel like reading an editorial publication rather than browsing a portfolio.
 
-Think:
+The design language draws inspiration from:
 
 • documentary
 

@@ -141,6 +141,17 @@ export function getResearchEntryBySlug(slug: string): ResearchEntry | undefined 
 }
 
 /**
+ * The single published entry marked `featured: true` — powers Home's
+ * "Featured Investigation" section. Mirrors getFeaturedJournalEntry(): only
+ * one entry is expected to be featured at a time; if more than one is, the
+ * most recently published wins (matching getResearchEntries()' sort order)
+ * rather than erroring.
+ */
+export function getFeaturedResearchEntry(): ResearchEntry | undefined {
+  return getResearchEntries().find((entry) => entry.featured);
+}
+
+/**
  * 1-indexed position among published entries, oldest first — "Investigation
  * 001" is the first one ever published, not whatever is newest (that's
  * getResearchEntries()'s order, used for the index page display, which is

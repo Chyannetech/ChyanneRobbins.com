@@ -10,7 +10,7 @@ This is written for a future version of yourself who hasn't touched this project
 
 Every Research investigation and Journal entry is a single Markdown file with a YAML frontmatter header, living under `website/content/`. The site reads these files at build/render time — nothing about a page's title, dates, tags, or body text lives inside a React component. To publish something new, you add a file. You should never need to open a `.tsx` file to publish routine content.
 
-The one standing exception is the **Home page** (`website/src/app/page.tsx`), which still hardcodes its Hero text and "Featured Investigation" block directly in the component. Home's "In the Field" section is the one dynamic exception to that exception — see "Featuring a Journal entry on Home," below. The rest is a known gap, not a pattern.
+The one standing exception is the **Home page** (`website/src/app/page.tsx`), which still hardcodes its Hero text directly in the component. "In the Field" and "Featured Investigation" are both content-driven — see "Featuring a Journal entry on Home" and "Featuring a Research entry on Home," below. The Hero is the one remaining gap, not a pattern.
 
 ---
 
@@ -26,7 +26,7 @@ published: true    # live — appears everywhere it belongs, automatically
 **How it behaves:**
 
 - `published: false` (or the field left out entirely — see below) means the entry is completely invisible on the public site: not on `/research` or `/journal`, and its own `/research/<slug>` or `/journal/<slug>` page 404s if visited directly. It still lives in `content/` and still works within the content system — you can keep editing it, gray-matter still parses it, `npm run build` still validates its frontmatter. It just doesn't render anywhere public.
-- `published: true` makes it appear everywhere it belongs — the relevant index, its own detail page, and (for Research) as a candidate for Home's featured slot once that's wired up (see the `featured` caveat above) — with no other code changes. This is the mechanism that makes "flip one field, it appears everywhere" true.
+- `published: true` makes it appear everywhere it belongs — the relevant index, its own detail page, and (for Research) as a candidate for Home's featured slot (see "Featuring a Research entry on Home," below) — with no other code changes. This is the mechanism that makes "flip one field, it appears everywhere" true.
 - **The default is closed, not open.** If you forget the field entirely, the entry is treated as a draft (`published: false`) — never the reverse. This is deliberate: a half-finished file you're still drafting should never accidentally go live just because you haven't gotten to that line yet. Write `published: false` explicitly anyway, though — it makes the file self-documenting to anyone (including future you) who opens it without knowing the code's default.
 - A **draft's cross-links disappear too, not just its own page.** If a Journal entry's `relatedResearch` points at a Research entry that's currently a draft, the "Related Research" link simply doesn't render — it fails closed the same way, rather than linking to something that then 404s.
 
@@ -55,6 +55,16 @@ caption: "Research is how I make sense of the world."
   - Syntax is standard CSS `object-position`: two keywords (`center top`, `center bottom`) or `<horizontal> <vertical>` percentages (`center 8%` — meaning the horizontal axis stays centered, since there's usually nothing to gain from shifting it when the crop only trims top/bottom).
 - `caption` has no fallback — if it's missing on the featured entry, the caption line renders empty. Always set it on whichever entry you feature.
 - `title` and `excerpt` are **not** used by Home at all, even on the featured entry — Home only ever reads `heroImage`, `caption`, `location`, and `date`. `title`/`excerpt` are for the Journal pages themselves (see below).
+
+---
+
+## Featuring a Research entry on Home
+
+Home's "Featured Investigation" section — the title and themes line below "In the Field" — is powered entirely by a single Research entry: whichever one has both `published: true` and `featured: true`. `getFeaturedResearchEntry()` in `lib/research.ts` finds it; Home calls that function and renders whatever comes back, linking to that entry's own `/research/<slug>` page. There is no other wiring and nothing else to configure.
+
+- **Only one entry should be `featured: true` at a time.** If more than one is, `getFeaturedResearchEntry()` doesn't error — it picks whichever is newest by `publishedAt` (same sort order as `getResearchEntries()`) — but treat having two featured entries as a mistake to fix, not a supported state.
+- **If no entry is featured, Home fails gracefully.** The "Featured Investigation" section simply doesn't render — same convention as "In the Field," above.
+- Home reads only `title` and `themes` from the featured entry — `dek`, `formats`, and everything else are for the Research index and detail pages (see below).
 
 ---
 
@@ -87,7 +97,7 @@ website/
 4. While `published: false`, the entry won't show up anywhere — not on `/research`, and its own `/research/<slug>` page 404s too, even locally. That's expected for a draft. To actually see the rendered page while you're still writing, temporarily set `published: true` in your local checkout, look, then set it back to `false` before committing.
 5. When it's genuinely ready, set `published: true` for good, preview once more, commit, and push (see Git workflow, below).
 
-> **Caveat:** setting `featured: true` does **not** currently make an entry appear on the Home page. Home's "Featured Investigation" section is hardcoded in `src/app/page.tsx` and has to be edited by hand. `featured` marks an entry as *intended* for that slot; making it actually show up is still a manual step.
+> Setting `featured: true` (alongside `published: true`) is what makes an entry eligible for Home's "Featured Investigation" slot — see "Featuring a Research entry on Home," above, for exactly how that's resolved.
 
 ---
 
@@ -226,4 +236,4 @@ This is the whole point of Phase 3 — don't undo it by accident.
 - **Never put layout or component logic inside a content file.** A Markdown file should read like plain writing with a data header on top. Research bodies additionally carry editorial meaning through headings/blockquotes/lists (see "Writing an investigation body," above) — but that's CSS styling standard Markdown output, not new syntax to learn. Don't reach for anything fancier than standard Markdown without also updating the rendering pipeline (`lib/content.ts`) to support it deliberately.
 - `lib/research.ts` and `lib/journal.ts` each define a TypeScript interface *and* a validation function for their frontmatter. These two are supposed to always agree — if you add a field to one, add it to the other in the same change.
 - The `published` filter lives in exactly one place per content type: inside `getResearchEntries()`/`getResearchEntryBySlug()` and `getJournalEntries()`/`getJournalEntryBySlug()`. Every page — indexes, detail pages, cross-links — calls these same functions, so the filter applies everywhere automatically. Don't add a second, separate "is this published?" check anywhere else; if a new consumer needs published-only entries, it should call these functions, not reimplement the filter.
-- The Home page's remaining hardcoded copy — the Hero and the "Featured Investigation" block — is the one deliberate exception left. "In the Field" no longer is (see Featuring a Journal entry on Home, above): it's the model for what the rest of Home should eventually become, not something to treat as permanent. If you wire the remaining sections up to `getResearchEntries()` directly, delete this paragraph.
+- The Home page's remaining hardcoded copy — the Hero's title and tagline — is the one deliberate exception left. "In the Field" and "Featured Investigation" no longer are (see Featuring a Journal entry on Home and Featuring a Research entry on Home, above): they're the model for what the Hero should eventually become, not something to treat as permanent.

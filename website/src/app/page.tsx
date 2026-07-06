@@ -7,6 +7,7 @@ import Prose from "@/components/typography/Prose";
 import DocumentaryImage from "@/components/media/DocumentaryImage";
 import Caption from "@/components/media/Caption";
 import { getFeaturedJournalEntry } from "@/lib/journal";
+import { getFeaturedResearchEntry } from "@/lib/research";
 import { formatDate } from "@/lib/date";
 
 const DISCIPLINES = [
@@ -19,6 +20,7 @@ const DISCIPLINES = [
 
 export default function Home() {
   const featuredJournalEntry = getFeaturedJournalEntry();
+  const featuredResearchEntry = getFeaturedResearchEntry();
 
   return (
     <main className="flex flex-col">
@@ -78,17 +80,19 @@ export default function Home() {
         </Section>
       )}
 
-      {/* 4. Featured Investigation */}
-      <Section>
-        <Link href="/research" className="group block">
-          <Heading as="h2" size="subhead" className="transition-colors group-hover:text-accent">
-            The Places We Become
-          </Heading>
-          <BodyText size="meta" tone="muted" className="mt-4">
-            Behavioral Science · Design · Systems Thinking
-          </BodyText>
-        </Link>
-      </Section>
+      {/* 4. Featured Investigation — powered by the featured published Research entry; omitted entirely if none exists. */}
+      {featuredResearchEntry && (
+        <Section>
+          <Link href={`/research/${featuredResearchEntry.slug}`} className="group block">
+            <Heading as="h2" size="subhead" className="transition-colors group-hover:text-accent">
+              {featuredResearchEntry.title}
+            </Heading>
+            <BodyText size="meta" tone="muted" className="mt-4">
+              {featuredResearchEntry.themes.join(" · ")}
+            </BodyText>
+          </Link>
+        </Section>
+      )}
 
       {/* 5. Why This Matters */}
       <Section>

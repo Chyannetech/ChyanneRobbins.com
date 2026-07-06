@@ -6,7 +6,8 @@
       "PowerShell(npm -v)",
       "Bash(node -e ' *)",
       "Bash(grep -rn \"images/[Rr]esearch\" website/content website/src website/docs)",
-      "Bash(grep -rn \"images/[Rr]esearch\" docs)"
+      "Bash(grep -rn \"images/[Rr]esearch\" docs)",
+      "Bash(npm run *)"
     ]
   }
 }

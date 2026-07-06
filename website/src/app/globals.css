@@ -72,6 +72,20 @@ body {
 }
 
 /*
+ * Sitewide visible focus state (DESIGN-SYSTEM.md: "Visible focus states
+ * using the accent token — never outline: none without a replacement").
+ * A single global rule rather than per-component focus-visible: classes,
+ * so it also reaches links rendered from Markdown body content via
+ * dangerouslySetInnerHTML (lib/content.ts) — those never pass through a
+ * component that could carry a Tailwind class. :focus-visible (not
+ * :focus) keeps this to keyboard/non-pointer focus, not every mouse click.
+ */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/*
  * Research investigation body — the archival/notebook editorial system
  * (docs/CONTENT-STANDARDS.md: Investigation Editorial System). This styles
  * plain Markdown elements rendered via dangerouslySetInnerHTML, so it can't

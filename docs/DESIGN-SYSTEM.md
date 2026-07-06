@@ -101,7 +101,7 @@ Minimal and purposeful only. What exists today: color transitions on hover/focus
 ## Accessibility
 
 - Minimum WCAG AA contrast for all text/background pairs above — verified. All pairs clear AA (4.5:1); all clear AAA (7:1) except light-mode `muted` (5.1:1, AA only), which is used exclusively for secondary/meta text — the register where AA, not AAA, is the applicable bar.
-- Visible focus states using the `accent` token — never `outline: none` without a replacement.
+- Visible focus states using the `accent` token — never `outline: none` without a replacement. Implemented as a single global `:focus-visible` rule in `globals.css` (a 2px accent outline), not per-component classes — this is also what makes it reach links rendered from Markdown body content, which never pass through a component.
 - All motion gated behind `prefers-reduced-motion: no-preference`.
 
 ---

@@ -21,7 +21,7 @@ export default function NavLink({ href, children, className }: NavLinkProps) {
       href={href}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "font-sans text-meta transition-colors hover:text-accent focus-visible:text-accent",
+        "font-sans text-meta transition-colors hover:text-accent",
         isActive ? "text-foreground" : "text-muted",
         className,
       )}

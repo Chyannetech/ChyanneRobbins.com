@@ -74,9 +74,25 @@ body {
  * property — the exact cascade-order risk noted on Heading/BodyText.
  * Scoped to .investigation-body only; Journal's body rendering is
  * untouched.
+ *
+ * Self-sufficient (own width/font/color/size) rather than depending on
+ * being wrapped by <Prose> — needed because each collapsible section
+ * (components/interactive/CollapsibleSection.tsx) renders its own
+ * .investigation-body fragment independently. Font size and line-height
+ * here are a deliberate, scoped increase over --text-body-lg for the
+ * reading-experience pass — not a change to that token, which other pages
+ * (About, Studio, Contact) still use unmodified.
  */
+.investigation-body {
+  max-width: 68ch;
+  font-family: var(--font-serif);
+  color: var(--foreground);
+  font-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem);
+  line-height: 1.8;
+}
+
 .investigation-body p {
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
 }
 
 .investigation-body > *:first-child {
@@ -115,11 +131,11 @@ body {
 .investigation-body ol {
   list-style: none;
   padding-left: 0;
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
 }
 
 .investigation-body li {
-  margin-top: 1rem;
+  margin-top: 1.25rem;
 }
 
 .investigation-body li:first-child {
@@ -128,4 +144,18 @@ body {
 
 .investigation-body li p {
   margin-top: 0;
+}
+
+/*
+ * A section's optional intro (see lib/investigation-sections.ts). Smaller
+ * and sans, not the serif reading type — editorial/orienting, not part of
+ * the long-form prose it introduces. Deliberately its own class, not
+ * .investigation-body, so it never picks up that class's paragraph
+ * spacing or heading/blockquote/list rules.
+ */
+.investigation-section-intro {
+  max-width: 60ch;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  color: var(--muted);
 }

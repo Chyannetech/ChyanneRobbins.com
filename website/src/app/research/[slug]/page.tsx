@@ -6,14 +6,20 @@ import Divider from "@/components/layout/Divider";
 import Heading from "@/components/typography/Heading";
 import BodyText from "@/components/typography/BodyText";
 import Eyebrow from "@/components/typography/Eyebrow";
-import Prose from "@/components/typography/Prose";
 import DocumentaryImage from "@/components/media/DocumentaryImage";
+import CollapsibleSection from "@/components/interactive/CollapsibleSection";
+import ReadingProgress from "@/components/interactive/ReadingProgress";
 import {
   getResearchEntries,
   getResearchEntryBySlug,
   getResearchEntryNumber,
   STATUS_LABEL,
 } from "@/lib/research";
+import {
+  getInvestigationSections,
+  getInvestigationLead,
+} from "@/lib/investigation-sections";
+import { getReadingTime } from "@/lib/reading-time";
 import { formatDate } from "@/lib/date";
 
 interface PageProps {
@@ -49,9 +55,14 @@ export default async function ResearchEntryPage({ params }: PageProps) {
   }
 
   const number = getResearchEntryNumber(slug);
+  const lead = getInvestigationLead(entry.body);
+  const sections = getInvestigationSections(entry.body);
+  const readingTime = getReadingTime(entry.body);
 
   return (
     <main className="flex flex-col">
+      <ReadingProgress />
+
       <Section spacing="large">
         <Link
           href="/research"
@@ -69,7 +80,11 @@ export default async function ResearchEntryPage({ params }: PageProps) {
         <Heading
           as="h1"
           size="display"
-          className={number !== undefined ? "mt-4 max-w-full sm:max-w-[26ch]" : "mt-10 max-w-full sm:max-w-[26ch]"}
+          className={
+            number !== undefined
+              ? "mt-4 max-w-full sm:max-w-[26ch]"
+              : "mt-10 max-w-full sm:max-w-[26ch]"
+          }
         >
           {entry.title}
         </Heading>
@@ -111,6 +126,12 @@ export default async function ResearchEntryPage({ params }: PageProps) {
               </BodyText>
             </div>
           )}
+          <div>
+            <Eyebrow>Reading Time</Eyebrow>
+            <BodyText size="meta" tone="muted" className="mt-1">
+              {readingTime} min
+            </BodyText>
+          </div>
         </div>
 
         <Divider className="mt-12" />
@@ -122,12 +143,28 @@ export default async function ResearchEntryPage({ params }: PageProps) {
           className="mt-12"
         />
 
-        <Prose className="mt-12">
+        <Divider className="mt-12" />
+
+        {lead && (
           <div
-            className="investigation-body"
-            dangerouslySetInnerHTML={{ __html: entry.bodyHtml }}
+            className="investigation-body mt-12"
+            dangerouslySetInnerHTML={{ __html: lead }}
           />
-        </Prose>
+        )}
+
+        <div className={lead ? "mt-4" : "mt-12"}>
+          {sections.map((section, index) => (
+            <div key={`${section.heading}-${index}`}>
+              {index > 0 && <Divider />}
+              <CollapsibleSection
+                heading={section.heading}
+                html={section.html}
+                introHtml={section.introHtml}
+                defaultOpen={index === 0}
+              />
+            </div>
+          ))}
+        </div>
       </Section>
     </main>
   );

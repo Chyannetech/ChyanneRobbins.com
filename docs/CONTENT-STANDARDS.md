@@ -84,6 +84,27 @@ Every Research investigation should read like a page from a design research note
 
 ---
 
+## Choosing a Format
+
+Work through this whenever an investigation is first published, and again whenever it's substantially updated — `formats` describes what the piece has *become*, not what kind of writing it is, so the right answer can change as the real world moves even if not a word of the piece itself does.
+
+Go through every row in order rather than stopping at the first match. A format never replaces an earlier one, so an investigation can — and, over time, usually will — collect more than one:
+
+| Ask yourself... | Add this format |
+|---|---|
+| Is the investigation still forming — exploring a genuinely open question, not yet resolved? | `concept study` |
+| Has it reached a resting point as a piece of writing complete on its own — even if the underlying question stays open? | `article` |
+| Has it produced something concrete a reader could actually test, try, or use — not just read about? | `prototype` |
+| Has it become a finished offering people can get, not a one-off experiment? | `product` |
+| Has it become an ongoing service performed for or with others? | `service` |
+| Has it resulted in work built together with another person or organization, credited as shared? | `collaboration` |
+
+Almost every investigation answers "yes" to exactly one of the first two rows at launch, and "no" to the rest — which one usually follows directly from `status` (still `ongoing` means still forming, so `concept study`; `concluded` means it reached that resting point, so `article`), though the two fields aren't formally locked together, that's just what each one actually means. Answering "no" to every remaining row is the expected, common case, not a sign the framework is missing something: those rows exist for the minority of investigations that go on to grow into something built or practiced, almost always through Chyless World Studio.
+
+When we publish or substantially revise an investigation together, work through this table and recommend the format(s) it now qualifies for, with the reasoning — don't require the taxonomy to be recalled from memory to make the call.
+
+---
+
 ## Naming conventions
 
 - Filenames are slugs: lowercase, hyphenated, no leading dates or numbers (`the-places-we-become.md`, not `2026-05-01-places.md`). The date belongs in frontmatter.

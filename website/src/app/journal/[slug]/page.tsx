@@ -36,6 +36,7 @@ export async function generateMetadata({
   return {
     title: `${entry.title} — Chyanne Robbins`,
     description: entry.excerpt ?? getExcerpt(entry.body),
+    alternates: { canonical: `/journal/${slug}` },
   };
 }
 

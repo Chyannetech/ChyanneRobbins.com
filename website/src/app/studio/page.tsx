@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Studio — Chyanne Robbins",
   description:
     "How investigations documented throughout this publication continue through Chyless World Studio.",
+  alternates: { canonical: "/studio" },
 };
 
 /**

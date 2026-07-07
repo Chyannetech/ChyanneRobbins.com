@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Section from "@/components/layout/Section";
 import Heading from "@/components/typography/Heading";
@@ -9,6 +10,16 @@ import Caption from "@/components/media/Caption";
 import { getFeaturedJournalEntry } from "@/lib/journal";
 import { getFeaturedResearchEntry } from "@/lib/research";
 import { formatDate } from "@/lib/date";
+
+// Root layout's metadata already provides this title/description as the
+// default; declared explicitly here (rather than left inherited) only so
+// this page can set its own canonical URL, per every other route.
+export const metadata: Metadata = {
+  title: "Chyanne Robbins",
+  description:
+    "ChyanneRobbins.com is an independent research publication documenting investigations into human experience.",
+  alternates: { canonical: "/" },
+};
 
 const DISCIPLINES = [
   "Behavioral Science",

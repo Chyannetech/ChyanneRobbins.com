@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   title: "Journal — Chyanne Robbins",
   description:
     "Essays, observations, travel notes, reflections, and photography — ongoing thinking outside formal investigations.",
+  alternates: { canonical: "/journal" },
 };
 
 export default function JournalIndexPage() {

@@ -16,7 +16,9 @@
       "Bash(xargs grep -l \"investigation-body\")",
       "Bash(taskkill //PID 31156 //F)",
       "mcp__visualize__read_me",
-      "mcp__visualize__show_widget"
+      "mcp__visualize__show_widget",
+      "Bash(sed -n '/generateMetadata/,/^}/p' \"research/[slug]/page.tsx\")",
+      "Bash(sed -n '/generateMetadata/,/^}/p' \"journal/[slug]/page.tsx\")"
     ]
   }
 }

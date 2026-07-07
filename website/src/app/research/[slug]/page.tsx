@@ -43,6 +43,7 @@ export async function generateMetadata({
   return {
     title: `${entry.title} — Chyanne Robbins`,
     description: entry.dek,
+    alternates: { canonical: `/research/${slug}` },
   };
 }
 

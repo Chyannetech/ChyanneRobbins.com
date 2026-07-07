@@ -10,6 +10,7 @@ import { CHYLESS_WORLD_URL } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Contact — Chyanne Robbins",
   description: "The best conversations often begin with a thoughtful email.",
+  alternates: { canonical: "/contact" },
 };
 
 const EMAIL = "hello@chyannerobbins.com";

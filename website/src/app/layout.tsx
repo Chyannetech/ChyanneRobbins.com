@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Newsreader, IBM_Plex_Sans } from "next/font/google";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const newsreader = Newsreader({
@@ -18,6 +19,10 @@ const plexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
+  // Base for resolving every relative URL in Metadata (canonical, Open
+  // Graph) against the production domain, rather than defaulting to
+  // localhost during build. Single source of truth: lib/site.ts.
+  metadataBase: new URL(SITE_URL),
   title: "Chyanne Robbins",
   description:
     "ChyanneRobbins.com is an independent research publication documenting investigations into human experience.",

@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "About — Chyanne Robbins",
   description:
     "An independent research publication documenting investigations into human experience.",
+  alternates: { canonical: "/about" },
 };
 
 /**

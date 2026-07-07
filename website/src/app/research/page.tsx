@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: "Research — Chyanne Robbins",
   description:
     "The full archive of formal investigations, browsable primarily as a list of individual bodies of work.",
+  alternates: { canonical: "/research" },
 };
 
 export default function ResearchIndexPage() {

@@ -63,32 +63,18 @@ export default function Home() {
         </Section>
       )}
 
-      {/* 3. Disciplines — introduces the lens the whole publication draws from.
-           Named "Field Notes" until it was renamed here: that name collided with
-           "Field Notes" as a Research section-marker convention (CONTENT-STANDARDS.md),
-           and this section had also drifted out of order with — and merged via negative
-           margin into — the section above, both undocumented against HOMEPAGE.md's
-           original spec. Restored to independent sections in their original order;
-           see HOMEPAGE.md's "Resolved since V1 freeze" note. */}
-      <Section>
-        <Heading as="h2" size="title">
-          Disciplines
-        </Heading>
-        <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
-          {DISCIPLINES.map((discipline) => (
-            <li key={discipline}>
-              <BodyText size="meta" tone="muted">
-                {discipline}
-              </BodyText>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      {/* 4. Featured Investigation — powered by the featured published Research entry; omitted entirely if none exists. */}
+      {/* 3/4. Disciplines + Featured Investigation — Disciplines no longer stands
+           as its own section (see HOMEPAGE.md's "Resolved since V1 freeze" note on
+           this change). It's a quiet taxonomy/credibility signal, not a chapter with
+           its own argument, so it now reads as the Featured Investigation's lead-in —
+           generous space above (separating it from In the Field) and a tight mt-4
+           below (grouping it with the investigation it introduces), with no divider
+           and no heading. This is proximity doing the grouping work on its own, not
+           a styling device — arrived at by testing spacing as the only variable. */}
       {featuredResearchEntry && (
         <Section>
-          <Link href={`/research/${featuredResearchEntry.slug}`} className="group block">
+          <Eyebrow>{DISCIPLINES.join(" · ")}</Eyebrow>
+          <Link href={`/research/${featuredResearchEntry.slug}`} className="group mt-4 block">
             <Heading as="h2" size="subhead" className="transition-colors group-hover:text-accent">
               {featuredResearchEntry.title}
             </Heading>

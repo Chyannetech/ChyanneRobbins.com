@@ -19,7 +19,7 @@ It should feel less like a website and more like a carefully designed reading en
 
 ## Structure
 
-Six sections, in this order:
+Five sections, in this order (Disciplines is no longer independent — see section 3 and "Resolved since V1 freeze"):
 
 ### 1. Hero
 
@@ -38,9 +38,9 @@ Six sections, in this order:
 
 **Content requirement:** this section pulls a single image-led entry per the Journal content model in [SITE-MAP.md](SITE-MAP.md) (`title`, `date`, `location`, `images`, `body`/caption). Treat it as one specific, editorially chosen Journal entry — not a feed or rotation.
 
-### 3. Disciplines
+### 3. Disciplines + Featured Investigation
 
-Introduces the disciplines informing the work — the lens through which the publication investigates human experience:
+Disciplines is a quiet taxonomy/credibility signal — the lens through which the publication investigates human experience — not a chapter with its own argument, so it now introduces Featured Investigation rather than standing between it and In the Field:
 
 - Behavioral Science
 - Design
@@ -48,23 +48,17 @@ Introduces the disciplines informing the work — the lens through which the pub
 - Technology
 - Public Health
 
-**Content requirement:** this maps directly to the `themes` field on the Research content model in [SITE-MAP.md](SITE-MAP.md). Likely static content (the five disciplines don't change often), not pulled dynamically from investigation data.
+Directly above **The Places We Become** (tagged: Behavioral Science · Design · Systems Thinking), separated by proximity alone — generous space above the taxonomy line, a tight gap below it, no divider, no heading.
 
-### 4. Featured Investigation
+**Content requirement:** the taxonomy list maps directly to the `themes` field on the Research content model in [SITE-MAP.md](SITE-MAP.md); likely static content, not pulled dynamically. The investigation itself is pulled from the Research entry marked `featured: true` and links to `/research/[slug]`; its tags are drawn from the official `themes` taxonomy defined in SITE-MAP.md — "Research" is the section name, not a taxonomy tag, and is not used as a tag here. Because the taxonomy line is now this section's lead-in, it only renders when a featured Research entry exists.
 
-**The Places We Become**
-
-Tagged: Behavioral Science · Design · Systems Thinking
-
-**Content requirement:** pulled from the Research entry marked `featured: true`. Links to `/research/[slug]`. Tags drawn from the official `themes` taxonomy defined in SITE-MAP.md — "Research" is the section name, not a taxonomy tag, and is not used as a tag here.
-
-### 5. Why This Matters
+### 4. Why This Matters
 
 Bridges the research to organizations: explains how understanding human experience can inform better products, services, technology, organizations, and physical spaces. Communicates the practical value of the research beyond the publication itself.
 
 **Content requirement:** likely links out to `/studio` for the fuller explanation of how this thinking is applied. Copy not yet drafted.
 
-### 6. Footer
+### 5. Footer
 
 Restores the editorial closing quote:
 
@@ -93,3 +87,5 @@ Documentary, editorial voice, per [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). The Hero
 ## Resolved since V1 freeze
 
 - **Section 3 renamed "Field Notes" → "Disciplines."** The implementation had drifted from this document in two undocumented ways: section 3 rendered *before* section 2 rather than after, and was merged into it via a negative margin so one heading ("Field Notes") appeared to introduce both the disciplines list and the photograph. Neither change was ever recorded here. Investigating a naming collision (CONTENT-STANDARDS.md already uses "Field Notes" as a Research section-marker example, and it's used that way inside a published investigation) surfaced the drift. Resolved by restoring the two sections to their original order and independent spacing exactly as specified above, and renaming section 3 to "Disciplines" — a name that only describes the list, not the photo, which is also why the merge no longer made sense once the collision was fixed.
+
+- **Disciplines is no longer its own section — it's now the lead-in to Featured Investigation (2026-07-07).** This was a deliberate design exploration, not drift: auditing the homepage's narrative flow found that Disciplines' informational content (the full five-discipline scope) was already stated completely in "Why This Matters" and partially in Featured Investigation's own tags, so its only genuinely unique contribution was a quiet taxonomy/credibility gesture — one that didn't need the same ceremony (independent heading, full section padding on both sides) as sections that actually reward dwelling. A round of visual prototyping tested divider treatments and then spacing alone as the only variable, and found that proximity — generous space above, a tight `mt-4` below, no divider, no heading — reads as the taxonomy introducing the investigation, without adding any new visual device. Structure: still a five-beat homepage in the same order (Hero, In the Field, Featured Investigation, Why This Matters, closing quote), just with Disciplines folded into Featured Investigation's section rather than standing independently between it and In the Field. If the featured Research entry is ever unset, the taxonomy line no longer renders on its own — an accepted consequence of tying it to the investigation it now introduces, not a separate decision.

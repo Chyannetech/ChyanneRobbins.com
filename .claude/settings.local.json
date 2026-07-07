@@ -14,7 +14,9 @@
       "Bash(powershell -Command \"Stop-Process -Id 10752 -Force -ErrorAction SilentlyContinue\")",
       "Bash(rm -rf .next)",
       "Bash(xargs grep -l \"investigation-body\")",
-      "Bash(taskkill //PID 31156 //F)"
+      "Bash(taskkill //PID 31156 //F)",
+      "mcp__visualize__read_me",
+      "mcp__visualize__show_widget"
     ]
   }
 }

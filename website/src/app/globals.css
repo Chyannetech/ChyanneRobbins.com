@@ -156,6 +156,25 @@ body {
   margin: 0;
 }
 
+/*
+ * Inline links within markdown-rendered long-form content (Research's
+ * .investigation-body and Journal's .journal-body). Matches the
+ * Standalone CTA Link convention (accent + static underline, no separate
+ * hover state) documented in docs/INTERACTION-INVENTORY.md rather than
+ * inventing a distinct treatment for body copy — a link needs to be
+ * identifiable by more than color alone (WCAG 1.4.1), which the
+ * underline already guarantees regardless of a reader's color
+ * perception. Without this rule these links inherit no color and no
+ * underline at all, since Tailwind's preflight strips default anchor
+ * styling.
+ */
+.investigation-body a,
+.journal-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 /* Open Questions and any other list: plain vertical rhythm, no bullets. */
 .investigation-body ul,
 .investigation-body ol {

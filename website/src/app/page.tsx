@@ -44,7 +44,7 @@ export default function Home() {
       {/* 2. In the Field — powered by the featured published Journal entry; omitted entirely if none exists. */}
       {featuredJournalEntry && (
         <Section>
-          <Link href={`/journal/${featuredJournalEntry.slug}`} className="block">
+          <Link href={`/journal/${featuredJournalEntry.slug}`} className="group block">
             <DocumentaryImage
               src={featuredJournalEntry.heroImage}
               alt={featuredJournalEntry.heroImageAlt ?? featuredJournalEntry.title}
@@ -55,6 +55,7 @@ export default function Home() {
               meta={[featuredJournalEntry.location, formatDate(featuredJournalEntry.date)]
                 .filter(Boolean)
                 .join(" • ")}
+              textClassName="transition-colors group-hover:text-accent"
             >
               {featuredJournalEntry.caption}
             </Caption>

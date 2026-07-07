@@ -86,7 +86,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
 
         <Prose className="mt-12">
           <div
-            className="space-y-6"
+            className="journal-body space-y-6"
             dangerouslySetInnerHTML={{ __html: entry.bodyHtml }}
           />
         </Prose>

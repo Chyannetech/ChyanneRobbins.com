@@ -30,6 +30,7 @@ export default function ResearchIndexPage() {
               {index > 0 && <Divider />}
               <Link
                 href={`/research/${entry.slug}`}
+                aria-label={entry.title}
                 className="group block py-8"
               >
                 <Heading

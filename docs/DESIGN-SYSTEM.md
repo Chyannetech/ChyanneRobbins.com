@@ -85,7 +85,7 @@ Near-monochrome, paper-and-ink base with a single restrained accent reserved for
 
 - **Navigation:** wordmark (linking home) + Research, Journal, About, Studio, Contact text links. No mega-menus, no dropdowns.
 - **Links:** styled as understated text (underline or accent color on hover), not buttons. Reserve button-styled elements for genuine actions (form submit, entering a section), not decorative CTAs.
-- **Research and Journal listings:** editorial list/index layout (title, dek, meta), not card grids with shadows.
+- **Research and Journal listings:** editorial list/index layout (title, dek, meta), not card grids with shadows. Each entry's title, dek/excerpt, and meta all sit inside one large `<Link>` — a deliberately big click target, not shrunk to just the title — but that Link carries `aria-label={entry.title}` so a screen reader announces only the title, not the whole card's text read out in sequence. Any future full-card link (an entire block of visible content as one clickable link) should follow the same pattern: keep the large click target, override the accessible name to just the title.
 - **No decorative chrome:** no drop shadows, no gradients, no rounded "app" corners on content blocks. Hairline rules (`border` token) instead of boxes/cards to separate content.
 
 ---

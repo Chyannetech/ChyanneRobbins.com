@@ -30,7 +30,11 @@ export default function JournalIndexPage() {
           {entries.map((entry, index) => (
             <li key={entry.slug}>
               {index > 0 && <Divider />}
-              <Link href={`/journal/${entry.slug}`} className="group block py-8">
+              <Link
+                href={`/journal/${entry.slug}`}
+                aria-label={entry.title}
+                className="group block py-8"
+              >
                 <DocumentaryImage
                   src={entry.heroImage}
                   alt={entry.title}

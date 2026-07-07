@@ -60,6 +60,14 @@ Near-monochrome, paper-and-ink base with a single restrained accent reserved for
 
 `website/src/app/globals.css` already scaffolds `--background` / `--foreground` with a `prefers-color-scheme: dark` block — this table extends that pattern rather than replacing it.
 
+**Dark mode status: implemented, but known not to be the target atmosphere.** The Dark column above defaults to a generic software dark-mode convention — a near-black background (`#0A0A0A`) paired with high-brightness, cool-neutral text (`#EDEDED`) — the same pairing used for OLED-battery-saving "true black" themes. That's a technical/product convention, not an editorial one, and it doesn't carry the same "paper, in a reading environment" atmosphere the light palette does. This was evaluated deliberately (not just noticed in passing): dark mode itself doesn't conflict with this project's philosophy — museums dim rooms for light-sensitive work, archives and lamplit reading are legitimate editorial registers — but this specific implementation reaches for the wrong one.
+
+Kept as-is for now, deliberately, rather than patched partway. Scheduled as a future visual-refinement pass, with its own brief:
+
+> **"The same room after dark." Not "a software application's dark theme."**
+
+Concretely, that means a future revision should move toward a warm, deep charcoal background rather than near-black, and a warmer, slightly dimmer off-white rather than `#EDEDED`'s cool near-maximum brightness — targeting a softer overall contrast (roughly 12–14:1 rather than the current pairing's ~20:1), which reads as a dim room rather than a bright screen with the lights off, and incidentally reduces the halation effect high-contrast light-on-dark text causes for some readers. The `accent` and `border` dark values are not implicated in this — both are already reasonably warm/restrained and not the source of the "software" read.
+
 ---
 
 ## Layout & Grid

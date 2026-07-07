@@ -64,15 +64,13 @@ export default async function JournalEntryPage({ params }: PageProps) {
           ← Journal
         </Link>
 
-        {entry.heroImage && (
-          <DocumentaryImage
-            src={entry.heroImage}
-            alt={entry.title}
-            aspectRatio="3/2"
-            objectPosition={entry.heroImagePosition}
-            className="mt-10"
-          />
-        )}
+        <DocumentaryImage
+          src={entry.heroImage}
+          alt={entry.title}
+          aspectRatio="3/2"
+          objectPosition={entry.heroImagePosition}
+          className="mt-10"
+        />
 
         <Eyebrow className="mt-10">{dateline}</Eyebrow>
 

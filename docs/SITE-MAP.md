@@ -69,8 +69,8 @@ Together, Research and Journal represent the two registers of the publication: f
 | `date` | date | |
 | `location` | string (optional) | For field-note style entries, e.g. "Austin, Texas." |
 | `body` | content | Essay, observation, or reflection — length and structure vary more than Research entries. |
-| `images` | asset ref[] | Legacy field. Currently only gates whether a placeholder image block appears on `/journal` and the entry's own page — not wired to display an actual photo. See `heroImage` below. |
-| `heroImage` | asset ref (optional) | The field actually wired to display a real photo, via `DocumentaryImage`. Powers Home's featured display and the entry's own pages. |
+| `images` | asset ref[] | Legacy, unused. Not read by any page — retiring it outright is a reasonable future cleanup. See `heroImage` below. |
+| `heroImage` | asset ref (optional) | The field wired to display a real photo, via `DocumentaryImage`, everywhere a Journal entry shows one — its own index and detail pages, and Home's featured display when the entry is featured. Unset renders a neutral placeholder, not an empty gap — same convention as Research's `coverImage`. |
 | `heroImagePosition` | string (optional) | CSS `object-position` for `heroImage`'s crop, e.g. `"center 8%"`. Omit for the default centered crop. |
 | `caption` | string (optional) | Shown alongside `heroImage` on Home when this entry is featured. |
 | `excerpt` | string (optional) | Authored teaser for the index listing and meta description. Falls back to an excerpt auto-derived from the body's first paragraph when omitted. |

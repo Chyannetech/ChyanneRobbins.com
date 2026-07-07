@@ -1,15 +1,18 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-type PageShellWidth = "wide" | "reading";
+type PageShellWidth = "wide" | "narrow" | "reading";
 
 const widthClasses: Record<PageShellWidth, string> = {
   wide: "max-w-[1200px]",
+  narrow: "max-w-[800px]",
   reading: "max-w-[68ch]",
 };
 
 interface PageShellProps {
-  /** "wide" (1200px) for page/section layout, "reading" (68ch) for long-form measure. */
+  /** "wide" (1200px) for page/section layout, "narrow" (800px) for a single
+   *  image-led moment that shouldn't run full width, "reading" (68ch) for
+   *  long-form measure. See DESIGN-SYSTEM.md's Layout & Grid section. */
   width?: PageShellWidth;
   className?: string;
   children: ReactNode;

@@ -47,9 +47,22 @@ export default function Home() {
         </Link>
       </Section>
 
-      {/* 2. In the Field — powered by the featured published Journal entry; omitted entirely if none exists. */}
+      {/* 2. In the Field — powered by the featured published Journal entry; omitted entirely if none exists.
+           width="narrow" (800px, not the usual 1200px wide) is deliberate: this is
+           one specific, personal photograph, not a full-bleed hero image, and the
+           narrower frame matches its actual scale rather than a "wide" section's
+           full-width authority. See DESIGN-SYSTEM.md's Layout & Grid section on
+           proportion as an environmental/rhythm device (Varying Rooms).
+
+           The -mt-8 sm:-mt-12 trims this section's own top padding modestly —
+           not Hero's bottom spacing, which stays untouched because it's doing
+           separate work as the page's opening bookend (matching the closing
+           quote's equally generous spacing). Hero and Photo are still a real
+           pause, not an introduction — this only reduces the redundant stacking
+           at this one transition, since tightening gaps elsewhere on the page
+           made this unchanged gap read as disproportionately large by contrast. */}
       {featuredJournalEntry && (
-        <Section>
+        <Section width="narrow" className="-mt-8 sm:-mt-12">
           <Link href={`/journal/${featuredJournalEntry.slug}`} className="group block">
             <DocumentaryImage
               src={featuredJournalEntry.heroImage}
@@ -76,9 +89,15 @@ export default function Home() {
            generous space above (separating it from In the Field) and a tight mt-4
            below (grouping it with the investigation it introduces), with no divider
            and no heading. This is proximity doing the grouping work on its own, not
-           a styling device — arrived at by testing spacing as the only variable. */}
+           a styling device — arrived at by testing spacing as the only variable.
+
+           width="reading" (68ch, not "wide") is a second, later Varying Rooms
+           decision: this section previews an investigation, so it borrows the
+           exact width the investigation's own long-form body uses, foreshadowing
+           the register shift from browsing to reading before the reader even
+           clicks through — reusing an existing token, not a new value. */}
       {featuredResearchEntry && (
-        <Section>
+        <Section width="reading">
           <Eyebrow>{DISCIPLINES.join(" · ")}</Eyebrow>
           <Link href={`/research/${featuredResearchEntry.slug}`} className="group mt-4 block">
             <Heading as="h2" size="subhead" className="transition-colors group-hover:text-accent">
@@ -91,8 +110,34 @@ export default function Home() {
         </Section>
       )}
 
-      {/* 5. Why This Matters */}
-      <Section>
+      {/* 5. Why This Matters — width="narrow" (800px, not "wide") replaces the
+           original reasoning that this section should stay wide to "open back up"
+           for a broader audience: that never actually rendered, since Prose caps
+           this section's paragraph at 68ch regardless of container width, so
+           "wide" only ever produced a large, unbalanced void to the right of a
+           left-anchored text block — directly beneath Featured Investigation's
+           balanced, centered column. narrow gives this section the same width as
+           In the Field, so the page's proportion sequence reads as Hero(wide) →
+           Photo(narrow) → Featured Investigation(reading) → Why This
+           Matters(narrow) → Quote — narrowing to its single focal point at the
+           investigation, then easing back out to the width it held during the
+           photograph, rather than a flatter, less differentiated progression.
+           The "broad address" idea isn't lost — it's carried by the copy itself
+           ("organizations," "products," "services"), not by the container.
+
+           The negative margin was revised from -mt-16 sm:-mt-24 (canceling a full
+           default Section padding, landing at 64/96px combined) to -mt-8
+           sm:-mt-12 (canceling half of one, landing at ~96/144px). Disciplines →
+           Featured Investigation is a genuine introduction (the taxonomy has no
+           meaning without the investigation it leads into) and correctly stays
+           tightly coupled. Featured Investigation → Why This Matters is a
+           sequence of two complete, independent editorial thoughts — related in
+           theme, but each finished on its own — so collapsing it as far as an
+           introduction relationship shortchanged Featured Investigation's own
+           close. Sharing a width with Photo now also carries some of the
+           "these relate" signal, so proximity doesn't have to carry all of it
+           alone. */}
+      <Section width="narrow" className="-mt-8 sm:-mt-12">
         <Heading as="h2" size="title">
           Why This Matters
         </Heading>

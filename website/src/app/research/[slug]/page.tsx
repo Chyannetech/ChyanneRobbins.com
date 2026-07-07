@@ -93,7 +93,7 @@ export default async function ResearchEntryPage({ params }: PageProps) {
           {entry.researchQuestion}
         </p>
 
-        <div className="mt-10 flex flex-wrap gap-x-10 gap-y-4">
+        <div className="mt-10 flex flex-col gap-y-4 lg:flex-row lg:flex-wrap lg:gap-x-10">
           <div>
             <Eyebrow>Themes</Eyebrow>
             <BodyText size="meta" tone="muted" className="mt-1">

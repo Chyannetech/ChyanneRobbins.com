@@ -8,7 +8,12 @@
       "Bash(grep -rn \"images/[Rr]esearch\" website/content website/src website/docs)",
       "Bash(grep -rn \"images/[Rr]esearch\" docs)",
       "Bash(npm run *)",
-      "Bash(echo \"---exit: $?---\")"
+      "Bash(echo \"---exit: $?---\")",
+      "Bash(netstat -ano)",
+      "Bash(powershell -Command \"Stop-Process -Id 1664 -Force -ErrorAction SilentlyContinue\")",
+      "Bash(powershell -Command \"Stop-Process -Id 10752 -Force -ErrorAction SilentlyContinue\")",
+      "Bash(rm -rf .next)",
+      "Bash(xargs grep -l \"investigation-body\")"
     ]
   }
 }

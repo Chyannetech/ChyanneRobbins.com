@@ -135,12 +135,21 @@ body {
 
 /* A research-question-style prompt: `> ...` in Markdown. Breathing room
    only — deliberately not a pull quote (no border, no indent, no italic,
-   same size as body). */
+   no bold, same size as body). */
 .investigation-body blockquote {
   margin: 2.5rem 0;
   padding: 0;
   border: none;
   font-style: normal;
+}
+
+/* Neutralizes emphasis an author might reach for inside this specific
+   blockquote (e.g. `**bold**`) — `font-weight` on the blockquote itself
+   doesn't reach a nested <strong>, since its own user-agent bold rule
+   beats an inherited value. */
+.investigation-body blockquote strong,
+.investigation-body blockquote b {
+  font-weight: inherit;
 }
 
 .investigation-body blockquote p {

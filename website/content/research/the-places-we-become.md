@@ -86,9 +86,9 @@ But I knew I consistently felt different there.
 
 That's the question this investigation kept circling back to.
 
-> **How much of what I assume is "me" is actually a response to the environment I'm in?**
+> How much of what I assume is "me" is actually a response to the environment I'm in?
 
-## Observations
+## Patterns
 
 Once I started asking that question, the same pattern kept showing up in places that had nothing to do with nature.
 

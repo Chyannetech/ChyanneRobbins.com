@@ -26,8 +26,14 @@ export default function Home() {
     <main className="flex flex-col">
       {/* 1. Hero */}
       <Section spacing="large">
+        {/* mt-8 (not the usual mt-3 tight-label spacing) is deliberate: enough
+             room that the byline reads as its own authorial beat rather than
+             the first line of the tagline beneath it — same typography and
+             color as any other Eyebrow, no new visual vocabulary. See
+             DESIGN-SYSTEM.md's Layout & Grid section on proximity as a
+             grouping/distinction tool. */}
         <Eyebrow>Chyanne Robbins</Eyebrow>
-        <BodyText size="body-lg" font="sans" tone="muted" className="mt-3 max-w-[40ch]">
+        <BodyText size="body-lg" font="sans" tone="muted" className="mt-8 max-w-[40ch]">
           Exploring how people think, decide, and live.
         </BodyText>
         <Heading as="h1" size="display" className="mt-14 max-w-full sm:max-w-[20ch]">

@@ -38,7 +38,7 @@ Six sections, in this order:
 
 **Content requirement:** this section pulls a single image-led entry per the Journal content model in [SITE-MAP.md](SITE-MAP.md) (`title`, `date`, `location`, `images`, `body`/caption). Treat it as one specific, editorially chosen Journal entry — not a feed or rotation.
 
-### 3. Field Notes
+### 3. Disciplines
 
 Introduces the disciplines informing the work — the lens through which the publication investigates human experience:
 
@@ -87,3 +87,9 @@ Documentary, editorial voice, per [DESIGN-SYSTEM.md](DESIGN-SYSTEM.md). The Hero
 - Which specific photograph and Journal entry populate "In the Field" — not yet selected.
 - Whether "Why This Matters" links directly to `/studio`, or stands alone.
 - Whether the homepage carries any kind of issue/volume marker (reinforcing the "documentary book" framing) or stays undated.
+
+---
+
+## Resolved since V1 freeze
+
+- **Section 3 renamed "Field Notes" → "Disciplines."** The implementation had drifted from this document in two undocumented ways: section 3 rendered *before* section 2 rather than after, and was merged into it via a negative margin so one heading ("Field Notes") appeared to introduce both the disciplines list and the photograph. Neither change was ever recorded here. Investigating a naming collision (CONTENT-STANDARDS.md already uses "Field Notes" as a Research section-marker example, and it's used that way inside a published investigation) surfaced the drift. Resolved by restoring the two sections to their original order and independent spacing exactly as specified above, and renaming section 3 to "Disciplines" — a name that only describes the list, not the photo, which is also why the merge no longer made sense once the collision was fixed.

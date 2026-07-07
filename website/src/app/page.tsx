@@ -41,27 +41,9 @@ export default function Home() {
         </Link>
       </Section>
 
-      {/* 2. Field Notes — introduces the disciplines lens; sits directly above the featured Journal entry so it reads as that section's heading */}
-      <Section>
-        <Heading as="h2" size="title">
-          Field Notes
-        </Heading>
-        <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
-          {DISCIPLINES.map((discipline) => (
-            <li key={discipline}>
-              <BodyText size="meta" tone="muted">
-                {discipline}
-              </BodyText>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      {/* 3. In the Field — powered by the featured published Journal entry; omitted entirely if none exists.
-           Negative top margin (matching Section's own default py value) pulls this ~50% closer to
-           Field Notes above, so the two read as one introduced section rather than separate ones. */}
+      {/* 2. In the Field — powered by the featured published Journal entry; omitted entirely if none exists. */}
       {featuredJournalEntry && (
-        <Section className="-mt-16 sm:-mt-24">
+        <Section>
           <Link href={`/journal/${featuredJournalEntry.slug}`} className="block">
             <DocumentaryImage
               src={featuredJournalEntry.heroImage}
@@ -79,6 +61,28 @@ export default function Home() {
           </Link>
         </Section>
       )}
+
+      {/* 3. Disciplines — introduces the lens the whole publication draws from.
+           Named "Field Notes" until it was renamed here: that name collided with
+           "Field Notes" as a Research section-marker convention (CONTENT-STANDARDS.md),
+           and this section had also drifted out of order with — and merged via negative
+           margin into — the section above, both undocumented against HOMEPAGE.md's
+           original spec. Restored to independent sections in their original order;
+           see HOMEPAGE.md's "Resolved since V1 freeze" note. */}
+      <Section>
+        <Heading as="h2" size="title">
+          Disciplines
+        </Heading>
+        <ul className="mt-8 flex flex-wrap gap-x-10 gap-y-3">
+          {DISCIPLINES.map((discipline) => (
+            <li key={discipline}>
+              <BodyText size="meta" tone="muted">
+                {discipline}
+              </BodyText>
+            </li>
+          ))}
+        </ul>
+      </Section>
 
       {/* 4. Featured Investigation — powered by the featured published Research entry; omitted entirely if none exists. */}
       {featuredResearchEntry && (

@@ -94,7 +94,7 @@ Near-monochrome, paper-and-ink base with a single restrained accent reserved for
 
 Minimal and purposeful only. What exists today: color transitions on hover/focus (links, navigation), the Research investigation accordion's expand/collapse, and the reading-progress hairline's width update. No scroll-triggered entrance animations are implemented anywhere on the site — don't assume they exist. No parallax, no flashy transitions. Respect `prefers-reduced-motion` unconditionally.
 
-(This section is intentionally thin — the full reasoning behind it lives in [EXPERIENCE-PRINCIPLES.md](EXPERIENCE-PRINCIPLES.md), which this section should be checked against before it changes.)
+(This section is intentionally thin — the full reasoning behind it lives in [EXPERIENCE-PRINCIPLES.md](EXPERIENCE-PRINCIPLES.md), which this section should be checked against before it changes. The concrete durations, easing, and category-by-category scope now live in [MOTION-INTERACTION-SPEC.md](MOTION-INTERACTION-SPEC.md).)
 
 ---
 

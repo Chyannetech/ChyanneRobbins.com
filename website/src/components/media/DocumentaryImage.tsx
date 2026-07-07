@@ -37,7 +37,10 @@ export default function DocumentaryImage({
 
   return (
     <div
-      className={cn("relative overflow-hidden border border-border", className)}
+      className={cn(
+        "relative overflow-hidden border border-border bg-muted/20",
+        className,
+      )}
       style={{ aspectRatio }}
     >
       <Image

@@ -88,15 +88,15 @@ This was closer to an accessibility and readability defect than a visual-polish 
 
 ## Open Design Decisions for This Phase
 
-Unlike the two issues above, nothing here is wrong yet — each is a real, undecided question that should be resolved as part of the motion and interaction specification, not before it.
+Unlike the two issues above, nothing here was wrong — each was a real, undecided question, resolved below as part of establishing [MOTION-INTERACTION-SPEC.md](MOTION-INTERACTION-SPEC.md).
 
 ### 1. Should a newly-loaded photograph get a calm fade-in?
 
-Today a real image (once `src` exists) paints in via the browser's native, uncontrolled behavior — no transition from placeholder to loaded state. A load pop is arguably a real discontinuity that Micro-interactions (§X) would accept a fix for ("is there a real ambiguity this flourish resolves that nothing else resolves?" — arguably yes, the moment of arrival itself). But it could just as easily be exactly the kind of flourish Restraint (§III) says shouldn't exist without a stated reason attached. Needs a considered yes or no, not a default in either direction.
+**Status: Resolved 2026-07-07 — no.** See MOTION-INTERACTION-SPEC.md's Category 4. A hard cut from placeholder to loaded photograph is the settled, permanent answer, not a default pending further polish: the state change is already self-evident without a transition, and the "book, not app" reasoning that rules out animated page transitions applies equally here. The one fix that shipped alongside this decision was a consistency correction, not a motion addition — `DocumentaryImage`'s loading-real-image container now gets the same `bg-muted/20` neutral fill the no-`src` placeholder already had, so a slow-loading photograph doesn't briefly show an uncolored box.
 
 ### 2. Should the reading-progress hairline extend to Journal entries?
 
-Currently scoped to Research only. This might be deliberate rhythm differentiation (EXPERIENCE-PRINCIPLES.md §IV draws a real distinction between Research's gated, returned-to-across-sessions pacing and Journal's single continuous read) — or it might simply be that it was only ever built where it was first needed, with no decision made about Journal either way. Worth noting the hairline is an ambient scroll signal, not a gating mechanism, so §IV's reasoning for withholding the accordion from Journal doesn't automatically transfer to withholding this too — the two need to be argued separately, not assumed to travel together.
+**Status: Resolved 2026-07-07 — no, permanently.** See MOTION-INTERACTION-SPEC.md's Category 3. The hairline stays Research-only, not because Journal categorically can't have one, but because the actual justification for it — long-form, structured, multi-session investigations where "how much is left" is real information (§IV, §VIII) — doesn't hold across Journal's variable-length entries. A length-based heuristic was considered and rejected in favor of a consistent, register-based rule.
 
 ### 3. Gallery's interaction model is entirely undecided
 

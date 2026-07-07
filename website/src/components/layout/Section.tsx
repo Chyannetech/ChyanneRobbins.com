@@ -1,9 +1,12 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
-import PageShell from "./PageShell";
+import PageShell, { type PageShellWidth } from "./PageShell";
 
 type SectionSpacing = "default" | "large";
-type SectionWidth = "wide" | "reading";
+// Reuses PageShell's own width type rather than redeclaring the union here —
+// two separate lists of the same width names is exactly what let "narrow"
+// exist in PageShell but not in Section, breaking the build.
+type SectionWidth = PageShellWidth;
 
 // DESIGN-SYSTEM.md spacing scale calls out 64/96/128px explicitly for
 // vertical rhythm — these are exactly py-16/py-24/py-32 in Tailwind's default

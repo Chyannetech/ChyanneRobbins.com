@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-type PageShellWidth = "wide" | "narrow" | "reading";
+export type PageShellWidth = "wide" | "narrow" | "reading";
 
 const widthClasses: Record<PageShellWidth, string> = {
   wide: "max-w-[1200px]",

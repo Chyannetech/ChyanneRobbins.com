@@ -105,6 +105,26 @@ When we publish or substantially revise an investigation together, work through 
 
 ---
 
+## Choosing Themes
+
+`themes` represents the primary disciplines or domains of inquiry an investigation meaningfully draws from — not every subject it touches, and never a keyword for search or SEO. The test: would removing this theme mislead a reader about what field(s) of thinking actually produced this piece? If the connection is incidental rather than load-bearing, leave it off.
+
+Unlike `formats`, this isn't a progression to work through in order — check every row independently and assign every one that's a genuine "yes." In practice that's usually two, sometimes three; if a piece seems to need four or more, that's a sign it's covering too much ground, not that it needs more tags:
+
+| Ask yourself... | Add this theme |
+|---|---|
+| Does the investigation's reasoning turn on how people actually think, decide, or behave? | `Behavioral Science` |
+| Is the investigation fundamentally about how something — a space, interface, service, or object — is shaped for how people perceive, use, or experience it? | `Design` |
+| Is a digital tool, platform, or technical system the investigation's central subject, not just a detail mentioned in passing? | `Technology` |
+| Does the investigation meaningfully concern population-level health, care systems, or well-being outcomes? | `Public Health` |
+| Does the investigation's own method of reasoning depend on interconnected parts, feedback loops, or emergent behavior — not just a topic that happens to involve "a system"? | `Systems Thinking` |
+
+**The last row is a different kind of question from the first four, on purpose.** The first four ask what the investigation is *about* — a subject-matter domain. Systems Thinking asks *how* it reasons — a method, not a topic. A piece can be about public health without being an exercise in systems thinking, even while using systems thinking as its lens on that subject. Assign it when that lens is genuinely how the piece thinks, not whenever a "system" gets mentioned.
+
+When we publish or substantially revise an investigation together, work through this table and recommend the theme(s) it qualifies for, with the reasoning — don't require the taxonomy to be recalled from memory to make the call.
+
+---
+
 ## Naming conventions
 
 - Filenames are slugs: lowercase, hyphenated, no leading dates or numbers (`the-places-we-become.md`, not `2026-05-01-places.md`). The date belongs in frontmatter.

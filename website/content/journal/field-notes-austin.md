@@ -6,6 +6,7 @@ date: "2024-06-01"
 location: "Austin, Texas"
 heroImage: "/images/google-austin.jpg"
 heroImagePosition: "center 8%"
+heroImageAlt: "Chyanne Robbins seated on a wicker bench against a wall of greenery lit by a neon Google sign, at a Google developer conference in Austin."
 caption: "Research is how I make sense of the world."
 excerpt: "A reflection on attending Google's developer conference in Austin and the questions it sparked about technology, design, and human behavior."
 images:

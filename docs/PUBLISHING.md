@@ -44,6 +44,7 @@ featured: true
 location: "Austin, Texas"
 heroImage: "/images/field-notes-austin.jpg"
 heroImagePosition: "center 8%"
+heroImageAlt: "Chyanne Robbins seated on a wicker bench against a wall of greenery lit by a neon Google sign, at a Google developer conference in Austin."
 caption: "Research is how I make sense of the world."
 ```
 
@@ -54,7 +55,8 @@ caption: "Research is how I make sense of the world."
   - **The math is not intuitive — verify visually, don't just calculate.** Because the display box is a fixed aspect ratio and the source photo usually isn't, `object-fit: cover` always crops a *fixed amount* of the source (determined purely by the ratio mismatch); `object-position`'s percentage only decides *where* that fixed-size window sits, not how much is cropped. It's tempting to eyeball the source photo, estimate percentages, and compute where things should land — that estimate will likely be wrong, because it's very easy to misjudge exact proportions by eye. What actually worked for `field-notes-austin.md`: render the page, look at the actual crop, and adjust in small steps (`center top`, then `center 8%`, etc.) until both the sign and the face were comfortably in frame — three quick iterations, not one calculation.
   - Syntax is standard CSS `object-position`: two keywords (`center top`, `center bottom`) or `<horizontal> <vertical>` percentages (`center 8%` — meaning the horizontal axis stays centered, since there's usually nothing to gain from shifting it when the crop only trims top/bottom).
 - `caption` has no fallback — if it's missing on the featured entry, the caption line renders empty. Always set it on whichever entry you feature.
-- `title` and `excerpt` are **not** used by Home at all, even on the featured entry — Home only ever reads `heroImage`, `caption`, `location`, and `date`. `title`/`excerpt` are for the Journal pages themselves (see below).
+- **`heroImageAlt` is the photo's alt text — a factual description of what it depicts, not a second caption.** It's a deliberately separate field from `caption`: `caption` is editorial voice (CONTENT-STANDARDS.md's Image philosophy explicitly allows one evocative sentence there), which is the wrong content for alt text — a screen-reader user needs to know what's actually in the photo, not hear the caption read out in place of a description. Falls back to `title` if omitted, which isn't a real description either, so set this explicitly on whichever entry you feature — don't rely on the fallback.
+- `title` and `excerpt` are **not** used by Home at all, even on the featured entry — Home only ever reads `heroImage`, `heroImageAlt`, `caption`, `location`, and `date` (`title` only as `heroImageAlt`'s fallback). `title`/`excerpt` are for the Journal pages themselves (see below).
 
 ---
 
@@ -124,7 +126,7 @@ Every published Research entry gets an "Investigation 00N" label above its title
 ## Creating a new Journal entry
 
 1. Add `website/content/journal/<slug>.md`.
-2. Fill in the frontmatter — only `title` and `date` are required. `location`, `images`, `heroImage`, `caption`, `excerpt`, and `relatedResearch` are all optional. Start with `published: false` and `featured: false` (see Draft & Published status, above, and Featuring a Journal entry on Home, below).
+2. Fill in the frontmatter — only `title` and `date` are required. `location`, `images`, `heroImage`, `heroImageAlt`, `caption`, `excerpt`, and `relatedResearch` are all optional. Start with `published: false` and `featured: false` (see Draft & Published status, above, and Featuring a Journal entry on Home, below).
 3. Write the body in Markdown. If you don't set an authored `excerpt`, **the opening paragraph doubles as the index teaser** — `getExcerpt()` in `lib/journal.ts` automatically pulls the first paragraph (truncated to ~160 characters) for `/journal`'s listing. Write that first paragraph as a deliberate lede either way, since it may end up doing double duty.
 4. Preview it the same way as a draft Research entry: temporarily flip `published: true` locally to see the rendered page, then flip it back until it's genuinely ready.
 5. When it's ready, set `published: true` for good, commit, push. Only set `featured: true` if this entry should replace whatever's currently powering Home's "In the Field" section.
@@ -171,6 +173,7 @@ date: "2026-04-10"
 location: "Austin, Texas"
 heroImage: "/images/entry-title.jpg"
 heroImagePosition: "center 8%"
+heroImageAlt: "A factual description of what the photo depicts, shown only if this entry is featured on Home."
 caption: "A one-line caption, shown only if this entry is featured on Home."
 excerpt: "An authored one- to two-sentence teaser for /journal's listing."
 images:
@@ -179,9 +182,9 @@ relatedResearch: the-places-we-become
 ---
 ```
 
-Only `title` and `date` are required. Everything else — `location`, `images`, `heroImage`, `heroImagePosition`, `caption`, `excerpt`, `relatedResearch`, `published`, `featured` — may technically be omitted, but write `published: false` and `featured: false` explicitly anyway (see Draft & Published status and Featuring a Journal entry on Home, both above). `relatedResearch`, if set, must match an existing filename (without `.md`) under `content/research/` — it's how a Journal entry cross-links to a Research investigation (rendered as a "Related Research" link on the entry page).
+Only `title` and `date` are required. Everything else — `location`, `images`, `heroImage`, `heroImagePosition`, `heroImageAlt`, `caption`, `excerpt`, `relatedResearch`, `published`, `featured` — may technically be omitted, but write `published: false` and `featured: false` explicitly anyway (see Draft & Published status and Featuring a Journal entry on Home, both above). `relatedResearch`, if set, must match an existing filename (without `.md`) under `content/research/` — it's how a Journal entry cross-links to a Research investigation (rendered as a "Related Research" link on the entry page).
 
-- `heroImage`, `heroImagePosition`, and `caption` only matter if this entry is `featured: true` — see above.
+- `heroImage`, `heroImagePosition`, `heroImageAlt`, and `caption` only matter if this entry is `featured: true` — see above.
 - `excerpt`, if set, overrides the auto-derived teaser on `/journal`'s listing (and in this page's own meta description) — see the "opening paragraph" note above. Older entries without `excerpt` keep working exactly as before; this field is purely additive.
 
 ---

@@ -65,7 +65,7 @@ export default function Home() {
           <Link href={`/journal/${featuredJournalEntry.slug}`} className="block">
             <DocumentaryImage
               src={featuredJournalEntry.heroImage}
-              alt={featuredJournalEntry.caption ?? featuredJournalEntry.title}
+              alt={featuredJournalEntry.heroImageAlt ?? featuredJournalEntry.title}
               aspectRatio="3/2"
               objectPosition={featuredJournalEntry.heroImagePosition}
             />

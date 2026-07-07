@@ -15,6 +15,17 @@ interface JournalFrontmatter {
   heroImage?: string;
   /** CSS object-position for heroImage's crop, e.g. "center 20%". Omit to keep the default centered crop. */
   heroImagePosition?: string;
+  /**
+   * A factual description of what the photo actually depicts — used as the
+   * image's alt text on Home. Deliberately a separate field from `caption`:
+   * `caption` is editorial voice (CONTENT-STANDARDS.md's Image philosophy
+   * explicitly allows one evocative sentence there), which is the wrong
+   * content for alt text — a screen-reader user needs to know what's in
+   * the photo, not read a caption twice. Falls back to `title` if omitted,
+   * which is still not a description, so set this explicitly on any
+   * entry that gets featured.
+   */
+  heroImageAlt?: string;
   /** Short caption shown alongside heroImage on Home. */
   caption?: string;
   /** Authored teaser. Falls back to an auto-derived excerpt (getExcerpt) when omitted, so older entries keep working unmodified. */

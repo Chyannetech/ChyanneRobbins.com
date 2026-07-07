@@ -50,7 +50,7 @@ export default function StudioPage() {
           rel="noopener noreferrer"
           className="mt-10 inline-block font-sans text-body-lg text-accent underline underline-offset-4"
         >
-          Visit Chyless World Studio →
+          Visit Chyless World Studio →<span className="sr-only"> (opens in a new tab)</span>
         </Link>
       </Section>
     </main>

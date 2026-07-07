@@ -54,7 +54,7 @@ export default function ContactPage() {
             rel="noopener noreferrer"
             className="text-accent underline underline-offset-4"
           >
-            Chyless World Studio
+            Chyless World Studio<span className="sr-only"> (opens in a new tab)</span>
           </Link>
           .
         </BodyText>

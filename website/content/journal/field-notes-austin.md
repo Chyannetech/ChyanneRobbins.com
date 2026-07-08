@@ -1,6 +1,6 @@
 ---
 published: true
-featured: true
+featured: false
 title: "Field Notes: Austin"
 date: "2024-06-01"
 location: "Austin, Texas"

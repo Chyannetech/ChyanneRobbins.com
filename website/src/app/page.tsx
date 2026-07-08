@@ -75,16 +75,39 @@ export default function Home() {
       {featuredJournalEntry && (
         <Section width="narrow" className="-mt-8 sm:-mt-12">
           <Link href={`/journal/${featuredJournalEntry.slug}`} className="group block">
+            {/* Editorial header, mirroring Featured Investigation's own
+                 kicker-plus-title pattern below — this is the "first field
+                 observation" that follows the site's central question, so it
+                 borrows that same construction rather than a new one. Title
+                 uses Heading's "title" size (not "subhead", which Featured
+                 Investigation uses) to stay the quieter of the two: this is
+                 a photograph with editorial framing, not a second investigation
+                 preview competing for the same weight. */}
+            <Eyebrow>From the Journal</Eyebrow>
+            <Heading
+              as="h2"
+              size="title"
+              className="mt-4 transition-colors group-hover:text-accent"
+            >
+              {featuredJournalEntry.title}
+            </Heading>
+            <BodyText size="meta" tone="muted" className="mt-2">
+              {formatDate(featuredJournalEntry.date)}
+            </BodyText>
             <DocumentaryImage
               src={featuredJournalEntry.heroImage}
               alt={featuredJournalEntry.heroImageAlt ?? featuredJournalEntry.title}
               aspectRatio="3/2"
               objectPosition={featuredJournalEntry.heroImagePosition}
+              className="mt-6"
             />
+            {/* No date here — the editorial header above the image already
+                 establishes it; repeating it in this caption would duplicate
+                 the same date twice in one block. Location (if any) still
+                 belongs here, since it's photo-caption metadata, not a
+                 second publication date. */}
             <Caption
-              meta={[featuredJournalEntry.location, formatDate(featuredJournalEntry.date)]
-                .filter(Boolean)
-                .join(" • ")}
+              meta={featuredJournalEntry.location}
               textClassName="transition-colors group-hover:text-accent"
             >
               {featuredJournalEntry.caption}

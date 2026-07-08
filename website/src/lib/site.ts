@@ -4,8 +4,8 @@
  * product, experience, technology, or collaboration.
  *
  * Chyless World isn't live yet — this is a placeholder domain. Update it
- * here only; every consumer (currently just /studio) imports this constant
- * rather than hardcoding the URL.
+ * here only; every consumer (currently /studio and Home's "From Observation
+ * to Application" CTA) imports this constant rather than hardcoding the URL.
  */
 export const CHYLESS_WORLD_URL = "https://chylessworld.com";
 

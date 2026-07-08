@@ -10,6 +10,7 @@ import Caption from "@/components/media/Caption";
 import { getFeaturedJournalEntry } from "@/lib/journal";
 import { getFeaturedResearchEntry } from "@/lib/research";
 import { formatDate } from "@/lib/date";
+import { CHYLESS_WORLD_URL } from "@/lib/site";
 
 // Root layout's metadata already provides this title/description as the
 // default; declared explicitly here (rather than left inherited) only so
@@ -176,7 +177,6 @@ export default function Home() {
           From Observation to Application
         </Heading>
         <Prose className="mt-6 space-y-6">
-          <p>Observation is only the beginning.</p>
           <p>
             The goal isn&apos;t simply to understand the world more clearly.
             It&apos;s to use those insights to design better products,
@@ -184,10 +184,12 @@ export default function Home() {
           </p>
         </Prose>
         <Link
-          href="/studio"
+          href={CHYLESS_WORLD_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="mt-6 inline-block font-sans text-body text-accent underline underline-offset-4"
         >
-          Explore Chyless World Studio
+          Explore Chyless World →<span className="sr-only"> (opens in a new tab)</span>
         </Link>
       </Section>
 

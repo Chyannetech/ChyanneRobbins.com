@@ -176,11 +176,12 @@ heroImagePosition: "center 8%"
 heroImageAlt: "A factual description of what the photo depicts, shown only if this entry is featured on Home."
 caption: "A one-line caption, shown only if this entry is featured on Home."
 excerpt: "An authored one- to two-sentence teaser for /journal's listing."
-gallery:
-  - src: "/images/entry-title-2.jpg"
-    alt: "A factual description of what this photo depicts."
-    aspectRatio: "3/2"
-    caption: "Optional — omit to show the photo without one."
+# gallery: only add this when it's genuinely warranted — see below. The
+# default entry is hero image + essay, nothing more.
+#   - src: "/images/entry-title-2.jpg"
+#     alt: "A factual description of what this photo depicts."
+#     aspectRatio: "3/2"
+#     caption: "Optional — omit to show the photo without one."
 relatedResearch: the-places-we-become
 ---
 ```
@@ -189,7 +190,7 @@ Only `title` and `date` are required. Everything else — `location`, `heroImage
 
 - `heroImage`, `heroImagePosition`, `heroImageAlt`, and `caption` only matter if this entry is `featured: true` — see above.
 - `excerpt`, if set, overrides the auto-derived teaser on `/journal`'s listing (and in this page's own meta description) — see the "opening paragraph" note above. Older entries without `excerpt` keep working exactly as before; this field is purely additive.
-- `gallery`, if set to one or more images, renders as "From This Moment" after the essay ends — the remainder of the same observed moment the entry already showed, not a second document. Every item needs `src`, `alt`, and `aspectRatio`; `caption` is optional and reuses the standard `Caption` component. `aspectRatio` is required per photo (not auto-detected — this project has no build-time image-dimension reading) because a gallery mixes horizontal and vertical photos that can't share one fixed ratio the way a single hero image can; state it the same way you'd read it off the photo itself, e.g. `"3/2"` for landscape, `"4/5"` for portrait. Never include `heroImage` again here — it already had its own full treatment above and shouldn't repeat.
+- `gallery` is optional and should be used sparingly. The default Journal entry consists only of the hero image and essay. Galleries should only be added when they meaningfully extend the reading experience rather than simply documenting that an event occurred — field observations, environmental context, visual evidence, or moments the essay alone can't communicate. The hero image already establishes place and atmosphere on its own; before adding a gallery, consider whether more photographs genuinely deepen the piece or just pull the reader back into documentation right after the essay has reached its conclusion. When one is warranted: if set to one or more images, it renders as "From This Moment" after the essay ends — the remainder of the same observed moment the entry already showed, not a second document. Every item needs `src`, `alt`, and `aspectRatio`; `caption` is optional and reuses the standard `Caption` component. `aspectRatio` is required per photo (not auto-detected — this project has no build-time image-dimension reading) because a gallery mixes horizontal and vertical photos that can't share one fixed ratio the way a single hero image can; state it the same way you'd read it off the photo itself, e.g. `"3/2"` for landscape, `"4/5"` for portrait. The first image is always the lead frame (rendered larger; no separate field marks this — position alone decides it), and every image after it is a supporting frame. Never include `heroImage` again here — it already had its own full treatment above and shouldn't repeat.
 
 ---
 

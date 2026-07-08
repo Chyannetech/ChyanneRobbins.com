@@ -9,13 +9,6 @@ heroImagePosition: "center 8%"
 heroImageAlt: "Outside Google's Austin campus during the AFROTECH conference in Austin, Texas."
 caption: "Research is how I make sense of the world."
 excerpt: "I traveled to Austin thinking I was becoming a better software engineer. I left wondering what else could be built."
-gallery:
-  - src: "/images/journal/austin-002.jpg"
-    alt: "Chyanne Robbins seated beside a large sculptural sign reading \"AFROTECH\" outdoors in Austin."
-    aspectRatio: "3/4"
-  - src: "/images/journal/austin-003.jpg"
-    alt: "Chyanne Robbins standing in front of an illuminated Warner Bros. Discovery sign, lit in purple and pink."
-    aspectRatio: "3/4"
 ---
 When I traveled to Austin for the Afrotech conference, I thought I was there to become a better software engineer.
 

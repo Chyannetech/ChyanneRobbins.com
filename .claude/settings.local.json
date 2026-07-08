@@ -19,7 +19,8 @@
       "mcp__visualize__show_widget",
       "Bash(sed -n '/generateMetadata/,/^}/p' \"research/[slug]/page.tsx\")",
       "Bash(sed -n '/generateMetadata/,/^}/p' \"journal/[slug]/page.tsx\")",
-      "Bash(echo \"exit: $?\")"
+      "Bash(echo \"exit: $?\")",
+      "WebSearch"
     ]
   }
 }

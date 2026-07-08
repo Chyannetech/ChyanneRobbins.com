@@ -178,6 +178,32 @@ Each makes the other more valuable.
 
 ---
 
+# Research Methodology
+
+Stage Three establishes that research begins with observation, not literature. This section makes that principle operational — the order in which a Research investigation is actually conducted, arrived at through practice rather than decided in advance.
+
+1. Research begins with observation, not theory.
+
+2. Journal exists to preserve the observation and discover the right question.
+
+3. Research begins by investigating that question, not by trying to prove a conclusion.
+
+4. Existing literature is consulted as multiple explanatory lenses, not as authorities the investigation gets organized around.
+
+5. Each framework is evaluated directly against the observation — what it explains well, what it explains only partially, and what remains unexplained.
+
+6. Original frameworks are only developed if a genuine explanatory gap remains after that evaluation.
+
+7. Any proposed framework should eventually be tested through Chyless World prototypes or experiments whenever possible.
+
+8. New observations may refine or replace earlier frameworks over time.
+
+> Observe first. Question honestly. Consult multiple lenses. Follow the evidence. Synthesize only when earned. Test through design. Observe again.
+
+(Added 2026-07-08, formalized after the first Research investigation — into why the same environment produces different experiences for different people — worked through this exact sequence in practice before it was written down here.)
+
+---
+
 # Demonstration
 
 Every published piece should quietly demonstrate a way of thinking that someone else could trust to be applied to a meaningful problem.

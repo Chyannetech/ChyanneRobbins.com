@@ -100,7 +100,7 @@ Unlike the two issues above, nothing here was wrong — each was a real, undecid
 
 ### 3. Gallery's interaction model is entirely undecided
 
-[Gallery.tsx](../website/src/components/media/Gallery.tsx) is an explicit, self-declared placeholder (its own comment says so) — a static grid of neutral image placeholders with no grid density, caption treatment, or interaction (lightbox or otherwise) decided. Correctly out of scope until a Journal entry actually needs multiple images. Recorded here so it doesn't get designed by accident as a side effect of unrelated motion or spacing work — any future gallery interaction should be a deliberate addition, weighed against Restraint like every other proposed interaction, not an afterthought bundled into a different pass.
+**Status: Resolved 2026-07-07 — built as "From This Moment."** [Gallery.tsx](../website/src/components/media/Gallery.tsx) was deliberately designed, not defaulted into, following the same discipline this entry asked for: the job was determined first (the remainder of the same observed moment an entry's essay and hero image already established — not evidence, an archive, or a portfolio), then a single restrained layout system was chosen (System A, "Loose Row" — every photo keeps its own aspect ratio at a shared row height, no cropping, no masonry, no carousel). No lightbox, no click-to-enlarge, and no motion: none of them cleared the existing Micro-interactions bar once the gallery was already laid out generously rather than as small thumbnails. Captions reuse `Caption` exactly, optional per photo. `heroImage` is never repeated inside it. See PUBLISHING.md and SITE-MAP.md's Journal content model for the `gallery` field this is powered by.
 
 ---
 

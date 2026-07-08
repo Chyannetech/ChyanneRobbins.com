@@ -2,7 +2,6 @@
 published: false
 title: "On Slowness"
 date: "2025-12-03"
-images: []
 relatedResearch: the-places-we-become
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.

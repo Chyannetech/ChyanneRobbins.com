@@ -3,7 +3,6 @@ published: false
 title: "Notes on Waiting"
 date: "2026-04-10"
 location: "Chicago, Illinois"
-images: []
 ---
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 

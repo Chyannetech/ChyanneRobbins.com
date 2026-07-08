@@ -4,19 +4,24 @@ featured: true
 title: "Field Notes: Austin"
 date: "2024-06-01"
 location: "Austin, Texas"
-heroImage: "/images/google-austin.jpg"
+heroImage: "/images/journal/austin-001.jpg"
 heroImagePosition: "center 8%"
-heroImageAlt: "Chyanne Robbins seated on a wicker bench against a wall of greenery lit by a neon Google sign, at a Google developer conference in Austin."
+heroImageAlt: "Outside Google's Austin campus during the AFROTECH conference in Austin, Texas."
 caption: "Research is how I make sense of the world."
-excerpt: "A reflection on attending Google's developer conference in Austin and the questions it sparked about technology, design, and human behavior."
-images:
-  - placeholder
+excerpt: "I traveled to Austin thinking I was becoming a better software engineer. I left wondering what else could be built."
+gallery:
+  - src: "/images/journal/austin-002.jpg"
+    alt: "Chyanne Robbins seated beside a large sculptural sign reading \"AFROTECH\" outdoors in Austin."
+    aspectRatio: "3/4"
+  - src: "/images/journal/austin-003.jpg"
+    alt: "Chyanne Robbins standing in front of an illuminated Warner Bros. Discovery sign, lit in purple and pink."
+    aspectRatio: "3/4"
 ---
-When I traveled to Austin for the Render conference, I thought I was there to become a better software engineer.
+When I traveled to Austin for the Afrotech conference, I thought I was there to become a better software engineer.
 
 I had received a scholarship to attend after making the transition into tech, and like many people early in their careers, I believed the next step was becoming better at writing code.
 
-But somewhere between the conference sessions, the conversations, and the visits to companies like Google and Tesla, something began to shift.
+But somewhere between the conference sessions, the conversations, and the visits to companies like Google, Warner Bros, and Tesla, something began to shift.
 
 For the first time, I met people who looked like me working across every part of the technology industry—not only as engineers, but as researchers, designers, product managers, strategists, communicators, and leaders.
 
@@ -30,7 +35,7 @@ It was an ecosystem.
 
 That realization stayed with me long after the conference ended.
 
-Shortly afterward, I accepted a software engineering role with the Miami Heat. The experience taught me a great deal, but it also clarified something I hadn't yet been able to articulate.
+Shortly afterward, I accepted a frontend developer role with the Miami Heat. The experience taught me a great deal, but it also clarified something I hadn't yet been able to articulate.
 
 The part of technology that fascinated me wasn't frameworks or programming languages.
 

@@ -1,5 +1,33 @@
 import { readContentDirectory } from "./content";
 
+/**
+ * One photo in a "From This Moment" gallery (see journal/[slug]/page.tsx) —
+ * the remainder of the same observed moment the entry's essay and hero
+ * image already established, shown only after the essay ends. Not evidence,
+ * not an archive, not a portfolio — see the design reasoning this was built
+ * from, preserved in project history.
+ *
+ * `aspectRatio` is required, not detected: this project has no build-time
+ * image-dimension reading, and every other photo on the site (`coverImage`,
+ * `heroImage`) already has its aspect ratio stated explicitly at the call
+ * site rather than inferred from the file. Requiring it here just moves
+ * that same existing convention into content instead of a hardcoded prop,
+ * which a gallery needs — mixed horizontal and vertical photos can't share
+ * one fixed ratio the way a single hero image can.
+ *
+ * `alt` is required (not optional-with-a-fallback like `heroImageAlt`,
+ * which falls back to the entry title): there's no reasonable automatic
+ * description for one photo among several, the way a title can loosely
+ * stand in for a single hero image.
+ */
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  aspectRatio: string;
+  /** Optional — reuses the existing Caption component, archival-label style. */
+  caption?: string;
+}
+
 interface JournalFrontmatter {
   /** Defaults to false (fail-closed) if omitted — see PUBLISHING.md's Draft & Published section. */
   published: boolean;
@@ -9,9 +37,7 @@ interface JournalFrontmatter {
   date: string;
   /** Field-note style location, e.g. "Austin, Texas". Optional — not every entry is placed. */
   location?: string;
-  /** Often empty: not every entry is image-led (essays/reflections may be text-only). */
-  images: string[];
-  /** Single hero photo path, wired to Home's featured display. Distinct from the legacy `images` array above, which is not yet wired to any real photo — see PUBLISHING.md. */
+  /** Single hero photo path, wired to Home's featured display. */
   heroImage?: string;
   /** CSS object-position for heroImage's crop, e.g. "center 20%". Omit to keep the default centered crop. */
   heroImagePosition?: string;
@@ -30,6 +56,14 @@ interface JournalFrontmatter {
   caption?: string;
   /** Authored teaser. Falls back to an auto-derived excerpt (getExcerpt) when omitted, so older entries keep working unmodified. */
   excerpt?: string;
+  /**
+   * "From This Moment" — shown after the essay ends (see
+   * journal/[slug]/page.tsx), only when non-empty. Replaces the old
+   * `images: string[]` field, which was legacy and unused (see
+   * PUBLISHING.md's former Caveat) — retired outright rather than left
+   * dormant alongside a second, working image list.
+   */
+  gallery: GalleryImage[];
   /** Optional cross-link to a Research entry slug. */
   relatedResearch?: string;
 }
@@ -43,6 +77,28 @@ export interface JournalEntry extends JournalFrontmatter {
 }
 
 const REQUIRED_FIELDS = ["title", "date"];
+
+const GALLERY_IMAGE_REQUIRED_FIELDS = ["src", "alt", "aspectRatio"] as const;
+
+function validateGalleryImages(
+  data: Record<string, unknown>,
+  filename: string,
+): GalleryImage[] {
+  if (data.gallery === undefined) return [];
+  if (!Array.isArray(data.gallery)) {
+    throw new Error(`content/journal/${filename}: "gallery" must be an array`);
+  }
+  data.gallery.forEach((image: Record<string, unknown>, index: number) => {
+    for (const field of GALLERY_IMAGE_REQUIRED_FIELDS) {
+      if (!image[field]) {
+        throw new Error(
+          `content/journal/${filename}: gallery[${index}] missing required field "${field}"`,
+        );
+      }
+    }
+  });
+  return data.gallery as GalleryImage[];
+}
 
 function validateJournalFrontmatter(
   data: Record<string, unknown>,
@@ -59,7 +115,7 @@ function validateJournalFrontmatter(
     ...data,
     published: data.published === true,
     featured: data.featured === true,
-    images: Array.isArray(data.images) ? (data.images as string[]) : [],
+    gallery: validateGalleryImages(data, filename),
   } as JournalFrontmatter;
 }
 

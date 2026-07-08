@@ -176,16 +176,20 @@ heroImagePosition: "center 8%"
 heroImageAlt: "A factual description of what the photo depicts, shown only if this entry is featured on Home."
 caption: "A one-line caption, shown only if this entry is featured on Home."
 excerpt: "An authored one- to two-sentence teaser for /journal's listing."
-images:
-  - placeholder
+gallery:
+  - src: "/images/entry-title-2.jpg"
+    alt: "A factual description of what this photo depicts."
+    aspectRatio: "3/2"
+    caption: "Optional — omit to show the photo without one."
 relatedResearch: the-places-we-become
 ---
 ```
 
-Only `title` and `date` are required. Everything else — `location`, `images`, `heroImage`, `heroImagePosition`, `heroImageAlt`, `caption`, `excerpt`, `relatedResearch`, `published`, `featured` — may technically be omitted, but write `published: false` and `featured: false` explicitly anyway (see Draft & Published status and Featuring a Journal entry on Home, both above). `relatedResearch`, if set, must match an existing filename (without `.md`) under `content/research/` — it's how a Journal entry cross-links to a Research investigation (rendered as a "Related Research" link on the entry page).
+Only `title` and `date` are required. Everything else — `location`, `heroImage`, `heroImagePosition`, `heroImageAlt`, `caption`, `excerpt`, `gallery`, `relatedResearch`, `published`, `featured` — may technically be omitted, but write `published: false` and `featured: false` explicitly anyway (see Draft & Published status and Featuring a Journal entry on Home, both above). `relatedResearch`, if set, must match an existing filename (without `.md`) under `content/research/` — it's how a Journal entry cross-links to a Research investigation (rendered as a "Related Research" link on the entry page).
 
 - `heroImage`, `heroImagePosition`, `heroImageAlt`, and `caption` only matter if this entry is `featured: true` — see above.
 - `excerpt`, if set, overrides the auto-derived teaser on `/journal`'s listing (and in this page's own meta description) — see the "opening paragraph" note above. Older entries without `excerpt` keep working exactly as before; this field is purely additive.
+- `gallery`, if set to one or more images, renders as "From This Moment" after the essay ends — the remainder of the same observed moment the entry already showed, not a second document. Every item needs `src`, `alt`, and `aspectRatio`; `caption` is optional and reuses the standard `Caption` component. `aspectRatio` is required per photo (not auto-detected — this project has no build-time image-dimension reading) because a gallery mixes horizontal and vertical photos that can't share one fixed ratio the way a single hero image can; state it the same way you'd read it off the photo itself, e.g. `"3/2"` for landscape, `"4/5"` for portrait. Never include `heroImage` again here — it already had its own full treatment above and shouldn't repeat.
 
 ---
 
@@ -196,7 +200,7 @@ Only `title` and `date` are required. Everything else — `location`, `images`, 
 - Reference it from frontmatter with a root-relative path, e.g. `coverImage: "/images/the-places-we-become.jpg"`.
 - Until a real photo exists for a given entry, leave `coverImage` (Research) / `heroImage` (Journal) unset. `DocumentaryImage` renders a neutral placeholder in the correct footprint automatically when `src` is unset — nothing looks broken in the meantime, and this is now unconditional on every page that shows one (both index pages, both detail pages), not something that only applies if a photo happens to exist. **Never set one of these to a path that doesn't correspond to a real file in `public/`** — unlike an unset field, a broken path shows an actual broken image, because `next/image` only falls back gracefully when `src` is missing entirely, not when it 404s.
 
-> **Caveat — `images` is legacy and unused.** Research's `coverImage` and Journal's `heroImage` are both fully wired and behave identically now: every page that displays one (`/research/<slug>`, `/journal`, `/journal/<slug>`, and Home's "In the Field" section) renders `DocumentaryImage` unconditionally, so a missing photo always produces the same neutral placeholder rather than an inconsistent gap. Journal's older `images` array plays no role in this — it isn't read by any page, isn't passed to `DocumentaryImage`, and doesn't gate anything. It's parsed and typed purely for backward compatibility with existing frontmatter; retiring it outright is a reasonable future cleanup, not something new content needs to populate.
+> **`images` has been retired (2026-07-07), not just left dormant.** Research's `coverImage` and Journal's `heroImage` are both fully wired and behave identically: every page that displays one (`/research/<slug>`, `/journal`, `/journal/<slug>`, and Home's "In the Field" section) renders `DocumentaryImage` unconditionally, so a missing photo always produces the same neutral placeholder rather than an inconsistent gap. Journal's older `images` array (a bare list of unstructured strings) was never read by any page — it's now been fully replaced by `gallery` (structured `{ src, alt, aspectRatio, caption? }` entries, see the Journal frontmatter example above), which does render, as "From This Moment." Existing content had a stray `images:` key removed during that migration; it's no longer a recognized field at all, not merely an unused one.
 
 ---
 

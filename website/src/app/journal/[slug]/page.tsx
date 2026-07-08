@@ -7,6 +7,7 @@ import Heading from "@/components/typography/Heading";
 import Eyebrow from "@/components/typography/Eyebrow";
 import Prose from "@/components/typography/Prose";
 import DocumentaryImage from "@/components/media/DocumentaryImage";
+import Gallery from "@/components/media/Gallery";
 import {
   getJournalEntries,
   getJournalEntryBySlug,
@@ -91,6 +92,19 @@ export default async function JournalEntryPage({ params }: PageProps) {
             dangerouslySetInnerHTML={{ __html: entry.bodyHtml }}
           />
         </Prose>
+
+        {/* "From This Moment" only appears once the essay is completely
+             finished — never interleaved with it — and never repeats
+             heroImage, which already had its own full treatment above. Same
+             Divider + Eyebrow pattern Related Research already uses directly
+             below, rather than a new way of introducing a section. */}
+        {entry.gallery.length > 0 && (
+          <>
+            <Divider className="mt-12" />
+            <Eyebrow className="mt-12">From This Moment</Eyebrow>
+            <Gallery images={entry.gallery} className="mt-3" />
+          </>
+        )}
 
         {relatedResearch && (
           <>

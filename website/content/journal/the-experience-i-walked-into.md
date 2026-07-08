@@ -5,7 +5,7 @@ title: "I Thought I Knew What Kind of Experience I Was Walking Into"
 date: "2026-07-07"
 heroImage: "/images/journal/outdoor-gathering-001.jpg"
 heroImageAlt: "A woman in a yellow head wrap and cardigan sits alone on a blanket reading a book beneath large oak trees, while groups of people talk and gather in the grass around her."
-excerpt: "I thought I understood the gathering I was walking into. I left wondering how the same place could become so many different experiences at once."
+excerpt: "I expected to study an event. Instead, I began noticing why the same place can become a completely different experience for different people."
 ---
 I recently attended an outdoor community gathering built around a simple invitation: bring whatever helps you slow down.
 
@@ -33,9 +33,7 @@ Many people came to socialize. They danced when the music started. Introduced th
 
 The atmosphere felt relaxed. But it wasn't necessarily still.
 
-That distinction was still on my mind days later.
-
-The more I thought about it, the less interested I became in the event itself. Instead, I became interested in something much larger.
+That distinction was still on my mind days later. The more I thought about it, the less interested I became in the event itself. Instead, I became interested in something much larger.
 
 How could the same gathering produce such different experiences for different people?
 
@@ -45,10 +43,10 @@ Some people arrived hoping to recharge. Others came hoping to meet people. Some 
 
 Nobody was wrong. They were simply responding to the same conditions differently.
 
-That realization changed the way I think about experiences. I used to believe the success of a gathering depended mostly on what happened. Now I wonder whether it depends just as much on what people bring with them before they ever arrive.
+That realization changed the way I think about experiences. I used to believe the success of a gathering depended mostly on what happened. Now I wonder whether it depends just as much on the expectations and intentions people carry with them before they ever arrive.
 
-I left realizing I hadn't really been studying the event at all. I was beginning to notice what shapes an experience before it ever begins.
+I left realizing I wasn't just studying the event anymore. The event had become a way of noticing something larger: that people often arrive already having started their own experience, carrying expectations and intentions that shape everything that happens next, long before the event itself begins.
 
 Which leaves me with a harder question than the one I walked in with.
 
-How can the same place become such a different experience for everyone who enters it?
+If everyone entered the same environment, why did they leave having experienced something completely different?

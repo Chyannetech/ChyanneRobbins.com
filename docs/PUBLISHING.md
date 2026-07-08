@@ -4,6 +4,8 @@
 
 This is written for a future version of yourself who hasn't touched this project in months. It assumes nothing except that you can open a terminal.
 
+This document is mechanics only — the folder structure, the frontmatter, the git workflow. The *why* behind what gets published and what doesn't lives in [`body-of-work/BODY-OF-WORK.md`](../body-of-work/BODY-OF-WORK.md), the single source of truth for editorial philosophy. If you find yourself explaining *why* a piece of content should or shouldn't exist rather than *how* to publish it, that belongs there, not here.
+
 ---
 
 ## How content becomes a page

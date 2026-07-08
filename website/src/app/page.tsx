@@ -45,7 +45,7 @@ export default function Home() {
              grouping/distinction tool. */}
         <Eyebrow>Chyanne Robbins</Eyebrow>
         <BodyText size="body-lg" font="sans" tone="muted" className="mt-8 max-w-[40ch]">
-          Exploring how people think, decide, and live.
+          Studying the conditions that shape how people think, feel, decide, and act.
         </BodyText>
         <Heading as="h1" size="display" className="mt-14 max-w-full sm:max-w-[20ch]">
           What shapes human experience?
@@ -154,7 +154,7 @@ export default function Home() {
         </Heading>
         <Prose className="mt-6">
           The environments we design—digital and physical—quietly shape how
-          people think, decide, connect, and live. By studying human
+          people think, feel, decide, and act. By studying human
           experience through behavioral science, design, systems thinking,
           technology, and public health, this publication explores principles
           that can help create products, services, organizations, and spaces

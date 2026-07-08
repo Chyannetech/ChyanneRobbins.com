@@ -6,6 +6,7 @@ date: "2026-07-07"
 heroImage: "/images/journal/outdoor-gathering-001.jpg"
 heroImageAlt: "A woman in a yellow head wrap and cardigan sits alone on a blanket reading a book beneath large oak trees, while groups of people talk and gather in the grass around her."
 excerpt: "I expected to study an event. Instead, I began noticing why the same place can become a completely different experience for different people."
+relatedResearch: the-conditions-of-coexistence
 ---
 I recently attended an outdoor community gathering built around a simple invitation: bring whatever helps you slow down.
 

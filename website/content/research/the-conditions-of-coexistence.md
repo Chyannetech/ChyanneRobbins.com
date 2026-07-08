@@ -1,5 +1,5 @@
 ---
-published: false
+published: true
 title: "The Conditions of Coexistence"
 researchQuestion: "What conditions allow one environment to support multiple, equally legitimate experiences without requiring them to converge into one?"
 dek: "A study of what allows a single environment to hold more than one legitimate experience at once, instead of quietly forcing everyone toward the same one."

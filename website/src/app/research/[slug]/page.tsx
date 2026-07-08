@@ -137,14 +137,18 @@ export default async function ResearchEntryPage({ params }: PageProps) {
 
         <Divider className="mt-12" />
 
-        <DocumentaryImage
-          src={entry.coverImage}
-          alt={entry.title}
-          aspectRatio="3/2"
-          className="mt-12"
-        />
+        {entry.coverImage && (
+          <>
+            <DocumentaryImage
+              src={entry.coverImage}
+              alt={entry.title}
+              aspectRatio="3/2"
+              className="mt-12"
+            />
 
-        <Divider className="mt-12" />
+            <Divider className="mt-12" />
+          </>
+        )}
 
         {lead && (
           <div

@@ -92,6 +92,12 @@ Its purpose is to preserve the moment where understanding begins.
 
 Strong Journal entries often end with curiosity instead of certainty.
 
+A Journal entry does not need to resolve anything. Its job is to discover the right question — the one a future Research investigation can go on to explore.
+
+Journal preserves the moment an observation becomes a question. Research is where that question gets investigated.
+
+*(Added 2026-07-08, once publishing the first two Journal entries — Austin and Touch Grass — made this relationship visible in hindsight rather than something planned in advance. Both entries ended on a question they didn't answer; naming that pattern here makes it a deliberate principle instead of a coincidence.)*
+
 ---
 
 # Stage Three — Understanding (Research)

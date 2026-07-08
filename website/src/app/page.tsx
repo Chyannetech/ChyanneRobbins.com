@@ -144,7 +144,7 @@ export default function Home() {
         </Section>
       )}
 
-      {/* 5. Why This Matters — width="narrow" (800px, not "wide") replaces the
+      {/* 5. From Observation to Application — width="narrow" (800px, not "wide") replaces the
            original reasoning that this section should stay wide to "open back up"
            for a broader audience: that never actually rendered, since Prose caps
            this section's paragraph at 68ch regardless of container width, so
@@ -152,8 +152,8 @@ export default function Home() {
            left-anchored text block — directly beneath Featured Investigation's
            balanced, centered column. narrow gives this section the same width as
            In the Field, so the page's proportion sequence reads as Hero(wide) →
-           Photo(narrow) → Featured Investigation(reading) → Why This
-           Matters(narrow) → Quote — narrowing to its single focal point at the
+           Photo(narrow) → Featured Investigation(reading) → From Observation
+           to Application(narrow) → Quote — narrowing to its single focal point at the
            investigation, then easing back out to the width it held during the
            photograph, rather than a flatter, less differentiated progression.
            The "broad address" idea isn't lost — it's carried by the copy itself
@@ -164,7 +164,7 @@ export default function Home() {
            sm:-mt-12 (canceling half of one, landing at ~96/144px). Disciplines →
            Featured Investigation is a genuine introduction (the taxonomy has no
            meaning without the investigation it leads into) and correctly stays
-           tightly coupled. Featured Investigation → Why This Matters is a
+           tightly coupled. Featured Investigation → From Observation to Application is a
            sequence of two complete, independent editorial thoughts — related in
            theme, but each finished on its own — so collapsing it as far as an
            introduction relationship shortchanged Featured Investigation's own
@@ -173,21 +173,21 @@ export default function Home() {
            alone. */}
       <Section width="narrow" className="-mt-8 sm:-mt-12">
         <Heading as="h2" size="title">
-          Why This Matters
+          From Observation to Application
         </Heading>
-        <Prose className="mt-6">
-          The environments we design—digital and physical—quietly shape how
-          people think, feel, decide, and act. By studying human
-          experience through behavioral science, design, systems thinking,
-          technology, and public health, this publication explores principles
-          that can help create products, services, organizations, and spaces
-          that better support the people they serve.
+        <Prose className="mt-6 space-y-6">
+          <p>Observation is only the beginning.</p>
+          <p>
+            The goal isn&apos;t simply to understand the world more clearly.
+            It&apos;s to use those insights to design better products,
+            services, organizations, technologies, and experiences.
+          </p>
         </Prose>
         <Link
           href="/studio"
           className="mt-6 inline-block font-sans text-body text-accent underline underline-offset-4"
         >
-          Studio
+          Explore Chyless World Studio
         </Link>
       </Section>
 

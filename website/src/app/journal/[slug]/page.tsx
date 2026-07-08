@@ -8,6 +8,7 @@ import Eyebrow from "@/components/typography/Eyebrow";
 import Prose from "@/components/typography/Prose";
 import DocumentaryImage from "@/components/media/DocumentaryImage";
 import Gallery from "@/components/media/Gallery";
+import ReadingProgress from "@/components/interactive/ReadingProgress";
 import {
   getJournalEntries,
   getJournalEntryBySlug,
@@ -58,6 +59,8 @@ export default async function JournalEntryPage({ params }: PageProps) {
 
   return (
     <main className="flex flex-col">
+      <ReadingProgress />
+
       <Section spacing="large">
         <Link
           href="/journal"

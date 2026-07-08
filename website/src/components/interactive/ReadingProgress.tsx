@@ -11,9 +11,10 @@ import { useEffect, useRef, useState } from "react";
  *
  * Experimental: uses the neutral `muted` token, not `accent` — the accent
  * color reads as an interactive/brand signal, too assertive for an ambient
- * indicator. This is a single, self-contained component with one call site
- * (research/[slug]/page.tsx) — delete the import and the JSX line there to
- * remove it entirely if it doesn't earn its place.
+ * indicator. This is a single, self-contained component, reused as-is at
+ * both its call sites (research/[slug]/page.tsx and journal/[slug]/page.tsx)
+ * — delete the import and the JSX line at a given call site to remove it
+ * from that content type without affecting the other.
  */
 export default function ReadingProgress() {
   const [progress, setProgress] = useState(0);

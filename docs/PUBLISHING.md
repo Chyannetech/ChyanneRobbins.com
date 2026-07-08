@@ -227,6 +227,7 @@ Open `http://localhost:3000`. Check both the index page (`/research` or `/journa
 
 The repository is `github.com/Chyannetech/ChyanneRobbins.com`, a single `main` branch. There is no CI or deploy pipeline configured as of this writing — pushing to `main` does not automatically publish anything anywhere yet. If that changes later, update this section.
 
+- **Implementation and version control are two separate steps.** The default, in any collaborative session, is: implement the change, verify it, and stop — not stage, commit, or push automatically. After implementing, give a concise summary of what changed and wait for explicit approval before staging, committing, pushing, or choosing a commit message. *(Added 2026-07-08, after automatic commits during Investigation 002's publication interrupted the review process — review needs to stay a deliberate, separate step, not get folded into the pace of implementation.)*
 - Prefer separating content commits from code/architecture commits — e.g. `content: add research entry — Systems of Care` versus `fix: correct journal excerpt truncation`. Existing commit history in this repo reads as short, descriptive statements of what the commit builds or changes; keep that convention.
 - Typical flow for a new entry:
   ```

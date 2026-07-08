@@ -23,11 +23,23 @@ That shouldn't have been the likely outcome. A setting this loosely defined is e
 
 ## What We Mean by Experience
 
-Before going further, I need to pin down a term I've been using loosely. "Different experiences" has been doing a lot of unexamined work so far — treating what people visibly did as a stand-in for what they actually experienced, without checking whether that substitution holds.
+At first, comparing two experiences seemed like the easy part.
 
-It's worth checking, because the two aren't the same thing. What's directly observable is behavior — who danced, who read, who stayed quiet. Experience is something else, and the disciplines that study it directly tend to agree on a shape casual use of the word skips past: it isn't one event, it's a layered process — what gets noticed, how that gets interpreted against what a person wants, the feeling that follows, and, separately, what gets carried forward afterward as memory, which research on retrospective judgment treats as a reconstruction built from a few standout moments, not a full recording of the stretch of time itself.
+The behavior was already visible — who danced, who read, who stayed quiet. Comparing that looked close enough to comparing experience to keep going.
 
-That still leaves a more basic question open: does an experience belong to the person, to the setting, or to neither on its own? The strongest answer treats it as neither — as something that exists only in the relationship between a person and the conditions they're in, made through the encounter rather than delivered by one side to the other. Experience, in that sense, isn't what an environment gives a person or what a person brings to an environment. It's what happens between the two, and it keeps happening — before an encounter, during it, and after. Adopted here because it's the most useful way to study what follows, not because it settles a debate that's still genuinely open elsewhere.
+It wasn't close enough.
+
+The question kept resisting a clean answer the further I pushed on it. Were the readers and the dancers having different behaviors, or different experiences? If experience, different in what sense — different in what they noticed? Different in what they wanted going in? Different in how it felt while it was happening? Different in what they'd remember a week later?
+
+Each answer pointed somewhere else. Behavior was only ever the visible trace of something else, not the thing itself. Feeling wasn't accessible from the outside for anyone but me. Expectation belonged to before the gathering, not during it. Memory belonged to after — and memory, it turns out, isn't even a recording of what happened. It's a reconstruction, built from a couple of standout moments, not the whole stretch of time.
+
+None of those were wrong, exactly. None of them were the whole answer either.
+
+Before the investigation could go any further, it needed to answer a more basic question first.
+
+What do we actually mean by experience?
+
+The answer that held up treats it as none of those things on their own. Experience isn't what an environment gives a person, and it isn't what a person brings to an environment. It's what happens between the two — made through the encounter itself, not delivered by one side to the other — and it keeps happening before an encounter, during it, and after. Adopted here because it's the most useful way to study what follows, not because it settles a debate that's still genuinely open elsewhere.
 
 Behavior stays in the picture from here on as the visible trace of that relationship, not as a stand-in for the whole of it.
 

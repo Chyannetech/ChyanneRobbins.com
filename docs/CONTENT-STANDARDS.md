@@ -44,6 +44,8 @@ Every Research investigation should read like a page from a design research note
 
 **Open Questions close the piece, unresolved.** Near the end, a section titled `Open Questions` lists what the investigation didn't answer — as a plain list, no bullets, no numbering, no icons. This is the clearest expression of "explored rather than concluded": the piece should end by admitting what it doesn't yet know, not by wrapping everything up neatly. Not every investigation needs one, but most should — a piece with no open questions reads as a claim that the thinking is finished, which is rarely true this early in a body of work.
 
+**`homeObservation` (frontmatter) is a compressed Observation, held to the same Observation-vs-Interpretation line as the body section above.** It's the one sentence a first-time homepage visitor sees from a featured investigation, so it has to work standing alone, outside the paragraph that would normally carry it — but its editorial job doesn't change: report something noticed, not something argued. It should never restate `dek` (already shown directly above it) and should never reveal or argue for the entry's working theory — the test is the same "would this survive as a line in the Observation section itself" question, just written to be legible without that section's surrounding context. See PUBLISHING.md for the field mechanics.
+
 ---
 
 ## Voice and tone

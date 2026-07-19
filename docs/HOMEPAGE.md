@@ -38,19 +38,21 @@ Five sections, in this order (Disciplines is no longer independent — see secti
 
 **Content requirement:** this section pulls a single image-led entry per the Journal content model in [SITE-MAP.md](SITE-MAP.md) (`title`, `date`, `location`, `images`, `body`/caption). Treat it as one specific, editorially chosen Journal entry — not a feed or rotation.
 
-### 3. Disciplines + Featured Investigation
+### 3. Currently Investigating
 
-Disciplines is a quiet taxonomy/credibility signal — the lens through which the publication investigates human experience — not a chapter with its own argument, so it now introduces Featured Investigation rather than standing between it and In the Field:
+**Superseded the Disciplines-led "Featured Investigation" card (2026-07-19).** The publication's first genuinely ongoing, multi-part investigation made it clear the old treatment — a taxonomy kicker plus a title, the whole block one implicit link — was answering "here's an entry from the archive," not "here's the question this publication is currently living with." This section now reads as a short editorial passage rather than an index-style card:
 
-- Behavioral Science
-- Design
-- Systems Thinking
-- Technology
-- Public Health
+- Kicker: **Currently Investigating**
+- Metadata: **Investigation 00N · Ongoing/Concluded** — reuses `getResearchEntryNumber`/`STATUS_LABEL` exactly as the detail page does, nothing duplicated by hand
+- Title (now `headline` size, up from `subhead`)
+- `dek`, in the same italic-serif treatment the detail page gives `researchQuestion`
+- This investigation's own `themes` (e.g. Behavioral Science · Design · Technology) — deliberately the entry's specific themes, not the publication-wide five-discipline list the old version showed, since this section now introduces one investigation, not the publication's general lens
+- `homeObservation`, the one new field this required — a single compressed Observation-register sentence, never a summary of `dek` and never an argument for the working theory. Not italic: CONTENT-STANDARDS.md reserves one moment of italic emphasis per piece, already spent on `dek`.
+- An explicit CTA, **Explore the Investigation →**, reusing the site's existing accent-underline link convention
 
-Directly above **The Places We Become** (tagged: Behavioral Science · Design · Systems Thinking), separated by proximity alone — generous space above the taxonomy line, a tight gap below it, no divider, no heading.
+Because the section grew into an actual passage rather than a title-plus-tags card, the whole block is no longer one implicit link with title-only hover — navigation happens through the explicit CTA only, so a reader can read the passage without a stray click sending them somewhere.
 
-**Content requirement:** the taxonomy list maps directly to the `themes` field on the Research content model in [SITE-MAP.md](SITE-MAP.md); likely static content, not pulled dynamically. The investigation itself is pulled from the Research entry marked `featured: true` and links to `/research/[slug]`; its tags are drawn from the official `themes` taxonomy defined in SITE-MAP.md — "Research" is the section name, not a taxonomy tag, and is not used as a tag here. Because the taxonomy line is now this section's lead-in, it only renders when a featured Research entry exists.
+**Content requirement:** pulled from the Research entry marked `featured: true`, exactly as before. `homeObservation` is optional on the content model (see SITE-MAP.md) but only meaningful on whichever entry is featured, mirroring how Journal's `heroImageAlt`/`caption` work. Renders nothing if no entry is featured, same as before.
 
 ### 4. Why This Matters
 

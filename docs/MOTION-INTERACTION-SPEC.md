@@ -34,7 +34,7 @@ Two durations and one easing curve cover every animated interaction on the site 
 
 **Current implementations:**
 - `NavLink` — muted → `hover:text-accent`; active route pinned to `text-foreground` via `aria-current`
-- The card-hover convention — a title-equivalent element inside a full-block `<Link>` shifts to `accent` on `group-hover`, while dek/meta stays muted. Used on the Research index, Journal index, Home's Featured Investigation, Journal's Related Research, and Home's "In the Field" caption
+- The card-hover convention — a title-equivalent element inside a full-block `<Link>` shifts to `accent` on `group-hover`, while dek/meta stays muted. Used on the Research index, Journal index, Journal's Related Research, and Home's "In the Field" caption. Home's "Currently Investigating" section (2026-07-19) deliberately no longer uses this — it grew into a multi-line editorial passage rather than a title-plus-tags card, so it now navigates through one explicit CTA link at the end instead of a whole-block hover link; see HOMEPAGE.md.
 - The Standalone CTA link — `text-accent underline underline-offset-4`, static (already at its "hover" appearance at rest, so nothing further shifts)
 - Inline links inside markdown-rendered body content (`.investigation-body a`, `.journal-body a`) — reuses the Standalone CTA treatment
 

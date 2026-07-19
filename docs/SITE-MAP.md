@@ -54,6 +54,7 @@ Together, Research and Journal represent the two registers of the publication: f
 | `formats` | string[] | A closed set — see PUBLISHING.md for the exact, current list. An investigation can accumulate more than one over time as it evolves. |
 | `status` | enum | `ongoing` \| `concluded`. |
 | `featured` | boolean | Whether eligible for the Home featured slot. Editorially set, not automatic. |
+| `homeObservation` | string (optional) | A single-sentence editorial observation used only by Home's "Currently Investigating" section when this entry is `featured`. Not a summary of `dek` and not an argument for the working theory — a compressed version of the entry's own Observation section. See PUBLISHING.md. |
 | `coverImage` | asset ref | Placed directly in `website/public/images/`. In practice, images haven't gone through a separate `assets/images/` staging step before this — see PUBLISHING.md. |
 | `publishedAt` / `updatedAt` | date | |
 | `body` | long-form content | The investigation itself. |

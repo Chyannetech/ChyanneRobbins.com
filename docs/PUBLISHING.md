@@ -64,11 +64,12 @@ caption: "Research is how I make sense of the world."
 
 ## Featuring a Research entry on Home
 
-Home's "Featured Investigation" section — the title and themes line below "In the Field" — is powered entirely by a single Research entry: whichever one has both `published: true` and `featured: true`. `getFeaturedResearchEntry()` in `lib/research.ts` finds it; Home calls that function and renders whatever comes back, linking to that entry's own `/research/<slug>` page. There is no other wiring and nothing else to configure.
+Home's "Currently Investigating" section is powered entirely by a single Research entry: whichever one has both `published: true` and `featured: true`. `getFeaturedResearchEntry()` in `lib/research.ts` finds it; Home calls that function and renders whatever comes back, linking to that entry's own `/research/<slug>` page. There is no other wiring and nothing else to configure.
 
 - **Only one entry should be `featured: true` at a time.** If more than one is, `getFeaturedResearchEntry()` doesn't error — it picks whichever is newest by `publishedAt` (same sort order as `getResearchEntries()`) — but treat having two featured entries as a mistake to fix, not a supported state.
-- **If no entry is featured, Home fails gracefully.** The "Featured Investigation" section simply doesn't render — same convention as "In the Field," above.
-- Home reads only `title` and `themes` from the featured entry — `dek`, `formats`, and everything else are for the Research index and detail pages (see below).
+- **If no entry is featured, Home fails gracefully.** The "Currently Investigating" section simply doesn't render — same convention as "In the Field," above.
+- Home reads `title`, `dek`, `themes`, `status`, and (if set) `homeObservation` from the featured entry — `researchQuestion`, `formats`, and everything else are for the Research index and detail pages (see below).
+- **`homeObservation` only matters if this entry is `featured: true`** — same convention as Journal's `heroImageAlt`/`caption`. It's a single sentence written in the same register as the entry's own Observation section: something noticed, not summarized and not argued. It should not restate `dek` (which is already shown directly above it) and should not reveal or argue for the entry's working theory — the goal is to make a first-time visitor curious enough to click through, not to explain the investigation to them before they do. See CONTENT-STANDARDS.md's Observation/Interpretation distinction for what "not argued" actually means in practice.
 
 ---
 
@@ -156,7 +157,7 @@ publishedAt: "2026-05-01"
 ---
 ```
 
-Optional fields: `coverImage` (path under `public/`, see Images below), `updatedAt` (ISO date, shown alongside `publishedAt` when different). `published` is technically optional too (defaults to `false`), but always write it explicitly — see Draft & Published status, above.
+Optional fields: `coverImage` (path under `public/`, see Images below), `updatedAt` (ISO date, shown alongside `publishedAt` when different), `homeObservation` (only meaningful if `featured: true` — see "Featuring a Research entry on Home," above). `published` is technically optional too (defaults to `false`), but always write it explicitly — see Draft & Published status, above.
 
 **Allowed themes:** Behavioral Science, Design, Systems Thinking, Technology, Public Health.
 **Allowed formats:** concept study, article, prototype, product, service, collaboration — an ordered progression of concrete forms an investigation's thinking can take, not a genre label. See CONTENT-STANDARDS.md's Metadata expectations for the editorial principle behind this field, and its "Choosing a Format" section for the decision process to use before picking a value.

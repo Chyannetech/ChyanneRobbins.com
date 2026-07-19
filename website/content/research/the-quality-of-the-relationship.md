@@ -10,7 +10,8 @@ themes:
 formats:
   - concept study
 status: ongoing
-featured: false
+featured: true
+homeObservation: "I've noticed that how long I spend with technology doesn't consistently predict how I feel afterward."
 publishedAt: "2026-07-18"
 ---
 This is the first version of an investigation I've only just started. The working theory below is a starting guess, written down before I've read the research that might support or contradict it — not a conclusion. I expect it to change, possibly substantially, as I work through the literature, make more observations, and revise what I think I know.

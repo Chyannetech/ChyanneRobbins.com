@@ -10,7 +10,7 @@ themes:
 formats:
   - concept study
 status: ongoing
-featured: true
+featured: false
 publishedAt: "2026-05-01"
 ---
 ## Observation

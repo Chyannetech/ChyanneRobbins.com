@@ -42,6 +42,14 @@ interface ResearchFrontmatter {
   formats: ResearchFormat[];
   status: ResearchStatus;
   featured: boolean;
+  /**
+   * A single-sentence editorial observation — not a summary of `dek`, not an
+   * argument for the working theory — used only by Home's "Currently
+   * Investigating" section when this entry is featured. Mirrors Journal's
+   * `heroImageAlt`/`caption` convention: optional here, but only meaningful
+   * on whichever entry has `featured: true`. See PUBLISHING.md.
+   */
+  homeObservation?: string;
   coverImage?: string;
   publishedAt: string;
   updatedAt?: string;

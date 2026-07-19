@@ -8,7 +8,11 @@ import Prose from "@/components/typography/Prose";
 import DocumentaryImage from "@/components/media/DocumentaryImage";
 import Caption from "@/components/media/Caption";
 import { getFeaturedJournalEntry } from "@/lib/journal";
-import { getFeaturedResearchEntry } from "@/lib/research";
+import {
+  getFeaturedResearchEntry,
+  getResearchEntryNumber,
+  STATUS_LABEL,
+} from "@/lib/research";
 import { formatDate } from "@/lib/date";
 import { CHYLESS_WORLD_URL } from "@/lib/site";
 
@@ -22,17 +26,15 @@ export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
-const DISCIPLINES = [
-  "Behavioral Science",
-  "Design",
-  "Systems Thinking",
-  "Technology",
-  "Public Health",
-];
-
 export default function Home() {
   const featuredJournalEntry = getFeaturedJournalEntry();
   const featuredResearchEntry = getFeaturedResearchEntry();
+  // getResearchEntryNumber can return undefined per its own signature (see
+  // lib/research.ts) — guarded the same way the detail page already guards
+  // it, rather than passing it straight into String().padStart() unguarded.
+  const investigationNumber = featuredResearchEntry
+    ? getResearchEntryNumber(featuredResearchEntry.slug)
+    : undefined;
 
   return (
     <main className="flex flex-col">
@@ -117,30 +119,63 @@ export default function Home() {
         </Section>
       )}
 
-      {/* 3/4. Disciplines + Featured Investigation — Disciplines no longer stands
-           as its own section (see HOMEPAGE.md's "Resolved since V1 freeze" note on
-           this change). It's a quiet taxonomy/credibility signal, not a chapter with
-           its own argument, so it now reads as the Featured Investigation's lead-in —
-           generous space above (separating it from In the Field) and a tight mt-4
-           below (grouping it with the investigation it introduces), with no divider
-           and no heading. This is proximity doing the grouping work on its own, not
-           a styling device — arrived at by testing spacing as the only variable.
+      {/* 3/4. Currently Investigating — supersedes the earlier Disciplines-led-in
+           "Featured Investigation" card entirely. That version answered "here's
+           an entry from the archive"; this one answers "here's the question the
+           publication is currently living with." The whole block is no longer
+           one big Link (title-only hover) — it's grown into a short editorial
+           passage (kicker, investigation number/status, title, dek, themes,
+           one observation sentence), closer in shape to "From Observation to
+           Application" below than to the index-style card pattern used on
+           Research/Journal. So navigation now happens through one explicit,
+           visible CTA at the end, not an invisible whole-block link — a reader
+           should be able to read this passage without worrying a stray click
+           will navigate them away.
 
-           width="reading" (68ch, not "wide") is a second, later Varying Rooms
-           decision: this section previews an investigation, so it borrows the
-           exact width the investigation's own long-form body uses, foreshadowing
-           the register shift from browsing to reading before the reader even
-           clicks through — reusing an existing token, not a new value. */}
+           `themes` (this investigation's actual 2–3, not the publication-wide
+           five-discipline list previously shown here) is now used specifically
+           because this section introduces one investigation, not the
+           publication's general lens — see docs/HOMEPAGE.md.
+
+           Investigation number + status reuse getResearchEntryNumber/
+           STATUS_LABEL exactly as the detail page does; nothing here is
+           duplicated by hand. `homeObservation` is the one genuinely new piece
+           of copy in this section — a compressed Observation, not a summary of
+           `dek` and not an argument for the working theory (see
+           lib/research.ts and PUBLISHING.md). It intentionally isn't italic:
+           CONTENT-STANDARDS.md reserves one moment of italic emphasis per
+           piece, already spent on `dek` below. */}
       {featuredResearchEntry && (
         <Section width="reading">
-          <Eyebrow>{DISCIPLINES.join(" · ")}</Eyebrow>
-          <Link href={`/research/${featuredResearchEntry.slug}`} className="group mt-4 block">
-            <Heading as="h2" size="subhead" className="transition-colors group-hover:text-accent">
-              {featuredResearchEntry.title}
-            </Heading>
-            <BodyText size="meta" tone="muted" className="mt-4">
-              {featuredResearchEntry.themes.join(" · ")}
+          <Eyebrow>Currently Investigating</Eyebrow>
+          {investigationNumber !== undefined && (
+            <BodyText size="meta" tone="muted" className="mt-1">
+              {`Investigation ${String(investigationNumber).padStart(3, "0")} · ${STATUS_LABEL[featuredResearchEntry.status]}`}
             </BodyText>
+          )}
+          <Heading as="h2" size="headline" className="mt-6">
+            {featuredResearchEntry.title}
+          </Heading>
+          {/* max-w-[46ch] matches the detail page's identical treatment of
+               researchQuestion — italic subhead-sized text needs a shorter
+               line length than the general 68ch reading measure this
+               section's own container already provides. */}
+          <p className="mt-4 max-w-[46ch] font-serif text-subhead italic text-foreground">
+            {featuredResearchEntry.dek}
+          </p>
+          <BodyText size="meta" tone="muted" className="mt-3">
+            {featuredResearchEntry.themes.join(" · ")}
+          </BodyText>
+          {featuredResearchEntry.homeObservation && (
+            <BodyText size="body-lg" font="serif" className="mt-6">
+              {featuredResearchEntry.homeObservation}
+            </BodyText>
+          )}
+          <Link
+            href={`/research/${featuredResearchEntry.slug}`}
+            className="mt-6 inline-block font-sans text-body text-accent underline underline-offset-4"
+          >
+            Explore the Investigation →
           </Link>
         </Section>
       )}

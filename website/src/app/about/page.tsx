@@ -46,7 +46,7 @@ export default function AboutPage() {
           </p>
           <p>
             The goal isn&apos;t simply to explain the answer, but to explore
-            it, through research, writing, and images that draw on
+            it, in research, writing, and images that approach it through
             behavioral science, design, technology, systems thinking, and
             public health.
           </p>
@@ -66,54 +66,56 @@ export default function AboutPage() {
           About the Author
         </Heading>
 
-        <DocumentaryImage
-          src="/images/author.jpg"
-          alt="Chyanne Robbins"
-          aspectRatio="4/5"
-          objectPosition="center"
-          className="mt-8 w-40 sm:w-48"
-        />
+        <div className="mt-6 overflow-hidden">
+          <DocumentaryImage
+            src="/images/authorheadshot.jpg"
+            alt="Chyanne Robbins"
+            aspectRatio="4/5"
+            objectPosition="center"
+            className="float-left mr-6 mb-2 w-48 sm:w-56"
+          />
 
-        <Prose className="mt-8 space-y-6">
-          <p>For one assignment, we worked in pairs.</p>
-          <p>
-            The instructions were simple. Walk around campus. Find someone
-            sitting alone. One of us would sit down next to them — closer
-            than you normally would. The other would watch. Not say
-            anything. Just watch.
-          </p>
-          <p>
-            I don&apos;t remember the lesson anymore. I remember what
-            happened instead.
-          </p>
-          <p>
-            I remember sitting down next to a stranger, and something in
-            them shifting before either of us said a word.
-          </p>
-        </Prose>
+          <Prose className="space-y-6">
+            <p>For one assignment, we worked in pairs.</p>
+            <p>
+              The instructions were simple. Walk around campus. Find someone
+              sitting alone. One of us would sit down next to them — closer
+              than you normally would. The other would watch. Not say
+              anything. Just watch.
+            </p>
+            <p>
+              I don&apos;t remember the lesson anymore. I remember what
+              happened instead.
+            </p>
+            <p>
+              I remember sitting down next to a stranger, and something in
+              them shifting before either of us said a word.
+            </p>
+          </Prose>
 
-        <Prose className="mt-16 space-y-6">
-          <p>
-            After that, I started noticing it everywhere. Not on purpose. It
-            just didn&apos;t turn off.
-          </p>
-          <p>
-            Body language. The length of a pause before someone answered.
-            Where people&apos;s eyes went when they were deciding what to
-            say. How far someone stood from another person, and what that
-            distance meant even when nobody mentioned it.
-          </p>
-          <p>
-            Then it turned inward. I started noticing myself the same way —
-            how I responded in conversations, what I was communicating
-            without meaning to, how much of what I said wasn&apos;t actually
-            in the words.
-          </p>
-          <p>
-            I didn&apos;t have a name for any of this yet. I just
-            couldn&apos;t stop seeing it.
-          </p>
-        </Prose>
+          <Prose className="mt-16 space-y-6">
+            <p>
+              After that, I started noticing it everywhere. Not on purpose. It
+              just didn&apos;t turn off.
+            </p>
+            <p>
+              Body language. The length of a pause before someone answered.
+              Where people&apos;s eyes went when they were deciding what to
+              say. How far someone stood from another person, and what that
+              distance meant even when nobody mentioned it.
+            </p>
+            <p>
+              Then it turned inward. I started noticing myself the same way —
+              how I responded in conversations, what I was communicating
+              without meaning to, how much of what I said wasn&apos;t
+              actually in the words.
+            </p>
+            <p>
+              I didn&apos;t have a name for any of this yet. I just
+              couldn&apos;t stop seeing it.
+            </p>
+          </Prose>
+        </div>
 
         <Prose className="mt-16 space-y-6">
           <p>

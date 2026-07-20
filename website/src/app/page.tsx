@@ -11,7 +11,6 @@ import { getFeaturedJournalEntry } from "@/lib/journal";
 import {
   getFeaturedResearchEntry,
   getResearchEntryNumber,
-  STATUS_LABEL,
 } from "@/lib/research";
 import { formatDate } from "@/lib/date";
 import { CHYLESS_WORLD_URL } from "@/lib/site";
@@ -47,8 +46,8 @@ export default function Home() {
              DESIGN-SYSTEM.md's Layout & Grid section on proximity as a
              grouping/distinction tool. */}
         <Eyebrow>Chyanne Robbins</Eyebrow>
-        <BodyText size="body-lg" font="sans" tone="muted" className="mt-8 max-w-[40ch]">
-          Studying the conditions that shape how people think, feel, decide, and act.
+        <BodyText size="body-lg" font="sans" tone="muted" className="mt-8 max-w-[42ch]">
+          An ongoing study of the conditions that shape how people think, feel, decide, and act.
         </BodyText>
         <Heading as="h1" size="display" className="mt-14 max-w-full sm:max-w-[20ch]">
           What shapes human experience?
@@ -78,10 +77,8 @@ export default function Home() {
       {featuredJournalEntry && (
         <Section width="narrow" className="-mt-8 sm:-mt-12">
           <Link href={`/journal/${featuredJournalEntry.slug}`} className="group block">
-            {/* Editorial header, mirroring Featured Investigation's own
-                 kicker-plus-title pattern below — this is the "first field
-                 observation" that follows the site's central question, so it
-                 borrows that same construction rather than a new one. Title
+            {/* Editorial header — this is the "first field observation" that
+                 follows the site's central question. Title
                  uses Heading's "title" size (not "subhead", which Featured
                  Investigation uses) to stay the quieter of the two: this is
                  a photograph with editorial framing, not a second investigation
@@ -119,58 +116,44 @@ export default function Home() {
         </Section>
       )}
 
-      {/* 3/4. Currently Investigating — supersedes the earlier Disciplines-led-in
-           "Featured Investigation" card entirely. That version answered "here's
-           an entry from the archive"; this one answers "here's the question the
-           publication is currently living with." The whole block is no longer
-           one big Link (title-only hover) — it's grown into a short editorial
-           passage (kicker, investigation number/status, title, dek, themes,
-           one observation sentence), closer in shape to "From Observation to
-           Application" below than to the index-style card pattern used on
-           Research/Journal. So navigation now happens through one explicit,
-           visible CTA at the end, not an invisible whole-block link — a reader
-           should be able to read this passage without worrying a stray click
-           will navigate them away.
+      {/* 3/4. Currently Investigating — rethought from first principles
+           (2026-07-20) after living with the metadata-heavy version: three
+           stacked label/meta lines (kicker, investigation number + status,
+           themes) around one title is the structural signature of a content
+           card, independent of borders or backgrounds. Cut to a single
+           quiet number and one continuous passage instead:
 
-           `themes` (this investigation's actual 2–3, not the publication-wide
-           five-discipline list previously shown here) is now used specifically
-           because this section introduces one investigation, not the
-           publication's general lens — see docs/HOMEPAGE.md.
-
-           Investigation number + status reuse getResearchEntryNumber/
-           STATUS_LABEL exactly as the detail page does; nothing here is
-           duplicated by hand. `homeObservation` is the one genuinely new piece
-           of copy in this section — a compressed Observation, not a summary of
-           `dek` and not an argument for the working theory (see
-           lib/research.ts and PUBLISHING.md). It intentionally isn't italic:
-           CONTENT-STANDARDS.md reserves one moment of italic emphasis per
-           piece, already spent on `dek` below. */}
+           - "Currently Investigating" (the kicker) and "· Ongoing" (the
+             status word) were saying the same thing twice in two registers.
+             The sequencing work elsewhere on this page already teaches "this
+             is live, ongoing work" through position, making the literal
+             label less necessary than when it was first added. Only the
+             number survives — it's the one element doing unique work
+             (implying a series) that nothing else on the page does.
+           - `themes` is removed entirely, not just shrunk. It's a
+             classification signal ("lenses, not labels") that belongs to
+             Architecture 1 (the Research page), not to the homepage's
+             expression of the practice as lived experience.
+           - `dek` and `homeObservation` are merged into one passage instead
+             of two stacked fields — descriptive framing (not first person,
+             a deliberate exception: a dek functions like a book's subtitle)
+             turning into first-person observation mid-passage, mirroring
+             how the investigation's own file is actually structured.
+           See docs/HOMEPAGE.md and PUBLISHING.md. */}
       {featuredResearchEntry && (
         <Section width="reading">
-          <Eyebrow>Currently Investigating</Eyebrow>
           {investigationNumber !== undefined && (
-            <BodyText size="meta" tone="muted" className="mt-1">
-              {`Investigation ${String(investigationNumber).padStart(3, "0")} · ${STATUS_LABEL[featuredResearchEntry.status]}`}
+            <BodyText size="meta" tone="muted">
+              {`Investigation ${String(investigationNumber).padStart(3, "0")}`}
             </BodyText>
           )}
-          <Heading as="h2" size="headline" className="mt-6">
+          <Heading as="h2" size="headline" className="mt-2">
             {featuredResearchEntry.title}
           </Heading>
-          {/* max-w-[46ch] matches the detail page's identical treatment of
-               researchQuestion — italic subhead-sized text needs a shorter
-               line length than the general 68ch reading measure this
-               section's own container already provides. */}
-          <p className="mt-4 max-w-[46ch] font-serif text-subhead italic text-foreground">
-            {featuredResearchEntry.dek}
+          <p className="mt-4 max-w-[46ch] font-serif text-body-lg text-foreground">
+            <em className="italic">{featuredResearchEntry.dek}</em>{" "}
+            {featuredResearchEntry.homeObservation}
           </p>
-          <BodyText size="meta" tone="muted" className="mt-3">
-            {featuredResearchEntry.themes.join(" · ")}
-          </BodyText>
-          {featuredResearchEntry.homeObservation && (
-            <BodyText size="body-lg" font="serif" className="mt-6">
-              {featuredResearchEntry.homeObservation}
-            </BodyText>
-          )}
           <Link
             href={`/research/${featuredResearchEntry.slug}`}
             className="mt-6 inline-block font-sans text-body text-accent underline underline-offset-4"
@@ -180,34 +163,26 @@ export default function Home() {
         </Section>
       )}
 
-      {/* 5. From Observation to Application — width="narrow" (800px, not "wide") replaces the
-           original reasoning that this section should stay wide to "open back up"
-           for a broader audience: that never actually rendered, since Prose caps
-           this section's paragraph at 68ch regardless of container width, so
-           "wide" only ever produced a large, unbalanced void to the right of a
-           left-anchored text block — directly beneath Featured Investigation's
-           balanced, centered column. narrow gives this section the same width as
-           In the Field, so the page's proportion sequence reads as Hero(wide) →
-           Photo(narrow) → Featured Investigation(reading) → From Observation
-           to Application(narrow) → Quote — narrowing to its single focal point at the
-           investigation, then easing back out to the width it held during the
-           photograph, rather than a flatter, less differentiated progression.
-           The "broad address" idea isn't lost — it's carried by the copy itself
-           ("organizations," "products," "services"), not by the container.
+      {/* 5. From Observation to Application — width="narrow" (800px, not "wide")
+           gives this section the same width as In the Field, so the page's
+           proportion sequence reads as Hero(wide) → Photo(narrow) → Currently
+           Investigating(reading) → From Observation to Application(narrow) →
+           Quote. The "broad address" idea isn't lost — it's carried by the
+           copy itself ("organizations," "products," "services"), not by the
+           container.
 
-           The negative margin was revised from -mt-16 sm:-mt-24 (canceling a full
-           default Section padding, landing at 64/96px combined) to -mt-8
-           sm:-mt-12 (canceling half of one, landing at ~96/144px). Disciplines →
-           Featured Investigation is a genuine introduction (the taxonomy has no
-           meaning without the investigation it leads into) and correctly stays
-           tightly coupled. Featured Investigation → From Observation to Application is a
-           sequence of two complete, independent editorial thoughts — related in
-           theme, but each finished on its own — so collapsing it as far as an
-           introduction relationship shortchanged Featured Investigation's own
-           close. Sharing a width with Photo now also carries some of the
-           "these relate" signal, so proximity doesn't have to carry all of it
-           alone. */}
-      <Section width="narrow" className="-mt-8 sm:-mt-12">
+           Pacing (2026-07-20): the negative margin that used to compress this
+           gap was removed. That compression modeled Featured Investigation →
+           Why This Matters as a loosely-related pair (like Disciplines'
+           tight introduction into the investigation above it), but Concept 3's
+           even, essay-like rhythm treats every stage of Question → Observation
+           → Investigation → Application as comparable movements of one
+           continuous piece, not a hierarchy of tightly- vs loosely-coupled
+           pairs. Removing the override restores this gap to a plain default
+           double-stack, which lands at the same value Photo → Investigation
+           already uses — consistency achieved by deleting an exception, not
+           adding a new number. See docs/HOMEPAGE.md. */}
+      <Section width="narrow">
         <Heading as="h2" size="title">
           From Observation to Application
         </Heading>

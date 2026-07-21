@@ -42,6 +42,26 @@ interface JournalFrontmatter {
   /** CSS object-position for heroImage's crop, e.g. "center 20%". Omit to keep the default centered crop. */
   heroImagePosition?: string;
   /**
+   * CSS aspect-ratio for heroImage, e.g. "3/4" for a portrait photograph.
+   * Defaults to "3/2" (the standard landscape treatment, full-width above
+   * the title) when omitted. A portrait ratio (width < height) instead
+   * renders the photo beneath the title and metadata, at reading-column
+   * width, as an inset editorial photograph rather than a wide hero — see
+   * journal/[slug]/page.tsx.
+   */
+  heroImageAspectRatio?: string;
+  /**
+   * Prototype, portrait-only: how heroImage sits alongside the essay on the
+   * entry page. "stacked" (default, and the only behavior for landscape
+   * images) is the inset editorial photo described above. "float" is an
+   * experimental alternative — desktop only — where the photo floats beside
+   * the opening paragraphs and text wraps around it, magazine-style; mobile
+   * still renders the same stacked block regardless of this field, so the
+   * two layouts can be compared without a second, parallel implementation.
+   * See journal/[slug]/page.tsx.
+   */
+  heroImageLayout?: "stacked" | "float";
+  /**
    * A factual description of what the photo actually depicts — used as the
    * image's alt text on Home. Deliberately a separate field from `caption`:
    * `caption` is editorial voice (CONTENT-STANDARDS.md's Image philosophy
@@ -52,6 +72,19 @@ interface JournalFrontmatter {
    * entry that gets featured.
    */
   heroImageAlt?: string;
+  /**
+   * Optional Home-only override of heroImage — a separately cropped file
+   * for Home's landscape 3/2 card, when heroImage itself is a portrait
+   * photograph that shouldn't simply be center-cropped into that shape.
+   * Falls back to heroImage when omitted, matching every existing entry.
+   * homeImageAlt/homeImageAspectRatio/homeImagePosition mirror the
+   * corresponding heroImage fields and fall back to them the same way; see
+   * src/app/page.tsx.
+   */
+  homeImage?: string;
+  homeImageAlt?: string;
+  homeImageAspectRatio?: string;
+  homeImagePosition?: string;
   /** Short caption shown alongside heroImage on Home. */
   caption?: string;
   /** Authored teaser. Falls back to an auto-derived excerpt (getExcerpt) when omitted, so older entries keep working unmodified. */

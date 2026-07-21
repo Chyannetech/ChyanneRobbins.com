@@ -1,6 +1,6 @@
 ---
 published: true
-featured: true
+featured: false
 title: "I Thought I Knew What Kind of Experience I Was Walking Into"
 date: "2026-07-07"
 heroImage: "/images/journal/outdoor-gathering-001.jpg"

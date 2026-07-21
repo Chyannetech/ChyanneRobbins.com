@@ -57,6 +57,43 @@ export default async function JournalEntryPage({ params }: PageProps) {
     ? getResearchEntryBySlug(entry.relatedResearch)
     : undefined;
 
+  const heroRatio = entry.heroImageAspectRatio ?? "3/2";
+  const [heroRatioWidth, heroRatioHeight] = heroRatio.split("/").map(Number);
+  const isPortraitHero = heroRatioWidth < heroRatioHeight;
+  // Prototype (see lib/journal.ts): only meaningful for a portrait hero.
+  // Everything else on this page — landscape entries, and portrait entries
+  // that don't opt in — renders exactly as it did before this existed.
+  const useFloatLayout = isPortraitHero && entry.heroImageLayout === "float";
+  const heroImageAlt = entry.heroImageAlt ?? entry.title;
+
+  const heroImage = entry.heroImage && (
+    <DocumentaryImage
+      src={entry.heroImage}
+      alt={heroImageAlt}
+      aspectRatio={heroRatio}
+      objectPosition={entry.heroImagePosition}
+      className={
+        isPortraitHero
+          ? `mt-10 max-w-[68ch] ${useFloatLayout ? "sm:hidden" : ""}`
+          : "mt-10"
+      }
+    />
+  );
+
+  // Desktop-only alternative to the block above: the photo floats beside
+  // the opening paragraphs inside Prose instead of sitting as its own block
+  // between the title and the divider, so text wraps around it. Mobile
+  // always gets the ordinary stacked block above, unchanged.
+  const heroImageFloat = useFloatLayout && entry.heroImage && (
+    <DocumentaryImage
+      src={entry.heroImage}
+      alt={heroImageAlt}
+      aspectRatio={heroRatio}
+      objectPosition={entry.heroImagePosition}
+      className="hidden sm:float-right sm:mb-6 sm:ml-8 sm:block sm:w-[42%]"
+    />
+  );
+
   return (
     <main className="flex flex-col">
       <ReadingProgress />
@@ -69,13 +106,7 @@ export default async function JournalEntryPage({ params }: PageProps) {
           ← Journal
         </Link>
 
-        <DocumentaryImage
-          src={entry.heroImage}
-          alt={entry.title}
-          aspectRatio="3/2"
-          objectPosition={entry.heroImagePosition}
-          className="mt-10"
-        />
+        {!isPortraitHero && heroImage}
 
         <Eyebrow className="mt-10">{dateline}</Eyebrow>
 
@@ -87,9 +118,12 @@ export default async function JournalEntryPage({ params }: PageProps) {
           {entry.title}
         </Heading>
 
+        {isPortraitHero && heroImage}
+
         <Divider className="mt-12" />
 
         <Prose className="mt-12">
+          {heroImageFloat}
           <div
             className="journal-body space-y-6"
             dangerouslySetInnerHTML={{ __html: entry.bodyHtml }}

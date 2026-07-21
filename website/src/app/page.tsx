@@ -95,10 +95,17 @@ export default function Home() {
               {formatDate(featuredJournalEntry.date)}
             </BodyText>
             <DocumentaryImage
-              src={featuredJournalEntry.heroImage}
-              alt={featuredJournalEntry.heroImageAlt ?? featuredJournalEntry.title}
-              aspectRatio="3/2"
-              objectPosition={featuredJournalEntry.heroImagePosition}
+              src={featuredJournalEntry.homeImage ?? featuredJournalEntry.heroImage}
+              alt={
+                featuredJournalEntry.homeImageAlt ??
+                featuredJournalEntry.heroImageAlt ??
+                featuredJournalEntry.title
+              }
+              aspectRatio={featuredJournalEntry.homeImageAspectRatio ?? "3/2"}
+              objectPosition={
+                featuredJournalEntry.homeImagePosition ??
+                featuredJournalEntry.heroImagePosition
+              }
               className="mt-6"
             />
             {/* No date here — the editorial header above the image already
